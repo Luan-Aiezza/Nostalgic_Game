@@ -21,10 +21,8 @@ class PlayerEntity: GKEntity {
     
     override init() {
         super.init()
-        
-        let texture = SKTexture(imageNamed: "idle1.png")
         let node = SKSpriteNode(imageNamed: "idle1.png")
-        node.anchorPoint = .init(x: 0.46, y: 0)
+        node.anchorPoint = .init(x: 0.46, y: 0.25)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
@@ -34,7 +32,18 @@ class PlayerEntity: GKEntity {
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
         
-        let physicsComp = PhysicsComponent(texture: texture)
+        
+        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
+        let body = SKPhysicsBody(rectangleOf: size)
+        body.isDynamic = true
+        body.affectedByGravity = false
+        body.mass = 0
+        body.friction = 1
+        body.restitution = 1
+        body.usesPreciseCollisionDetection = true
+        body.allowsRotation = false
+        let physicsComp = PhysicsComponent(body: body)
+        self.addComponent(physicsComp)
     }
     
     required init?(coder:NSCoder) {

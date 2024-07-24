@@ -25,7 +25,6 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: playerEntity), PlayerRun(playerEntity: playerEntity)])
         
-        
         //controles (checar auto layout)
         right_button.position = CGPoint(x: -140, y: -80)
         right_button.size = CGSize(width: 80, height: 80)

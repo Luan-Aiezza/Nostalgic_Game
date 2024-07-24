@@ -13,8 +13,12 @@ class PhysicsComponent: GKComponent{
     
     var node:SKNode?
     var texture: SKTexture?
+    var size: CGSize?
+    var body: SKPhysicsBody
     
-    init(texture: SKTexture) {
+    
+    init(body : SKPhysicsBody) {
+        self.body = body
         super.init()
     }
     
@@ -23,21 +27,8 @@ class PhysicsComponent: GKComponent{
     }
     
     override func didAddToEntity() {
-        node = entity?.component(ofType: GKSKNodeComponent.self)?.node
-//        sprite.physicsBody = [SKPhysicsBody bodyWithTexture:sprite.texture size:sprite.texture.size];
-        addPhysics()
+        if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
+            node.physicsBody = self.body
+        }
     }
-    
-    func addPhysics(){
-        node?.physicsBody?.mass = 1
-        node?.physicsBody?.friction = 1
-        node?.physicsBody?.isDynamic = true
-//        node?.physicsBody?.affectedByGravity = true
-//        node?.physicsBody.area = (node?.frame.height)! * node?.frame.width
-        node?.physicsBody?.restitution = 1
-        node?.physicsBody?.usesPreciseCollisionDetection = true
-        node?.physicsBody?.allowsRotation = false
-    }
-    
-    
 }
