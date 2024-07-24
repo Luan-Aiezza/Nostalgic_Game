@@ -82,4 +82,39 @@ class GameScene: SKScene {
             }
         }
     }
+    
+    //CODIGO LUAN AIEZZA ---------------------------------------
+    var entities: [GKEntity] = []
+        var renderSystem: RenderSystem!
+        
+        override func didMove(to view: SKView) {
+            super.didMove(to: view)
+            
+            // Inicialize o sistema de renderização
+            renderSystem = RenderSystem(componentClass: GKComponent.self)
+            
+            // Crie o sprite da fase 1
+            let spriteNode = SKSpriteNode(imageNamed: "Tilemap01")
+            
+            // Crie um corpo físico para o sprite
+            let physicsBody = SKPhysicsBody(rectangleOf: spriteNode.size)
+            physicsBody.affectedByGravity = false
+            
+            // Crie a entidade e adicione os componentes
+            let entity = GKEntity()
+            entity.addComponent(PositionComponent(position: CGPoint(x: 0, y: -150)))
+            entity.addComponent(SpriteComponent(spriteNode: spriteNode))
+            entity.addComponent(ScaleComponent(scale: 1.5)) // Adiciona o componente de escala
+            entity.addComponent(FilteringModeComponent(filteringMode: .nearest)) // Adiciona o componente de FilteringMode
+            entity.addComponent(ColliderComponent(physicsBody: physicsBody)) // Adiciona o componente de Collider
+            
+            // Adicione a entidade à lista de entidades
+            entities.append(entity)
+            
+            // Adicione os componentes ao sistema de renderização
+            renderSystem.addComponent(foundIn: entity)
+            
+            // Renderize as entidades
+            renderSystem.render(entities: entities, in: self)
+        }
 }
