@@ -42,6 +42,7 @@ class PlayerEntity: GKEntity {
         body.restitution = 1
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
+        body.affectedByGravity = true
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
     }
