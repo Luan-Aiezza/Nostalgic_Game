@@ -13,11 +13,24 @@ class AnimationComponent: GKComponent {
     
     var idleAction: SKAction
     var runAction: SKAction
+    var dizzyAction: SKAction
+    var healthyAction : SKAction
     var node: SKNode?
+    
     
     init(idleAction: SKAction, runAction: SKAction) {
         self.idleAction = idleAction
         self.runAction = runAction
+        self.dizzyAction = runAction
+        self.healthyAction = runAction
+        super.init()
+    }
+    
+    init(dizzyAction: SKAction, healthyAction: SKAction) {
+        self.idleAction = healthyAction
+        self.runAction = dizzyAction
+        self.dizzyAction = dizzyAction
+        self.healthyAction = healthyAction
         super.init()
     }
     
@@ -36,5 +49,13 @@ class AnimationComponent: GKComponent {
     
     public func playRun(){
         node?.run(runAction)
+    }
+    
+    public func playDizzy(){
+        node?.run(dizzyAction)
+    }
+    
+    public func playHealthy(){
+        node?.run(healthyAction)
     }
 }
