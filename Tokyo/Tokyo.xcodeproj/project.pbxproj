@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */; };
+		3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1D52C529B41004FE488 /* GhostEntity.swift */; };
+		3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1D92C52A35B004FE488 /* GhostHealthy.swift */; };
+		3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1DD2C52A376004FE488 /* GhostDizzy.swift */; };
+		3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */; };
+		3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */; };
+		3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1E92C533C9E004FE488 /* DemiseComponent.swift */; };
+		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
+		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -31,6 +39,14 @@
 
 /* Begin PBXFileReference section */
 		3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
+		3306B1D52C529B41004FE488 /* GhostEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostEntity.swift; sourceTree = "<group>"; };
+		3306B1D92C52A35B004FE488 /* GhostHealthy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostHealthy.swift; sourceTree = "<group>"; };
+		3306B1DD2C52A376004FE488 /* GhostDizzy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostDizzy.swift; sourceTree = "<group>"; };
+		3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+ContactDelegate.swift"; sourceTree = "<group>"; };
+		3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhysicsMask.swift; sourceTree = "<group>"; };
+		3306B1E92C533C9E004FE488 /* DemiseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemiseComponent.swift; sourceTree = "<group>"; };
+		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
+		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -69,6 +85,8 @@
 			children = (
 				33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */,
 				33EDD5692C50885A00880E83 /* PlayerEntity.swift */,
+				3306B1D52C529B41004FE488 /* GhostEntity.swift */,
+				3306B1EB2C534081004FE488 /* CherryEntity.swift */,
 				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
 				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
 			);
@@ -81,6 +99,8 @@
 				33EDD5622C50803200880E83 /* AnimationComponent.swift */,
 				33EDD5642C50804600880E83 /* MovementComponent.swift */,
 				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
+				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
+				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -89,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				33EDD5672C50807C00880E83 /* SKTexture+Array.swift */,
+				3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */,
 				CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */,
 			);
 			path = Tools;
@@ -99,6 +120,8 @@
 			children = (
 				33EDD56E2C5088C400880E83 /* PlayerRun.swift */,
 				33EDD5702C5088D100880E83 /* PlayerIdle.swift */,
+				3306B1D92C52A35B004FE488 /* GhostHealthy.swift */,
+				3306B1DD2C52A376004FE488 /* GhostDizzy.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -143,6 +166,7 @@
 				CF41986C2C481745000B3C50 /* Main.storyboard */,
 				CF41986F2C481746000B3C50 /* Assets.xcassets */,
 				CF4198712C481746000B3C50 /* LaunchScreen.storyboard */,
+				3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */,
 			);
 			path = Tokyo;
 			sourceTree = "<group>";
@@ -223,6 +247,10 @@
 			files = (
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
+				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
+				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
+				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
+				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
@@ -231,7 +259,11 @@
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
 				CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */,
 				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
+				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
 				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
+				3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */,
+				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
+				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
 				33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */,
 				CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */,
@@ -392,8 +424,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,8 +452,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
