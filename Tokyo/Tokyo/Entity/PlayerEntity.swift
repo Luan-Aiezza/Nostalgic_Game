@@ -36,11 +36,13 @@ class PlayerEntity: GKEntity {
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        let animationComp = AnimationComponent(idleAction: .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1)), runAction: .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1)))
-        self.addComponent(animationComp)
+        
         
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
+        
+        let animationComp = AnimationComponent()
+        self.addComponent(animationComp)
         
         
         let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
@@ -82,6 +84,18 @@ class PlayerEntity: GKEntity {
     deinit {
         if let node = self.component(ofType: GKSKNodeComponent.self)?.node {
             node.removeFromParent()
+        }
+    }
+    
+    func playerActions(_ animation: PlayerAnimation) -> SKAction{
+        switch animation {
+        case .idle:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1))
+            return action
+            
+        case .run:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1))
+            return action
         }
     }
 }

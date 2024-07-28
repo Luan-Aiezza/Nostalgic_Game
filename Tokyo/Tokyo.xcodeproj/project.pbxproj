@@ -16,6 +16,7 @@
 		3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1E92C533C9E004FE488 /* DemiseComponent.swift */; };
 		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
 		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
+		3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1F22C53E33F004FE488 /* Animation&Actions.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -42,6 +43,7 @@
 		3306B1E92C533C9E004FE488 /* DemiseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemiseComponent.swift; sourceTree = "<group>"; };
 		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
 		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
+		3306B1F22C53E33F004FE488 /* Animation&Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation&Actions.swift"; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3306B1F12C53E326004FE488 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3306B1F22C53E33F004FE488 /* Animation&Actions.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				3306B1F12C53E326004FE488 /* Animation */,
 				33EDD56B2C50888F00880E83 /* States */,
 				33EDD5662C50806C00880E83 /* Tools */,
 				33EDD5612C50801900880E83 /* Components */,
@@ -221,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
+				3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
 				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
 				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
@@ -396,7 +408,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -424,7 +436,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeRight;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
