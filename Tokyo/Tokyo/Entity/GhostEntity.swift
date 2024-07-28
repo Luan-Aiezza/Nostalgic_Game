@@ -22,7 +22,7 @@ class GhostEntity: GKEntity {
     var stateComponent: StateMachineComponent? {
         return component(ofType: StateMachineComponent.self)
     }
-
+    
     
     public init(position : CGPoint, entityManager: SKEntityManager) {
         
@@ -34,9 +34,11 @@ class GhostEntity: GKEntity {
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        let animationComp = AnimationComponent(dizzyAction: .repeatForever(.animate(with: .init(withFormat: "dizzy_ghost.png", range: 1...1), timePerFrame: 0.1)), healthyAction: .repeatForever(.animate(with: .init(withFormat: "ghost1.png", range: 1...1), timePerFrame: 0.1)))
+        
+        let animationComp = AnimationComponent()
         self.addComponent(animationComp)
-
+        
+        
         let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = true
@@ -65,6 +67,8 @@ class GhostEntity: GKEntity {
         let stateMachine = GKStateMachine(states: [GhostDizzy(ghostEntity: self), GhostHealthy(ghostEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         self.addComponent(stateComp)
+        
+        
     }
     
     required init?(coder:NSCoder) {
@@ -74,6 +78,18 @@ class GhostEntity: GKEntity {
     deinit {
         if let node = self.component(ofType: GKSKNodeComponent.self)?.node {
             node.removeFromParent()
+        }
+    }
+    
+    func ghostActions(_ animation: GhostAnimation) -> SKAction{
+        switch animation {
+        case .dizzy:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "dizzy_ghost.png", range: 1...1), timePerFrame: 0.1))
+            return action
+            
+        case .healthy:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "ghost1.png", range: 1...1), timePerFrame: 0.1))
+            return action
         }
     }
 }

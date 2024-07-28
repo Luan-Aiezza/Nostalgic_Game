@@ -42,8 +42,7 @@ class PlayerEntity: GKEntity {
         node.setScale(1)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        let animationComp = AnimationComponent(idleAction: .repeatForever(.animate(with: .init(withFormat: "andyIdle%@", range: 1...3), timePerFrame: 0.1)), runAction: .repeatForever(.animate(with: .init(withFormat: "andyRun%@", range: 1...5), timePerFrame: 0.1)))
-        self.addComponent(animationComp)
+        
         
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
@@ -95,5 +94,16 @@ class PlayerEntity: GKEntity {
     func jump() {
             stateComponent?.stateMachine.enter(PlayerJump.self)
         }
+    
+    func playerActions(_ animation: PlayerAnimation) -> SKAction{
+        switch animation {
+        case .idle:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1))
+            return action
+            
+        case .run:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1))
+            return action
+    }
 }
 

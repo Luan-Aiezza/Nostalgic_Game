@@ -50,7 +50,7 @@ class GameScene: SKScene {
         let playerEntity = PlayerEntity(entityManager: entityManager!)
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
-        stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: playerEntity), PlayerRun(playerEntity: playerEntity)]) // ADICIONAR NO PLAYER (DEPOIS)
+        playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
         let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: 0), entityManager: entityManager!)
         ghostEntity.stateComponent?.stateMachine.enter(GhostHealthy.self)
@@ -111,7 +111,7 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        stateMachine?.enter(PlayerIdle.self)
+        playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -143,12 +143,12 @@ class GameScene: SKScene {
         
         if let location = touches.first?.location(in: self){
             if right_button!.contains(location) {
-                stateMachine?.enter(PlayerRun.self)
+                playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .right)
             }
             
             if left_button!.contains(location) {
-                stateMachine?.enter(PlayerRun.self)
+                playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .left)
             }
             if jump_button.contains(location) {

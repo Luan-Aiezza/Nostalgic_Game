@@ -19,7 +19,8 @@ class PlayerIdle : GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        playerEntity?.animationComponent?.playIdle()
+        guard let action = playerEntity?.playerActions(.idle) else {return}
+        playerEntity?.animationComponent?.play(action: action)
         playerEntity?.moveComponent?.change(direction: .none)
     }
     

@@ -18,7 +18,8 @@ class GhostHealthy : GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        ghostEnemy?.animationComponent?.playHealthy()
+        guard let action = ghostEnemy?.ghostActions(.healthy) else {return}
+        ghostEnemy?.animationComponent?.play(action: action)
     }
     
 }

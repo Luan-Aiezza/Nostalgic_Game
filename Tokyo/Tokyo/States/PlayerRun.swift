@@ -19,7 +19,8 @@ class PlayerRun : GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        playerEntity?.animationComponent?.playRun()
+        guard let action = playerEntity?.playerActions(.run) else {return}
+        playerEntity?.animationComponent?.play(action: action)
     }
     
 }
