@@ -48,13 +48,13 @@ class GameScene: SKScene {
         entityManager?.add(entity: cherryEntity)
         
         //controles (checar auto layout)
-        right_button.position = CGPoint(x: -140, y: -80)
+        right_button.position = CGPoint(x: -140, y: -180)
         right_button.size = CGSize(width: 80, height: 80)
         right_button.name = "right_button"
         right_button.isUserInteractionEnabled =  false
         self.addChild(right_button)
         
-        left_button.position = CGPoint(x: -280, y: -80)
+        left_button.position = CGPoint(x: -230, y: -180)
         left_button.size = CGSize(width: 80, height: 80)
         left_button.name = "left_button"
         left_button.isUserInteractionEnabled =  false
