@@ -24,6 +24,9 @@
 		CF41986E2C481745000B3C50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF41986C2C481745000B3C50 /* Main.storyboard */; };
 		CF4198702C481746000B3C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF41986F2C481746000B3C50 /* Assets.xcassets */; };
 		CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4198712C481746000B3C50 /* LaunchScreen.storyboard */; };
+		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
+		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
+		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		CF41986D2C481745000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF41986F2C481746000B3C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4198722C481746000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
+		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
+		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,8 @@
 			children = (
 				33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */,
 				33EDD5692C50885A00880E83 /* PlayerEntity.swift */,
+				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
+				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -81,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				33EDD5672C50807C00880E83 /* SKTexture+Array.swift */,
+				CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -214,10 +223,13 @@
 			files = (
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
+				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
+				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
 				33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */,
 				CF4198692C481745000B3C50 /* GameScene.swift in Sources */,
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
+				CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */,
 				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
 				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,

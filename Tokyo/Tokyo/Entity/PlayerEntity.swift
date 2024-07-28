@@ -33,7 +33,7 @@ class PlayerEntity: GKEntity {
         self.addComponent(moveComp)
         
         
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
+        let size : CGSize = .init(width: 1.5 * 7, height: 2.0 * 7) // diminui pra 10%
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = true
         body.affectedByGravity = false

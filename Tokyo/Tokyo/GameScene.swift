@@ -19,6 +19,17 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
         entityManager = SKEntityManager(scene: self)
+        //Adicionando Level02 (CÓDIGO LUAN)
+
+        let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
+        entityManager?.add(entity: scenarioEntity)
+        
+        let cameraNode = SKCameraNode()
+        self.addChild(cameraNode)
+        self.camera = cameraNode
+        
+        self.camera?.setScale(1)
+        //FIM DO CODIGO
         
         let playerEntity = PlayerEntity()
         entityManager?.add(entity: playerEntity)
