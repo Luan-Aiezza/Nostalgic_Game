@@ -19,11 +19,12 @@ class PlayerEntity: GKEntity {
         return component(ofType: AnimationComponent.self)
     }
     
-    override init() {
+    init(size : CGSize) {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
         node.anchorPoint = .init(x: 0.46, y: 0.25)
         node.setScale(0.5)
+        node.size = size
         self.addComponent(GKSKNodeComponent(node: node))
         
         let animationComp = AnimationComponent(idleAction: .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1)), runAction: .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1)))
@@ -33,13 +34,13 @@ class PlayerEntity: GKEntity {
         self.addComponent(moveComp)
         
         
-        let size : CGSize = .init(width: 1.5 * 7, height: 2.0 * 7) // diminui pra 10%
-        let body = SKPhysicsBody(rectangleOf: size)
+        let size2 = CGSize(width: node.size.width/3, height: node.size.height/3)
+        let body = SKPhysicsBody(rectangleOf: size2)
         body.isDynamic = true
         body.affectedByGravity = false
         body.mass = 0
         body.friction = 1
-        body.restitution = 1
+        body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
         body.affectedByGravity = true

@@ -30,8 +30,8 @@ class GameScene: SKScene {
         
         self.camera?.setScale(1)
         //FIM DO CODIGO
-        
-        let playerEntity = PlayerEntity()
+        var size = CGSize(width: 160, height: 160)
+        let playerEntity = PlayerEntity(size: size)
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
         stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: playerEntity), PlayerRun(playerEntity: playerEntity)])
