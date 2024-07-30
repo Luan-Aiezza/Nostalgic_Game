@@ -18,3 +18,8 @@ enum GhostAnimation {
     case dizzy
     case healthy
 }
+
+
+enum GhostRoute {
+    case ghost
+}

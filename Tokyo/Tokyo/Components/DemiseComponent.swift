@@ -31,6 +31,8 @@ class DemiseComponent : GKComponent {
     
     public func die(){
         node?.run(death)
+        node?.removeAllActions()
+        node?.removeFromParent()
     }
     
 }

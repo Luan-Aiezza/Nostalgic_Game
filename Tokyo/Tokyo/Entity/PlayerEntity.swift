@@ -11,8 +11,6 @@ import GameplayKit
 
 class PlayerEntity: GKEntity {
     
-    var body: SKPhysicsBody?
-    
     var moveComponent: MovementComponent? {
         return component(ofType: MovementComponent.self)
     }
@@ -74,6 +72,7 @@ class PlayerEntity: GKEntity {
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         
         self.addComponent(stateComp)
+        
         
     }
     

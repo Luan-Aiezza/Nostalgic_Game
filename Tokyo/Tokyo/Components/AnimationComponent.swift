@@ -10,13 +10,10 @@ import SpriteKit
 import GameplayKit
 
 class AnimationComponent: GKComponent {
-    
-//    var action: SKAction
     var node: SKNode?
     
     
     override init() {
-//        self.action = action
         super.init()
     }
     

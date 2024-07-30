@@ -10,10 +10,6 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-//    let playerCategory:UInt32 = 0x1 >> 0
-//    let ghostCategory:UInt32 = 0x1 >> 1
-    
-    
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "botao_direito")
     var left_button = SKSpriteNode(imageNamed: "botao_esquerdo")
@@ -25,6 +21,7 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
         self.physicsWorld.contactDelegate = self
+        self.size = CGSize(width: 1980, height: 1800)
         
         entityManager = SKEntityManager(scene: self)
         
@@ -33,20 +30,17 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
-        let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: 0), entityManager: entityManager!)
+        let wanderGhostEntity1 = SKAction.repeatForever(.sequence([.move(to: CGPoint(x: 240, y: 0), duration: 1), .move(to: CGPoint(x: 240, y: -100), duration: 1), .move(to: CGPoint(x: 180, y: -100), duration: 1), .move(to: CGPoint(x: 180, y: 0), duration: 1) ]))
+        let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: 0), entityManager: entityManager!, path: wanderGhostEntity1)
         ghostEntity.stateComponent?.stateMachine.enter(GhostHealthy.self)
+        ghostEntity.wanderComponent?.wander()
+        
         entityManager?.add(entity: ghostEntity)
         enemies.append(ghostEntity)
         
-        let ghostEntity2 = GhostEntity(position: CGPoint(x: -180, y: 0), entityManager: entityManager!)
-        ghostEntity2.stateComponent?.stateMachine.enter(GhostHealthy.self)
-        entityManager?.add(entity: ghostEntity2)
-        enemies.append(ghostEntity2)
         
-        
-        let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: 0), entityManager: entityManager!)
+        let cherryEntity = CherryEntity(position: CGPoint(x: -140, y: 0), entityManager: entityManager!)
         entityManager?.add(entity: cherryEntity)
-        
         //controles (checar auto layout)
         right_button.position = CGPoint(x: -140, y: -80)
         right_button.size = CGSize(width: 80, height: 80)
@@ -60,27 +54,10 @@ class GameScene: SKScene {
         left_button.isUserInteractionEnabled =  false
         self.addChild(left_button)
         
-        
-        //teste de contato (modularizar depois?)
-        
-//        playerEntity.physicsComponent?.body.categoryBitMask = playerCategory
-//        ghostEntity.physicsComponent?.body.categoryBitMask = ghostCategory
-//        
-//        playerEntity.physicsComponent?.body.collisionBitMask = ghostCategory
-//        
-//        ghostEntity.physicsComponent?.body.contactTestBitMask = playerCategory
-        
-        
+        let spike = SpikeEntity(position: CGPoint(x: -190, y: 0))
+        entityManager?.add(entity: spike)
         
     }
-    
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        let collision:UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-//        
-//        if collision == playerCategory | ghostCategory {
-//            print("colidiu")
-//        }
-//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches)
@@ -123,5 +100,14 @@ class GameScene: SKScene {
                 playerEntity?.moveComponent?.change(direction: .left)
             }
         }
+    }
+    
+    
+    func gameOver() {
+        let transition = SKTransition.fade(withDuration: 1)
+        let newScene = GameOverScene(size: CGSize(width: 1980, height: 1800))
+        newScene.scaleMode = .aspectFill
+        newScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.view?.presentScene(newScene, transition: transition)
     }
 }

@@ -23,8 +23,13 @@ class GhostEntity: GKEntity {
         return component(ofType: StateMachineComponent.self)
     }
     
+    var wanderComponent: WanderComponent? {
+        return component(ofType: WanderComponent.self)
+    }
+
     
-    public init(position : CGPoint, entityManager: SKEntityManager) {
+    
+    public init(position : CGPoint, entityManager: SKEntityManager, path : SKAction) {
         
         super.init()
         
@@ -68,6 +73,10 @@ class GhostEntity: GKEntity {
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         self.addComponent(stateComp)
         
+        let wanderComp = WanderComponent(path: path)
+        self.addComponent(wanderComp)
+
+        
         
     }
     
@@ -85,13 +94,14 @@ class GhostEntity: GKEntity {
         switch animation {
         case .dizzy:
             let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "dizzy_ghost.png", range: 1...1), timePerFrame: 0.1))
+    
             return action
             
         case .healthy:
             let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "ghost1.png", range: 1...1), timePerFrame: 0.1))
+            
             return action
         }
     }
+    
 }
-
-

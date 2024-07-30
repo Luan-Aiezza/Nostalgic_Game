@@ -21,6 +21,7 @@ class GhostDizzy : GKState {
     override func didEnter(from previousState: GKState?) {
         guard let action = ghostEnemy?.ghostActions(.dizzy) else {return}
         ghostEnemy?.animationComponent?.play(action: action)
+        ghostEnemy?.wanderComponent?.wander()
     }
     
 }
