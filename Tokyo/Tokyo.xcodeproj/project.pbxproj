@@ -23,6 +23,8 @@
 		33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5692C50885A00880E83 /* PlayerEntity.swift */; };
 		33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD56E2C5088C400880E83 /* PlayerRun.swift */; };
 		33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5702C5088D100880E83 /* PlayerIdle.swift */; };
+		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
+		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
 		CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198622C481745000B3C50 /* AppDelegate.swift */; };
 		CF4198652C481745000B3C50 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF4198642C481745000B3C50 /* GameScene.sks */; };
 		CF4198692C481745000B3C50 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198682C481745000B3C50 /* GameScene.swift */; };
@@ -49,6 +51,8 @@
 		33EDD5692C50885A00880E83 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		33EDD56E2C5088C400880E83 /* PlayerRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRun.swift; sourceTree = "<group>"; };
 		33EDD5702C5088D100880E83 /* PlayerIdle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIdle.swift; sourceTree = "<group>"; };
+		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
+		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF41985F2C481745000B3C50 /* Tokyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4198622C481745000B3C50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF4198642C481745000B3C50 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
 				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
 				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
+				BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				33EDD5702C5088D100880E83 /* PlayerIdle.swift */,
 				3306B1D92C52A35B004FE488 /* GhostHealthy.swift */,
 				3306B1DD2C52A376004FE488 /* GhostDizzy.swift */,
+				BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -227,11 +233,13 @@
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
+				BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */,
 				33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */,
 				CF4198692C481745000B3C50 /* GameScene.swift in Sources */,
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
 				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
 				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
+				BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */,
 				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
 				3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */,
 				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
@@ -390,7 +398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K4H4UFJU24;
+				DEVELOPMENT_TEAM = A887TW3BVK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -418,7 +426,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K4H4UFJU24;
+				DEVELOPMENT_TEAM = A887TW3BVK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

@@ -28,7 +28,10 @@ class PlayerEntity: GKEntity {
     var stateComponent: StateMachineComponent? {
         return component(ofType: StateMachineComponent.self)
     }
-    
+    var jumpComponent: JumpComponent? {
+            return component(ofType: JumpComponent.self)
+        }
+
     init(entityManager : SKEntityManager) {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
@@ -46,13 +49,12 @@ class PlayerEntity: GKEntity {
         let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = true
-        body.affectedByGravity = false
-        body.mass = 0
+        body.mass = 1
         body.friction = 1
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
-        body.affectedByGravity = false
+        body.affectedByGravity = true
         body.categoryBitMask = .player
         body.contactTestBitMask = .ghost
         let physicsComp = PhysicsComponent(body: body)
@@ -68,8 +70,12 @@ class PlayerEntity: GKEntity {
         
         self.addComponent(DemiseComponent(death: death))
         
-        let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self)])
+        let jumpComp = JumpComponent()
+        self.addComponent(jumpComp)
+                
+        let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
+                
         
         self.addComponent(stateComp)
         
@@ -84,5 +90,8 @@ class PlayerEntity: GKEntity {
             node.removeFromParent()
         }
     }
+    func jump() {
+            stateComponent?.stateMachine.enter(PlayerJump.self)
+        }
 }
 

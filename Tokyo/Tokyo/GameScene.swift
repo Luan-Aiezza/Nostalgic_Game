@@ -8,6 +8,8 @@
 import SpriteKit
 import GameplayKit
 
+
+
 class GameScene: SKScene {
     
 //    let playerCategory:UInt32 = 0x1 >> 0
@@ -17,6 +19,7 @@ class GameScene: SKScene {
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "botao_direito")
     var left_button = SKSpriteNode(imageNamed: "botao_esquerdo")
+    var jump_button = SKSpriteNode(imageNamed: "botao_pulo")
     var enemies:[GhostEntity] = []
     public var stateMachine : GKStateMachine?
     public var stateMachineEnemy : GKStateMachine?
@@ -24,7 +27,21 @@ class GameScene: SKScene {
     weak var playerEntity: PlayerEntity?
     
     override func sceneDidLoad() {
+        
         self.physicsWorld.contactDelegate = self
+        
+        
+        do{
+            let ground = SKSpriteNode(color: .brown, size: .init(width: 500, height: 100))
+            ground.position.y -= 150
+            
+            let body = SKPhysicsBody(rectangleOf: ground.size)
+            body.affectedByGravity = true
+            body.allowsRotation = false
+            body.isDynamic = false
+            ground.physicsBody = body
+            self.addChild(ground)
+        }
         
         entityManager = SKEntityManager(scene: self)
         
@@ -60,6 +77,11 @@ class GameScene: SKScene {
         left_button.isUserInteractionEnabled =  false
         self.addChild(left_button)
         
+        jump_button.position = CGPoint(x: 50, y: -180)
+        jump_button.size = CGSize(width: 80, height: 80)
+        jump_button.name = "jump_button"
+        jump_button.isUserInteractionEnabled = false
+        self.addChild(jump_button)
         
         //teste de contato (modularizar depois?)
         
@@ -122,6 +144,9 @@ class GameScene: SKScene {
                 stateMachine?.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .left)
             }
+            if jump_button.contains(location) {
+                        playerEntity?.jump()
+                    }
         }
     }
 }
