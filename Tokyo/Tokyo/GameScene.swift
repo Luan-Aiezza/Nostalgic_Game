@@ -31,17 +31,7 @@ class GameScene: SKScene {
         self.physicsWorld.contactDelegate = self
         
         
-        do{
-            let ground = SKSpriteNode(color: .brown, size: .init(width: 500, height: 100))
-            ground.position.y -= 150
-            
-            let body = SKPhysicsBody(rectangleOf: ground.size)
-            body.affectedByGravity = true
-            body.allowsRotation = false
-            body.isDynamic = false
-            ground.physicsBody = body
-            self.addChild(ground)
-        }
+       
         
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
@@ -56,7 +46,6 @@ class GameScene: SKScene {
         self.camera?.setScale(1)
         //FIM DO CODIGO
         var size = CGSize(width: 160, height: 160)
-        let playerEntity = PlayerEntity(size: size)
         
         let playerEntity = PlayerEntity(entityManager: entityManager!)
         entityManager?.add(entity: playerEntity)
@@ -126,7 +115,7 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
+   
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
@@ -139,6 +128,11 @@ class GameScene: SKScene {
                 entity.update(deltaTime: dt)
             }
         }
+        
+        if let playerNode = playerEntity?.spriteNode {
+               self.camera?.position = playerNode.position
+           }
+        
         self.lastUpdateTime = currentTime
     }
     

@@ -31,25 +31,25 @@ class PlayerEntity: GKEntity {
     var jumpComponent: JumpComponent? {
             return component(ofType: JumpComponent.self)
         }
-
+    var spriteNode: SKSpriteNode? {
+            return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
+        }
+    
     init(entityManager : SKEntityManager) {
-    init(size : CGSize) {
         super.init()
-        let node = SKSpriteNode(imageNamed: "idle1.png")
-        node.anchorPoint = .init(x: 0.46, y: 0.25)
-        node.setScale(0.5)
-        node.size = size
+        let node = SKSpriteNode(imageNamed: "andyIdle1")
+        node.anchorPoint = .init(x: 0.5, y: 0.5)
+        node.setScale(1)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        let animationComp = AnimationComponent(idleAction: .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1)), runAction: .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1)))
+        let animationComp = AnimationComponent(idleAction: .repeatForever(.animate(with: .init(withFormat: "andyIdle%@", range: 1...3), timePerFrame: 0.1)), runAction: .repeatForever(.animate(with: .init(withFormat: "andyRun%@", range: 1...5), timePerFrame: 0.1)))
         self.addComponent(animationComp)
         
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
         
-        
-        let size2 = CGSize(width: node.size.width/3, height: node.size.height/3)
-        let body = SKPhysicsBody(rectangleOf: size2)
+        let radius = min(node.size.width, node.size.height) / 2
+        let body = SKPhysicsBody(circleOfRadius: radius)
         body.isDynamic = true
         body.mass = 1
         body.friction = 1
@@ -74,10 +74,10 @@ class PlayerEntity: GKEntity {
         
         let jumpComp = JumpComponent()
         self.addComponent(jumpComp)
-                
+        
         let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
-                
+        
         
         self.addComponent(stateComp)
         
