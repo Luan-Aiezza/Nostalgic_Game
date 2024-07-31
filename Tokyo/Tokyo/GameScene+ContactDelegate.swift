@@ -50,6 +50,23 @@ extension GameScene: SKPhysicsContactDelegate {
             }
         }
     }
+    
+    
+    private func isContactWithItem(entityA: GKEntity, entityB: GKEntity) {
+        
+        if entityA is PlayerEntity && entityB is ItemEntity {
+            
+            let name = entityB.component(ofType: IdentifierComponent.self)?.returnName()
+            
+            let item = Item(name: name!)
+            
+            entityB.component(ofType: DemiseComponent.self)?.die()
+        
+            playerEntity?.iventoryComponent?.addItem(item: item)
+            
+            print(playerEntity?.iventoryComponent?.items ?? "0")
+        }
+    }
 }
 
 

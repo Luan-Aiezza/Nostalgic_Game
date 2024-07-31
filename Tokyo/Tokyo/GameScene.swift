@@ -22,39 +22,45 @@ class GameScene: SKScene {
     public var stateMachineEnemy : GKStateMachine?
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
+    let cam = SKCameraNode()
     
     override func sceneDidLoad() {
         self.physicsWorld.contactDelegate = self
+        self.camera = cam
         
         entityManager = SKEntityManager(scene: self)
         
-        let playerEntity = PlayerEntity(entityManager: entityManager!)
+        let playerEntity = PlayerEntity(entityManager: entityManager!, size: CGSize(width: 100, height: 100))
         //Adicionando Level02 (CÓDIGO LUAN)
 
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
         
-        let cameraNode = SKCameraNode()
-        self.addChild(cameraNode)
-        self.camera = cameraNode
-        
-        self.camera?.setScale(1)
+//        let cameraNode = SKCameraNode()
+//        self.addChild(cameraNode)
+//        self.camera = cameraNode
+//        cameraNode.setScale(2.5)
+//        self.camera?.setScale(1)
         //FIM DO CODIGO
-        var size = CGSize(width: 160, height: 160)
-        let playerEntity = PlayerEntity(size: size)
+        
+        
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
-        stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: playerEntity), PlayerRun(playerEntity: playerEntity)]) // ADICIONAR NO PLAYER (DEPOIS)
+//        stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: playerEntity), PlayerRun(playerEntity: playerEntity)]) // ADICIONAR NO PLAYER (DEPOIS)
         
         let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: 0), entityManager: entityManager!)
         ghostEntity.stateComponent?.stateMachine.enter(GhostHealthy.self)
         entityManager?.add(entity: ghostEntity)
         enemies.append(ghostEntity)
+//        
+//        let ghostEntity2 = GhostEntity(position: CGPoint(x: -180, y: 0), entityManager: entityManager!)
+//        ghostEntity2.stateComponent?.stateMachine.enter(GhostHealthy.self)
+//        entityManager?.add(entity: ghostEntity2)
+//        enemies.append(ghostEntity2)
         
-        let ghostEntity2 = GhostEntity(position: CGPoint(x: -180, y: 0), entityManager: entityManager!)
-        ghostEntity2.stateComponent?.stateMachine.enter(GhostHealthy.self)
-        entityManager?.add(entity: ghostEntity2)
-        enemies.append(ghostEntity2)
+        let itemEntity = ItemEntity(position: CGPoint(x: 0, y: -30), size: CGSize(width: 100, height: 100), entityManager: entityManager!, sprite: "cherry_item")
+        itemEntity.identityComponent?.name(name: "key")
+        entityManager?.add(entity: itemEntity)
         
         
         let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: 0), entityManager: entityManager!)
@@ -74,26 +80,7 @@ class GameScene: SKScene {
         self.addChild(left_button)
         
         
-        //teste de contato (modularizar depois?)
-        
-//        playerEntity.physicsComponent?.body.categoryBitMask = playerCategory
-//        ghostEntity.physicsComponent?.body.categoryBitMask = ghostCategory
-//        
-//        playerEntity.physicsComponent?.body.collisionBitMask = ghostCategory
-//        
-//        ghostEntity.physicsComponent?.body.contactTestBitMask = playerCategory
-        
-        
-        
     }
-    
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        let collision:UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-//        
-//        if collision == playerCategory | ghostCategory {
-//            print("colidiu")
-//        }
-//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches)
@@ -104,6 +91,8 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
+        cam.position = (playerEntity?.component(ofType: GKSKNodeComponent.self)?.node.position)!
         
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
@@ -118,6 +107,11 @@ class GameScene: SKScene {
             }
         }
         self.lastUpdateTime = currentTime
+        
+        guard let playerPosition = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node.position else {return}
+        
+        
+        cam.position = playerPosition
     }
     
     public func captureInput(touches: Set<UITouch>) {

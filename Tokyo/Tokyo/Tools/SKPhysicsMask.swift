@@ -13,6 +13,8 @@ public extension UInt32 {
     static let base:  UInt32 = 0b1
     static let player = UInt32.base << 0
     static let ghost = UInt32.base << 1
+//    static let cherry = UInt32.base << 1
+//    static let ghost = UInt32.base << 2
     
     
     static var allMasks: [UInt32] = [

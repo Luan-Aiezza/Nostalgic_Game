@@ -16,6 +16,10 @@
 		3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1E92C533C9E004FE488 /* DemiseComponent.swift */; };
 		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
 		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
+		3306B22A2C5A68FF004FE488 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2292C5A68FF004FE488 /* InventoryComponent.swift */; };
+		3306B22C2C5A69F8004FE488 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B22B2C5A69F8004FE488 /* ItemEntity.swift */; };
+		3306B22F2C5A7108004FE488 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B22E2C5A7108004FE488 /* Item.swift */; };
+		3306B2312C5A731A004FE488 /* IdentifierComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2302C5A731A004FE488 /* IdentifierComponent.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -47,6 +51,10 @@
 		3306B1E92C533C9E004FE488 /* DemiseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemiseComponent.swift; sourceTree = "<group>"; };
 		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
 		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
+		3306B2292C5A68FF004FE488 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
+		3306B22B2C5A69F8004FE488 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		3306B22E2C5A7108004FE488 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		3306B2302C5A731A004FE488 /* IdentifierComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierComponent.swift; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -80,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3306B22D2C5A70FA004FE488 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				3306B22E2C5A7108004FE488 /* Item.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +105,7 @@
 				3306B1EB2C534081004FE488 /* CherryEntity.swift */,
 				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
 				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
+				3306B22B2C5A69F8004FE488 /* ItemEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -101,6 +118,8 @@
 				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
 				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
 				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
+				3306B2292C5A68FF004FE488 /* InventoryComponent.swift */,
+				3306B2302C5A731A004FE488 /* IdentifierComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -154,6 +173,7 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				3306B22D2C5A70FA004FE488 /* Class */,
 				CF17CFBF2C52A56900898033 /* Stage02 */,
 				33EDD56B2C50888F00880E83 /* States */,
 				33EDD5662C50806C00880E83 /* Tools */,
@@ -245,11 +265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3306B2312C5A731A004FE488 /* IdentifierComponent.swift in Sources */,
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
 				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
 				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
+				3306B22F2C5A7108004FE488 /* Item.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
@@ -260,9 +282,11 @@
 				CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */,
 				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
 				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
+				3306B22C2C5A69F8004FE488 /* ItemEntity.swift in Sources */,
 				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
 				3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */,
 				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
+				3306B22A2C5A68FF004FE488 /* InventoryComponent.swift in Sources */,
 				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
 				33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */,
