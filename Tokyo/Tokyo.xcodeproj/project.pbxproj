@@ -25,6 +25,8 @@
 		33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5702C5088D100880E83 /* PlayerIdle.swift */; };
 		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
 		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
+		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
+		CF17CFC32C52A7FE00898033 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC22C52A7FE00898033 /* Level02.sks */; };
 		CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198622C481745000B3C50 /* AppDelegate.swift */; };
 		CF4198652C481745000B3C50 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF4198642C481745000B3C50 /* GameScene.sks */; };
 		CF4198692C481745000B3C50 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198682C481745000B3C50 /* GameScene.swift */; };
@@ -32,6 +34,9 @@
 		CF41986E2C481745000B3C50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF41986C2C481745000B3C50 /* Main.storyboard */; };
 		CF4198702C481746000B3C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF41986F2C481746000B3C50 /* Assets.xcassets */; };
 		CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4198712C481746000B3C50 /* LaunchScreen.storyboard */; };
+		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
+		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
+		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +56,8 @@
 		33EDD5692C50885A00880E83 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		33EDD56E2C5088C400880E83 /* PlayerRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRun.swift; sourceTree = "<group>"; };
 		33EDD5702C5088D100880E83 /* PlayerIdle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIdle.swift; sourceTree = "<group>"; };
+		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
+		CF17CFC22C52A7FE00898033 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level02.sks; sourceTree = "<group>"; };
 		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
 		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF41985F2C481745000B3C50 /* Tokyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +68,9 @@
 		CF41986D2C481745000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF41986F2C481746000B3C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4198722C481746000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
+		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
+		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,8 @@
 				33EDD5692C50885A00880E83 /* PlayerEntity.swift */,
 				3306B1D52C529B41004FE488 /* GhostEntity.swift */,
 				3306B1EB2C534081004FE488 /* CherryEntity.swift */,
+				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
+				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -103,6 +115,7 @@
 			children = (
 				33EDD5672C50807C00880E83 /* SKTexture+Array.swift */,
 				3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */,
+				CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -117,6 +130,15 @@
 				BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */,
 			);
 			path = States;
+			sourceTree = "<group>";
+		};
+		CF17CFBF2C52A56900898033 /* Stage02 */ = {
+			isa = PBXGroup;
+			children = (
+				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
+				CF17CFC22C52A7FE00898033 /* Level02.sks */,
+			);
+			path = Stage02;
 			sourceTree = "<group>";
 		};
 		CF4198562C481745000B3C50 = {
@@ -138,6 +160,7 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				CF17CFBF2C52A56900898033 /* Stage02 */,
 				33EDD56B2C50888F00880E83 /* States */,
 				33EDD5662C50806C00880E83 /* Tools */,
 				33EDD5612C50801900880E83 /* Components */,
@@ -212,9 +235,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF17CFC32C52A7FE00898033 /* Level02.sks in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
+				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
 				CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,11 +257,14 @@
 				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
+				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
+				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
 				BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */,
 				33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */,
 				CF4198692C481745000B3C50 /* GameScene.swift in Sources */,
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
+				CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */,
 				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
 				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
 				BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */,

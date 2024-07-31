@@ -33,10 +33,12 @@ class PlayerEntity: GKEntity {
         }
 
     init(entityManager : SKEntityManager) {
+    init(size : CGSize) {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
         node.anchorPoint = .init(x: 0.46, y: 0.25)
         node.setScale(0.5)
+        node.size = size
         self.addComponent(GKSKNodeComponent(node: node))
         
         let animationComp = AnimationComponent(idleAction: .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1)), runAction: .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1)))
@@ -46,8 +48,8 @@ class PlayerEntity: GKEntity {
         self.addComponent(moveComp)
         
         
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
-        let body = SKPhysicsBody(rectangleOf: size)
+        let size2 = CGSize(width: node.size.width/3, height: node.size.height/3)
+        let body = SKPhysicsBody(rectangleOf: size2)
         body.isDynamic = true
         body.mass = 1
         body.friction = 1
