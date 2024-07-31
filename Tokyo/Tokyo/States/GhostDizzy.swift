@@ -22,6 +22,7 @@ class GhostDizzy : GKState {
         guard let action = ghostEnemy?.ghostActions(.dizzy) else {return}
         ghostEnemy?.animationComponent?.play(action: action)
         ghostEnemy?.wanderComponent?.wander()
+
     }
     
 }

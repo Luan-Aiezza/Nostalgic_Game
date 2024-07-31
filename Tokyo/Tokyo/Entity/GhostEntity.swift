@@ -39,11 +39,13 @@ class GhostEntity: GKEntity {
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        
+
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
-        
-        
+//
+//        let animationComp = AnimationComponent(dizzyAction: .repeatForever(.animate(with: .init(withFormat: "dizzy_ghost.png", range: 1...1), timePerFrame: 0.1)), healthyAction: .repeatForever(.animate(with: .init(withFormat: "ghost1.png", range: 1...1), timePerFrame: 0.1)))
+//        self.addComponent(animationComp)
+
         let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = true
@@ -72,12 +74,10 @@ class GhostEntity: GKEntity {
         let stateMachine = GKStateMachine(states: [GhostDizzy(ghostEntity: self), GhostHealthy(ghostEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         self.addComponent(stateComp)
+
         
         let wanderComp = WanderComponent(path: path)
         self.addComponent(wanderComp)
-
-        
-        
     }
     
     required init?(coder:NSCoder) {
@@ -105,3 +105,4 @@ class GhostEntity: GKEntity {
     }
     
 }
+

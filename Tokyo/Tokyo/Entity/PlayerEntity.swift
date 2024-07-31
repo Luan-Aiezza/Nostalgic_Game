@@ -11,6 +11,8 @@ import GameplayKit
 
 class PlayerEntity: GKEntity {
     
+    var body: SKPhysicsBody?
+    
     var moveComponent: MovementComponent? {
         return component(ofType: MovementComponent.self)
     }
@@ -27,11 +29,13 @@ class PlayerEntity: GKEntity {
         return component(ofType: StateMachineComponent.self)
     }
     
-    init(entityManager : SKEntityManager) {
+
+    init(entityManager : SKEntityManager, size : CGSize) {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
         node.anchorPoint = .init(x: 0.46, y: 0.25)
-        node.setScale(0.5)
+//        node.setScale(0.5)
+        node.size = size
         self.addComponent(GKSKNodeComponent(node: node))
         
         
@@ -41,10 +45,9 @@ class PlayerEntity: GKEntity {
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
-        
-        
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
-        let body = SKPhysicsBody(rectangleOf: size)
+    
+
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: size.width/2, height: size.height/2))
         body.isDynamic = true
         body.affectedByGravity = false
         body.mass = 0
@@ -52,7 +55,7 @@ class PlayerEntity: GKEntity {
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
-        body.affectedByGravity = false
+        body.affectedByGravity = true
         body.categoryBitMask = .player
         body.contactTestBitMask = .ghost
         let physicsComp = PhysicsComponent(body: body)
@@ -72,7 +75,6 @@ class PlayerEntity: GKEntity {
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         
         self.addComponent(stateComp)
-        
         
     }
     

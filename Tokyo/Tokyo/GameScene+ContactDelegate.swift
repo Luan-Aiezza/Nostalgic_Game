@@ -41,27 +41,24 @@ extension GameScene: SKPhysicsContactDelegate {
     
     
     private func isContactWithCherry(entityA: GKEntity, entityB: GKEntity) {
-        let waitAction = SKAction.wait(forDuration: 1)
+
         if entityA is PlayerEntity && entityB is CherryEntity {
+            
             entityB.component(ofType: DemiseComponent.self)?.die()
+            
             for ghost in enemies{
-                let dizzyGhost = SKAction.run {
-                    ghost.stateComponent?.stateMachine.enter(GhostDizzy.self)
-                }
-                let healthyGhost = SKAction.run {
-                    ghost.stateComponent?.stateMachine.enter(GhostHealthy.self)
-                }
-                let sequence = SKAction.sequence([dizzyGhost, waitAction, healthyGhost])
-                run(sequence)
+                ghost.stateComponent?.stateMachine.enter(GhostDizzy.self)
             }
         }
     }
     
+
     private func isContactWithSpike(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is SpikeEntity {
             entityA.component(ofType: DemiseComponent.self)?.die()
             gameOver()
+            
         }
     }
 }

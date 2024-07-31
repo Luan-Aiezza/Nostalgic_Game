@@ -10,6 +10,10 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+//    let playerCategory:UInt32 = 0x1 >> 0
+//    let ghostCategory:UInt32 = 0x1 >> 1
+    
+    
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "botao_direito")
     var left_button = SKSpriteNode(imageNamed: "botao_esquerdo")
@@ -21,14 +25,33 @@ class GameScene: SKScene {
     
     override func sceneDidLoad() {
         self.physicsWorld.contactDelegate = self
+
         self.size = CGSize(width: 1980, height: 1800)
         
         entityManager = SKEntityManager(scene: self)
         
-        let playerEntity = PlayerEntity(entityManager: entityManager!)
+        let playerEntity = PlayerEntity(entityManager: entityManager!, size: CGSize(width: 100, height: 100))
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
+        
+        entityManager = SKEntityManager(scene: self)
+        //Adicionando Level02 (CÓDIGO LUAN)
+
+//        let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
+//        entityManager?.add(entity: scenarioEntity)
+        
+//        let cameraNode = SKCameraNode()
+//        self.addChild(cameraNode)
+//        self.camera = cameraNode
+//        cameraNode.setScale(2.5)
+//        self.camera?.setScale(1)
+        //FIM DO CODIGO
+        
+        
+//        entityManager?.add(entity: playerEntity)
+//        self.playerEntity = playerEntity
+//        stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: playerEntity), PlayerRun(playerEntity: playerEntity)]) // ADICIONAR NO PLAYER (DEPOIS)
         
         let wanderGhostEntity1 = SKAction.repeatForever(.sequence([.move(to: CGPoint(x: 240, y: 0), duration: 1), .move(to: CGPoint(x: 240, y: -100), duration: 1), .move(to: CGPoint(x: 180, y: -100), duration: 1), .move(to: CGPoint(x: 180, y: 0), duration: 1) ]))
         let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: 0), entityManager: entityManager!, path: wanderGhostEntity1)
@@ -56,6 +79,7 @@ class GameScene: SKScene {
         
         let spike = SpikeEntity(position: CGPoint(x: -190, y: 0))
         entityManager?.add(entity: spike)
+
         
     }
     

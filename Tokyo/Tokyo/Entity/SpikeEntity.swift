@@ -31,8 +31,6 @@ class SpikeEntity : GKEntity {
         self.addComponent(GKSKNodeComponent(node: node))
         
         
-
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
         let body = SKPhysicsBody(texture: node.texture!, size: node.size)
         body.isDynamic = false
         body.affectedByGravity = false

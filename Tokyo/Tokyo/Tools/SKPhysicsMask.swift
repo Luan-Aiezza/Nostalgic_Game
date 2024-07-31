@@ -14,6 +14,7 @@ public extension UInt32 {
     static let player = UInt32.base << 0
     static let ghost = UInt32.base << 1
     static let spike = UInt32.base << 2
+
     
     
     static var allMasks: [UInt32] = [
