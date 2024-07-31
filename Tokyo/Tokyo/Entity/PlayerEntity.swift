@@ -29,11 +29,11 @@ class PlayerEntity: GKEntity {
         return component(ofType: StateMachineComponent.self)
     }
     var jumpComponent: JumpComponent? {
-            return component(ofType: JumpComponent.self)
-        }
+        return component(ofType: JumpComponent.self)
+    }
     var spriteNode: SKSpriteNode? {
-            return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
-        }
+        return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
+    }
     
     init(entityManager : SKEntityManager) {
         super.init()
@@ -74,6 +74,9 @@ class PlayerEntity: GKEntity {
         let jumpComp = JumpComponent()
         self.addComponent(jumpComp)
         
+        let animationComp = AnimationComponent()
+        self.addComponent(animationComp)
+        
         let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         
@@ -92,8 +95,8 @@ class PlayerEntity: GKEntity {
         }
     }
     func jump() {
-            stateComponent?.stateMachine.enter(PlayerJump.self)
-        }
+        stateComponent?.stateMachine.enter(PlayerJump.self)
+    }
     
     func playerActions(_ animation: PlayerAnimation) -> SKAction{
         switch animation {
@@ -104,6 +107,7 @@ class PlayerEntity: GKEntity {
         case .run:
             let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1))
             return action
+        }
     }
+    
 }
-
