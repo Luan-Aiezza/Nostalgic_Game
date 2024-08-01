@@ -101,11 +101,11 @@ class PlayerEntity: GKEntity {
     func playerActions(_ animation: PlayerAnimation) -> SKAction{
         switch animation {
         case .idle:
-            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...10), timePerFrame: 0.1))
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "andyIdle%@.png", range: 1...3), timePerFrame: 0.6))
             return action
             
         case .run:
-            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "run%@.png", range: 1...10), timePerFrame: 0.1))
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "andyRun%@.png", range: 1...3), timePerFrame: 0.1))
             return action
         }
     }

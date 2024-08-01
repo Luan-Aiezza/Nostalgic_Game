@@ -37,7 +37,6 @@ class SpikeEntity : GKEntity {
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
         body.affectedByGravity = false
-        body.categoryBitMask = .spike
         body.contactTestBitMask = .player
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
