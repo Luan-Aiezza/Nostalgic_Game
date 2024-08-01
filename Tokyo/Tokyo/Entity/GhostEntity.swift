@@ -23,6 +23,10 @@ class GhostEntity: GKEntity {
         return component(ofType: StateMachineComponent.self)
     }
     
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
+    
     
     public init(position : CGPoint, entityManager: SKEntityManager) {
         

@@ -31,9 +31,20 @@ class PlayerEntity: GKEntity {
     var jumpComponent: JumpComponent? {
         return component(ofType: JumpComponent.self)
     }
+    
+    var inventoryComponent: InventoryComponent? {
+        return component(ofType: InventoryComponent.self)
+    }
+    
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
+    
     var spriteNode: SKSpriteNode? {
         return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
     }
+    
+    
     
     init(entityManager : SKEntityManager) {
         super.init()
@@ -67,6 +78,9 @@ class PlayerEntity: GKEntity {
                 [weak self] in
                 guard let self else {return}
                 entityManager.remove(entity: self)
+                node.removeFromParent()
+                node.removeAllActions()
+                node.removeAllChildren()
             }])
         
         self.addComponent(DemiseComponent(death: death))
@@ -76,6 +90,9 @@ class PlayerEntity: GKEntity {
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
+        
+        let inventoryComp = InventoryComponent()
+        self.addComponent(inventoryComp)
         
         let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
@@ -89,11 +106,14 @@ class PlayerEntity: GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     deinit {
         if let node = self.component(ofType: GKSKNodeComponent.self)?.node {
             node.removeFromParent()
+            node.removeAllActions()
         }
     }
+    
     func jump() {
         stateComponent?.stateMachine.enter(PlayerJump.self)
     }

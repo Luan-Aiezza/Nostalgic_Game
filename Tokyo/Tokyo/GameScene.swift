@@ -12,8 +12,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-//    let playerCategory:UInt32 = 0x1 >> 0
-//    let ghostCategory:UInt32 = 0x1 >> 1
+    //    let playerCategory:UInt32 = 0x1 >> 0
+    //    let ghostCategory:UInt32 = 0x1 >> 1
     
     
     var entityManager: SKEntityManager?
@@ -30,12 +30,9 @@ class GameScene: SKScene {
         
         self.physicsWorld.contactDelegate = self
         
-        
-       
-        
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
-
+        
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
         
@@ -51,7 +48,7 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
-        let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: 0), entityManager: entityManager!)
+        let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: -180), entityManager: entityManager!)
         ghostEntity.stateComponent?.stateMachine.enter(GhostHealthy.self)
         entityManager?.add(entity: ghostEntity)
         enemies.append(ghostEntity)
@@ -61,9 +58,22 @@ class GameScene: SKScene {
         entityManager?.add(entity: ghostEntity2)
         enemies.append(ghostEntity2)
         
-        
-        let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: 0), entityManager: entityManager!)
+        let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: -100), entityManager: entityManager!)
         entityManager?.add(entity: cherryEntity)
+        
+        let itemEntity = ItemEntity(position: CGPoint(x: -80, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!, sprite: "cherry_item")
+        itemEntity.identityComponent?.name(name: "key")
+        entityManager?.add(entity: itemEntity)
+        
+        let point1 = PointEntity(position: CGPoint(x: 130, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!)
+        point1.identityComponent?.name(name: "key")
+        entityManager?.add(entity: point1)
+        
+        
+        let itemEntity2 = ItemEntity(position: CGPoint(x: 80, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!, sprite: "cherry_item")
+        itemEntity2.identityComponent?.name(name: "pickaxe")
+        entityManager?.add(entity: itemEntity2)
+        
         
         //controles (checar auto layout)
         right_button.position = CGPoint(x: -140, y: -180)
@@ -84,26 +94,7 @@ class GameScene: SKScene {
         jump_button.isUserInteractionEnabled = false
         self.addChild(jump_button)
         
-        //teste de contato (modularizar depois?)
-        
-//        playerEntity.physicsComponent?.body.categoryBitMask = playerCategory
-//        ghostEntity.physicsComponent?.body.categoryBitMask = ghostCategory
-//        
-//        playerEntity.physicsComponent?.body.collisionBitMask = ghostCategory
-//        
-//        ghostEntity.physicsComponent?.body.contactTestBitMask = playerCategory
-        
-        
-        
     }
-    
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        let collision:UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-//        
-//        if collision == playerCategory | ghostCategory {
-//            print("colidiu")
-//        }
-//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches)
@@ -114,12 +105,12 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-   
+        
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
         
-
+        
         let dt = currentTime - self.lastUpdateTime
         
         if let entities = entityManager?.entities {
@@ -129,8 +120,8 @@ class GameScene: SKScene {
         }
         
         if let playerNode = playerEntity?.spriteNode {
-               self.camera?.position = playerNode.position
-           }
+            self.camera?.position = playerNode.position
+        }
         
         self.lastUpdateTime = currentTime
     }
@@ -144,15 +135,44 @@ class GameScene: SKScene {
             if right_button!.contains(location) {
                 playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .right)
+                guard let inventory = playerEntity?.inventoryComponent?.items else {return}
+                
+                if inventory.count == 0 {
+                    print("nao tem nada")
+                }
             }
             
             if left_button!.contains(location) {
                 playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .left)
+                
+                guard let inventory = playerEntity?.inventoryComponent?.items else {return}
+                
+                if inventory.count == 0 {
+                    print("nao tem nada")
+                }
             }
             if jump_button.contains(location) {
-                        playerEntity?.jump()
+                playerEntity?.jump()
+                guard let inventory = playerEntity?.inventoryComponent?.items else {return}
+                
+                if inventory.count == 0 {
+                    print("nao tem nada")
+                }
+                else {
+                    for i in inventory {
+                        print(i.name)
                     }
+                }
+            }
         }
+    }
+    
+    func gameOver() {
+        let transition = SKTransition.fade(withDuration: 1)
+        let newScene = GameOverScene(size: CGSize(width: 1980, height: 1800))
+        newScene.scaleMode = .aspectFill
+        newScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.view?.presentScene(newScene, transition: transition)
     }
 }
