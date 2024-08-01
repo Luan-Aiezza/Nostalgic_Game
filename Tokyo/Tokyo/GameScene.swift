@@ -45,7 +45,6 @@ class GameScene: SKScene {
         
         self.camera?.setScale(1)
         //FIM DO CODIGO
-        var size = CGSize(width: 160, height: 160)
         
         let playerEntity = PlayerEntity(entityManager: entityManager!)
         entityManager?.add(entity: playerEntity)
