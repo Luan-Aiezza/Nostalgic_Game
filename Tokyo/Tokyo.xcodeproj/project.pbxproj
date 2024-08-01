@@ -17,6 +17,12 @@
 		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
 		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
 		3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1F22C53E33F004FE488 /* Animation&Actions.swift */; };
+        3306B2182C589EAD004FE488 /* GhostAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2172C589EAD004FE488 /* GhostAgent.swift */; };
+        3306B21A2C589F7D004FE488 /* PlayerAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2192C589F7D004FE488 /* PlayerAgent.swift */; };
+        3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
+        3306B2232C592344004FE488 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2222C592344004FE488 /* GameOverScene.swift */; };
+        3306B2262C592936004FE488 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2252C592936004FE488 /* RestartButton.swift */; };
+        3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2272C593196004FE488 /* SpikeEntity.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -51,6 +57,12 @@
 		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
 		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
 		3306B1F22C53E33F004FE488 /* Animation&Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation&Actions.swift"; sourceTree = "<group>"; };
+        3306B2172C589EAD004FE488 /* GhostAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostAgent.swift; sourceTree = "<group>"; };
+        3306B2192C589F7D004FE488 /* PlayerAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAgent.swift; sourceTree = "<group>"; };
+        3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
+        3306B2222C592344004FE488 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+        3306B2252C592936004FE488 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
+        3306B2272C593196004FE488 /* SpikeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeEntity.swift; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -94,6 +106,31 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+        3306B2162C589EA0004FE488 /* Agents */ = {
+            isa = PBXGroup;
+            children = (
+                3306B2172C589EAD004FE488 /* GhostAgent.swift */,
+                3306B2192C589F7D004FE488 /* PlayerAgent.swift */,
+            );
+            path = Agents;
+            sourceTree = "<group>";
+        };
+        3306B2212C592329004FE488 /* Scenes */ = {
+            isa = PBXGroup;
+            children = (
+                3306B2222C592344004FE488 /* GameOverScene.swift */,
+            );
+            path = Scenes;
+            sourceTree = "<group>";
+        };
+        3306B2242C592920004FE488 /* Buttons */ = {
+            isa = PBXGroup;
+            children = (
+                3306B2252C592936004FE488 /* RestartButton.swift */,
+            );
+            path = Buttons;
+            sourceTree = "<group>";
+        };
 		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +138,7 @@
 				33EDD5692C50885A00880E83 /* PlayerEntity.swift */,
 				3306B1D52C529B41004FE488 /* GhostEntity.swift */,
 				3306B1EB2C534081004FE488 /* CherryEntity.swift */,
+                3306B2272C593196004FE488 /* SpikeEntity.swift */,
 				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
 				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
 			);
@@ -172,6 +210,9 @@
 			children = (
 				3306B1F12C53E326004FE488 /* Animation */,
 				CF17CFBF2C52A56900898033 /* Stage02 */,
+                3306B2242C592920004FE488 /* Buttons */,
+                3306B2212C592329004FE488 /* Scenes */,
+                3306B2162C589EA0004FE488 /* Agents */,
 				33EDD56B2C50888F00880E83 /* States */,
 				33EDD5662C50806C00880E83 /* Tools */,
 				33EDD5612C50801900880E83 /* Components */,
@@ -263,15 +304,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
+                3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */,
 				3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
 				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
 				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
+                3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */,
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
+                3306B2182C589EAD004FE488 /* GhostAgent.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
+                3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
+                3306B2262C592936004FE488 /* RestartButton.swift in Sources */,
 				BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */,
 				33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */,
 				CF4198692C481745000B3C50 /* GameScene.swift in Sources */,
