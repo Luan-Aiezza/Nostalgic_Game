@@ -38,7 +38,7 @@ class CherryEntity : GKEntity {
 
         let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
         let body = SKPhysicsBody(rectangleOf: size)
-        body.isDynamic = true
+        body.isDynamic = false
         body.affectedByGravity = false
         body.mass = 0
         body.friction = 1

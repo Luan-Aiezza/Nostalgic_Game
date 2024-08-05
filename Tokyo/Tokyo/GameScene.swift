@@ -30,9 +30,6 @@ class GameScene: SKScene {
         
         self.physicsWorld.contactDelegate = self
         
-        
-        
-        
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
         
@@ -51,19 +48,10 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
-        let itemEntity = ItemEntity(position: CGPoint(x: -80, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!, sprite: "cherry_item")
-        itemEntity.identityComponent?.name(name: "key")
-        entityManager?.add(entity: itemEntity)
-        
-        let point1 = PointEntity(position: CGPoint(x: 130, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!)
-        point1.identityComponent?.name(name: "key")
-        entityManager?.add(entity: point1)
-        
-        
-        let itemEntity2 = ItemEntity(position: CGPoint(x: 80, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!, sprite: "cherry_item")
-        itemEntity2.identityComponent?.name(name: "pickaxe")
-        entityManager?.add(entity: itemEntity2)
-        
+        let ghostEntity = GhostEntity(position: CGPoint(x: -80, y: -220), entityManager: entityManager!, spriteName: "redGhost")
+        ghostEntity.stateComponent?.stateMachine.enter(GhostDizzy.self)
+        entityManager?.add(entity: ghostEntity)
+        enemies.append(ghostEntity)
         
         setupButtons()
         adjustButtonLayout()
@@ -141,7 +129,7 @@ class GameScene: SKScene {
                 guard let inventory = playerEntity?.inventoryComponent?.items else {return}
                 
                 if inventory.count == 0 {
-                    print("nao tem nada")
+                    print()
                 }
             }
             
@@ -152,7 +140,7 @@ class GameScene: SKScene {
                 guard let inventory = playerEntity?.inventoryComponent?.items else {return}
                 
                 if inventory.count == 0 {
-                    print("nao tem nada")
+                    print()
                 }
             }
             if jump_button.contains(location) {
@@ -160,7 +148,7 @@ class GameScene: SKScene {
                 guard let inventory = playerEntity?.inventoryComponent?.items else {return}
                 
                 if inventory.count == 0 {
-                    print("nao tem nada")
+                    print()
                 }
                 else {
                     for i in inventory {

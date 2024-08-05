@@ -61,7 +61,7 @@ class PlayerEntity: GKEntity {
         let body = SKPhysicsBody(rectangleOf: node.size)
         body.isDynamic = true
         body.mass = 1
-        body.friction = 1
+        body.friction = 0.3
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
@@ -71,15 +71,18 @@ class PlayerEntity: GKEntity {
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
+        let animationComp = AnimationComponent()
+        self.addComponent(animationComp)
+    
+        
         let death = SKAction.sequence([
-            .fadeOut(withDuration: 0.1),
             .run {
                 [weak self] in
                 guard let self else {return}
+                self.stateComponent?.stateMachine.enter(PlayerDeath.self)
                 entityManager.remove(entity: self)
-                node.removeFromParent()
-                node.removeAllActions()
-                node.removeAllChildren()
+                self.spriteNode?.removeAllActions()
+                self.spriteNode?.removeFromParent()
             }])
         
         self.addComponent(DemiseComponent(death: death))
@@ -87,13 +90,10 @@ class PlayerEntity: GKEntity {
         let jumpComp = JumpComponent()
         self.addComponent(jumpComp)
         
-        let animationComp = AnimationComponent()
-        self.addComponent(animationComp)
-        
         let inventoryComp = InventoryComponent()
         self.addComponent(inventoryComp)
         
-        let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self)])
+        let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self), PlayerDeath(playerEntity: self)])
         
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         
@@ -127,7 +127,13 @@ class PlayerEntity: GKEntity {
         case .run:
             let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "andyRun%@.png", range: 1...3), timePerFrame: 0.1))
             return action
+            
+            
+        case .death:
+            let action: SKAction = .animate(with: .init(withFormat: "andyDeath%@.png", range: 1...13), timePerFrame: 0.1)
+            return action
         }
+        
     }
     
 }

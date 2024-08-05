@@ -26,6 +26,7 @@
 		334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */; };
 		334E85822C5BC16300E61EA7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85812C5BC16300E61EA7 /* Item.swift */; };
 		334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85832C5BD93700E61EA7 /* PointEntity.swift */; };
+		334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -69,6 +70,7 @@
 		334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
 		334E85812C5BC16300E61EA7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		334E85832C5BD93700E61EA7 /* PointEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEntity.swift; sourceTree = "<group>"; };
+		334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeath.swift; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				3306B1D92C52A35B004FE488 /* GhostHealthy.swift */,
 				3306B1DD2C52A376004FE488 /* GhostDizzy.swift */,
 				BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */,
+				334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
+				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
 				3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
 				3306B2262C592936004FE488 /* RestartButton.swift in Sources */,

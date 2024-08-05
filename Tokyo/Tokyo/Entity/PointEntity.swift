@@ -36,14 +36,14 @@ class PointEntity : GKEntity {
         
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = false
-        body.affectedByGravity = true
+        body.affectedByGravity = false
         body.mass = 0
-        body.friction = 0
-        body.restitution = 0
+        body.friction = 1
+        body.restitution = 1
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
-        body.affectedByGravity = true
-        body.categoryBitMask = .points
+        body.affectedByGravity = false
+        body.categoryBitMask = .ghost
         body.contactTestBitMask = .player
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)

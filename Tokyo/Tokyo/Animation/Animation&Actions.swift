@@ -12,6 +12,7 @@ import GameplayKit
 public enum PlayerAnimation {
     case idle
     case run
+    case death
 }
 
 enum GhostAnimation {
