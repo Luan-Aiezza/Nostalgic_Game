@@ -95,6 +95,7 @@ class PlayerEntity: GKEntity {
         self.addComponent(inventoryComp)
         
         let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self)])
+        
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         
         

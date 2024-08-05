@@ -12,10 +12,6 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    //    let playerCategory:UInt32 = 0x1 >> 0
-    //    let ghostCategory:UInt32 = 0x1 >> 1
-    
-    
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "botao_direito")
     var left_button = SKSpriteNode(imageNamed: "botao_esquerdo")
@@ -47,19 +43,6 @@ class GameScene: SKScene {
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
-        
-        let ghostEntity = GhostEntity(position: CGPoint(x: 180, y: -180), entityManager: entityManager!)
-        ghostEntity.stateComponent?.stateMachine.enter(GhostHealthy.self)
-        entityManager?.add(entity: ghostEntity)
-        enemies.append(ghostEntity)
-        
-        let ghostEntity2 = GhostEntity(position: CGPoint(x: -180, y: 0), entityManager: entityManager!)
-        ghostEntity2.stateComponent?.stateMachine.enter(GhostHealthy.self)
-        entityManager?.add(entity: ghostEntity2)
-        enemies.append(ghostEntity2)
-        
-        let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: -100), entityManager: entityManager!)
-        entityManager?.add(entity: cherryEntity)
         
         let itemEntity = ItemEntity(position: CGPoint(x: -80, y: -220), size: CGSize(width: 50, height: 50), entityManager: entityManager!, sprite: "cherry_item")
         itemEntity.identityComponent?.name(name: "key")

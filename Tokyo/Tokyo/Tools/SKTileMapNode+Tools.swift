@@ -32,4 +32,9 @@ extension SKTileMapNode{
             }
         }
     }
+    
+    
+    func drawGraph() {
+        
+    }
 }

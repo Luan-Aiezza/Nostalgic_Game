@@ -230,11 +230,11 @@
 				CF4198622C481745000B3C50 /* AppDelegate.swift */,
 				CF4198642C481745000B3C50 /* GameScene.sks */,
 				CF4198682C481745000B3C50 /* GameScene.swift */,
+				3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */,
 				CF41986A2C481745000B3C50 /* GameViewController.swift */,
 				CF41986C2C481745000B3C50 /* Main.storyboard */,
 				CF41986F2C481746000B3C50 /* Assets.xcassets */,
 				CF4198712C481746000B3C50 /* LaunchScreen.storyboard */,
-				3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */,
 			);
 			path = Tokyo;
 			sourceTree = "<group>";

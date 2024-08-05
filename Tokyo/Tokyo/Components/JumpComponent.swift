@@ -19,7 +19,6 @@ class JumpComponent: GKComponent {
         guard let physicsBody = (entity as? PlayerEntity)?.physicsComponent?.body else { return }
         
         if onGround {
-
             isJumping = true
             onGround = false
             doubleJumpAvailable = true
