@@ -15,6 +15,7 @@ extension GameScene: SKPhysicsContactDelegate {
         guard let entityA = contact.bodyA.node?.entity,
               let entityB = contact.bodyB.node?.entity else {return}
         
+        
         isContactWithEnemy(entityA: entityA, entityB: entityB)
         isContactWithEnemy(entityA: entityB, entityB: entityA)
         isContactWithCherry(entityA: entityA, entityB: entityB)
@@ -23,6 +24,8 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithItem(entityA: entityB, entityB: entityA)
         isContactWithPoint(entityA: entityA, entityB: entityB)
         isContactWithPoint(entityA: entityB, entityB: entityA)
+        isInContactWithTile(entityA: entityA, entityB: entityB)
+        isInContactWithTile(entityA: entityB, entityB: entityA)
     }
     
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
@@ -108,6 +111,12 @@ extension GameScene: SKPhysicsContactDelegate {
         
             
         }
+    private func isInContactWithTile(entityA: GKEntity, entityB: GKEntity){
+        
+        if entityA is PlayerEntity && entityB is TilesEntity {
+            entityA.component(ofType: JumpComponent.self)?.resetJump()
+        }
+        
     }
 }
 

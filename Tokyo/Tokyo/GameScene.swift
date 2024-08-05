@@ -12,6 +12,10 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    //    let playerCategory:UInt32 = 0x1 >> 0
+    //    let ghostCategory:UInt32 = 0x1 >> 1
+    
+    
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "botao_direito")
     var left_button = SKSpriteNode(imageNamed: "botao_esquerdo")
@@ -26,6 +30,9 @@ class GameScene: SKScene {
         
         self.physicsWorld.contactDelegate = self
         
+        
+        
+        
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
         
@@ -36,7 +43,7 @@ class GameScene: SKScene {
         self.addChild(cameraNode)
         self.camera = cameraNode
         
-        self.camera?.setScale(1)
+        self.camera?.setScale(0.75)
         //FIM DO CODIGO
         
         let playerEntity = PlayerEntity(entityManager: entityManager!)
@@ -58,26 +65,42 @@ class GameScene: SKScene {
         entityManager?.add(entity: itemEntity2)
         
         
-        //controles (checar auto layout)
-        right_button.position = CGPoint(x: -140, y: -180)
-        right_button.size = CGSize(width: 80, height: 80)
+        setupButtons()
+        adjustButtonLayout()
+    }
+    
+    func setupButtons(){
         right_button.name = "right_button"
-        right_button.isUserInteractionEnabled =  false
-        self.addChild(right_button)
+        self.camera?.addChild(right_button)
         
-        left_button.position = CGPoint(x: -230, y: -180)
-        left_button.size = CGSize(width: 80, height: 80)
         left_button.name = "left_button"
-        left_button.isUserInteractionEnabled =  false
-        self.addChild(left_button)
+        self.camera?.addChild(left_button)
         
-        jump_button.position = CGPoint(x: 50, y: -180)
-        jump_button.size = CGSize(width: 80, height: 80)
         jump_button.name = "jump_button"
-        jump_button.isUserInteractionEnabled = false
-        self.addChild(jump_button)
+        self.camera?.addChild(jump_button)
         
     }
+    
+    func adjustButtonLayout() {
+        guard let camera = self.camera else { return }
+        let buttonSize = CGSize(width: 80, height: 80)
+        
+        right_button.size = buttonSize
+        left_button.size = buttonSize
+        jump_button.size = buttonSize
+        
+        let cameraFrame = camera.calculateAccumulatedFrame()
+        
+        left_button.position = CGPoint(x: cameraFrame.minX - 250, y: cameraFrame.minY - 90 )
+        right_button.position = CGPoint(x: left_button.position.x + buttonSize.width + 20, y: left_button.position.y)
+        
+        jump_button.position = CGPoint(x: cameraFrame.maxX + 250, y:left_button.position.y)
+    }
+    override func didChangeSize(_ oldSize: CGSize) {
+        super.didChangeSize(oldSize)
+        adjustButtonLayout()
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches)
@@ -103,19 +126,16 @@ class GameScene: SKScene {
         }
         
         if let playerNode = playerEntity?.spriteNode {
-            self.camera?.position = playerNode.position
+            self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 75)
         }
         
         self.lastUpdateTime = currentTime
     }
     
     public func captureInput(touches: Set<UITouch>) {
-        let right_button = childNode(withName: "right_button")
-        let left_button = childNode(withName: "left_button")
-        
-        
-        if let location = touches.first?.location(in: self){
-            if right_button!.contains(location) {
+        guard let camera else { return }
+        if let location = touches.first?.location(in: camera){
+            if right_button.contains(location) {
                 playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .right)
                 guard let inventory = playerEntity?.inventoryComponent?.items else {return}
@@ -125,7 +145,7 @@ class GameScene: SKScene {
                 }
             }
             
-            if left_button!.contains(location) {
+            if left_button.contains(location) {
                 playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                 playerEntity?.moveComponent?.change(direction: .left)
                 
