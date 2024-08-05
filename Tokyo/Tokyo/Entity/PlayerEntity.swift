@@ -46,9 +46,8 @@ class PlayerEntity: GKEntity {
         
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
-        
-        let radius = min(node.size.width, node.size.height) / 2
-        let body = SKPhysicsBody(circleOfRadius: radius)
+    
+        let body = SKPhysicsBody(rectangleOf: node.size)
         body.isDynamic = true
         body.mass = 1
         body.friction = 1

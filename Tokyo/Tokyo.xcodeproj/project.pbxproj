@@ -17,7 +17,7 @@
 		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
 		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
 		3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1F22C53E33F004FE488 /* Animation&Actions.swift */; };
-        3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
+		3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
 		3306B2232C592344004FE488 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2222C592344004FE488 /* GameOverScene.swift */; };
 		3306B2262C592936004FE488 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2252C592936004FE488 /* RestartButton.swift */; };
 		3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2272C593196004FE488 /* SpikeEntity.swift */; };
@@ -55,7 +55,7 @@
 		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
 		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
 		3306B1F22C53E33F004FE488 /* Animation&Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation&Actions.swift"; sourceTree = "<group>"; };
-        3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
+		3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
 		3306B2222C592344004FE488 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		3306B2252C592936004FE488 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
 		3306B2272C593196004FE488 /* SpikeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeEntity.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
 				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
 				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
-                3306B21D2C58A6E2004FE488 /* WanderComponent.swift */,
+				3306B21D2C58A6E2004FE488 /* WanderComponent.swift */,
 				BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */,
 			);
 			path = Components;
@@ -182,7 +182,6 @@
 			children = (
 				CF4198612C481745000B3C50 /* Tokyo */,
 				CF4198602C481745000B3C50 /* Products */,
-				33BBBD212C5B3C630099AFD2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -297,7 +296,7 @@
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
 				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
 				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
-                3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */,
+				3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */,
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
@@ -477,8 +476,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,8 +503,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
