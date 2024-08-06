@@ -93,8 +93,8 @@ class PlayerEntity: GKEntity {
             node.removeFromParent()
         }
     }
-    func jump() {
-        stateComponent?.stateMachine.enter(PlayerJump.self)
+    func jump(horizontalDirection: CGFloat) {
+        jumpComponent?.jump(horizontalDirection: horizontalDirection)
     }
     
     func playerActions(_ animation: PlayerAnimation) -> SKAction{

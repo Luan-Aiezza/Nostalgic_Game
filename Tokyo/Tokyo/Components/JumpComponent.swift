@@ -12,10 +12,11 @@ import GameplayKit
 class JumpComponent: GKComponent {
     var isJumping = false
     var jumpImpulse: CGFloat = 500.0
+    var horizontalImpulse: CGFloat = 150.0
     var doubleJumpAvailable = true
     var onGround = false
 
-    func jump() {
+    func jump(horizontalDirection: CGFloat) {
         guard let physicsBody = (entity as? PlayerEntity)?.physicsComponent?.body else { return }
         
         if onGround {
@@ -23,12 +24,13 @@ class JumpComponent: GKComponent {
             isJumping = true
             onGround = false
             doubleJumpAvailable = true
-            physicsBody.applyImpulse(CGVector(dx: 0, dy: jumpImpulse))
+            physicsBody.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: jumpImpulse))
         } else if doubleJumpAvailable {
             // Pulo duplo
             isJumping = true
             doubleJumpAvailable = false
-            physicsBody.applyImpulse(CGVector(dx: 0, dy: jumpImpulse))
+            physicsBody.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: jumpImpulse))
+
         }
     }
     

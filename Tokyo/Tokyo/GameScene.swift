@@ -26,6 +26,10 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
     
+    var rightButtonPressed = false
+    var leftButtonPressed = false
+
+    
     override func sceneDidLoad() {
         
         self.physicsWorld.contactDelegate = self
@@ -103,10 +107,11 @@ class GameScene: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        captureInput(touches: touches)
+        captureInput(touches: touches, isTouching: true)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        captureInput(touches: touches, isTouching: false)
         playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
     }
     
@@ -132,21 +137,27 @@ class GameScene: SKScene {
         self.lastUpdateTime = currentTime
     }
     
-    public func captureInput(touches: Set<UITouch>) {
+    public func captureInput(touches: Set<UITouch>, isTouching: Bool) {
         guard let camera else { return }
         if let location = touches.first?.location(in: camera){
             if right_button.contains(location) {
-                playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
-                playerEntity?.moveComponent?.change(direction: .right)
+                rightButtonPressed = isTouching
+                if isTouching {
+                    playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
+                    playerEntity?.moveComponent?.change(direction: .right)
+                }
             }
             
             if left_button.contains(location) {
-                playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
-                playerEntity?.moveComponent?.change(direction: .left)
+                leftButtonPressed = isTouching
+                if isTouching {
+                    playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
+                    playerEntity?.moveComponent?.change(direction: .left)
+                }
             }
-            if jump_button.contains(location) {
-                playerEntity?.jump()
-            }
-        }
+            if jump_button.contains(location) && isTouching {
+                let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
+                playerEntity?.jump(horizontalDirection: horizontalDirection)
+            }        }
     }
 }
