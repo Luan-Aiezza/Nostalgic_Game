@@ -17,9 +17,9 @@ class GameScene: SKScene {
     
     
     var entityManager: SKEntityManager?
-    var right_button = SKSpriteNode(imageNamed: "botao_direito")
-    var left_button = SKSpriteNode(imageNamed: "botao_esquerdo")
-    var jump_button = SKSpriteNode(imageNamed: "botao_pulo")
+    var right_button = SKSpriteNode(imageNamed: "right")
+    var left_button = SKSpriteNode(imageNamed: "left")
+    var jump_button = SKSpriteNode(imageNamed: "jump")
     var enemies:[GhostEntity] = []
     public var stateMachine : GKStateMachine?
     public var stateMachineEnemy : GKStateMachine?
@@ -47,11 +47,6 @@ class GameScene: SKScene {
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
-        
-        let ghostEntity = GhostEntity(position: CGPoint(x: -80, y: -220), entityManager: entityManager!, spriteName: "redGhost")
-        ghostEntity.stateComponent?.stateMachine.enter(GhostDizzy.self)
-        entityManager?.add(entity: ghostEntity)
-        enemies.append(ghostEntity)
         
         setupButtons()
         adjustButtonLayout()

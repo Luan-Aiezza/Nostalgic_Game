@@ -22,7 +22,6 @@ class PlayerIdle : GKState {
         guard let action = playerEntity?.playerActions(.idle) else {return}
         playerEntity?.animationComponent?.play(action: action)
         playerEntity?.moveComponent?.change(direction: .none)
-        print("entrou em idle")
     }
     
 }
