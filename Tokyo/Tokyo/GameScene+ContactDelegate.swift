@@ -91,7 +91,7 @@ extension GameScene: SKPhysicsContactDelegate {
         }
     
     private func isContactWithPoint(entityA: GKEntity, entityB: GKEntity) {
-
+        
         if entityA is PlayerEntity && entityB is PointEntity {
             
             let player = entityA as! PlayerEntity
@@ -108,9 +108,10 @@ extension GameScene: SKPhysicsContactDelegate {
                     print("não tem o " + i.name)
                 }
             }
-        
+            
             
         }
+    }
     private func isInContactWithTile(entityA: GKEntity, entityB: GKEntity){
         
         if entityA is PlayerEntity && entityB is TilesEntity {
