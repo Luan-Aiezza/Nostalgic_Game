@@ -23,12 +23,16 @@ class GhostEntity: GKEntity {
         return component(ofType: StateMachineComponent.self)
     }
     
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
     
-    public init(position : CGPoint, entityManager: SKEntityManager) {
+    
+    public init(position : CGPoint, entityManager: SKEntityManager, spriteName : String) {
         
         super.init()
         
-        let node = SKSpriteNode(imageNamed: "ghost1.png")
+        let node = SKSpriteNode(imageNamed: spriteName)
         node.position = position
         node.size = CGSize(width: 130, height: 150)
         node.setScale(0.5)
@@ -84,7 +88,7 @@ class GhostEntity: GKEntity {
     func ghostActions(_ animation: GhostAnimation) -> SKAction{
         switch animation {
         case .dizzy:
-            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "dizzy_ghost.png", range: 1...1), timePerFrame: 0.1))
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "redGhost%@", range: 2...3), timePerFrame: 0.1))
             return action
             
         case .healthy:

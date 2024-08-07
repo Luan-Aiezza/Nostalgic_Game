@@ -17,10 +17,16 @@
 		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
 		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
 		3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1F22C53E33F004FE488 /* Animation&Actions.swift */; };
-        3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
+		3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
 		3306B2232C592344004FE488 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2222C592344004FE488 /* GameOverScene.swift */; };
 		3306B2262C592936004FE488 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2252C592936004FE488 /* RestartButton.swift */; };
 		3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2272C593196004FE488 /* SpikeEntity.swift */; };
+		334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */; };
+		334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */; };
+		334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */; };
+		334E85822C5BC16300E61EA7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85812C5BC16300E61EA7 /* Item.swift */; };
+		334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85832C5BD93700E61EA7 /* PointEntity.swift */; };
+		334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -55,10 +61,16 @@
 		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
 		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
 		3306B1F22C53E33F004FE488 /* Animation&Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation&Actions.swift"; sourceTree = "<group>"; };
-        3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
+		3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
 		3306B2222C592344004FE488 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		3306B2252C592936004FE488 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
 		3306B2272C593196004FE488 /* SpikeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeEntity.swift; sourceTree = "<group>"; };
+		334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierComponent.swift; sourceTree = "<group>"; };
+		334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
+		334E85812C5BC16300E61EA7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		334E85832C5BD93700E61EA7 /* PointEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEntity.swift; sourceTree = "<group>"; };
+		334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeath.swift; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -118,6 +130,14 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		334E85802C5BC15600E61EA7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				334E85812C5BC16300E61EA7 /* Item.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +148,8 @@
 				3306B2272C593196004FE488 /* SpikeEntity.swift */,
 				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
 				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
+				334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */,
+				334E85832C5BD93700E61EA7 /* PointEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -140,8 +162,10 @@
 				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
 				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
 				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
-                3306B21D2C58A6E2004FE488 /* WanderComponent.swift */,
+				3306B21D2C58A6E2004FE488 /* WanderComponent.swift */,
 				BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */,
+				334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */,
+				334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -164,6 +188,7 @@
 				3306B1D92C52A35B004FE488 /* GhostHealthy.swift */,
 				3306B1DD2C52A376004FE488 /* GhostDizzy.swift */,
 				BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */,
+				334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -182,7 +207,6 @@
 			children = (
 				CF4198612C481745000B3C50 /* Tokyo */,
 				CF4198602C481745000B3C50 /* Products */,
-				33BBBD212C5B3C630099AFD2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +221,7 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				334E85802C5BC15600E61EA7 /* Class */,
 				3306B1F12C53E326004FE488 /* Animation */,
 				CF17CFBF2C52A56900898033 /* Stage02 */,
 				3306B2242C592920004FE488 /* Buttons */,
@@ -208,11 +233,11 @@
 				CF4198622C481745000B3C50 /* AppDelegate.swift */,
 				CF4198642C481745000B3C50 /* GameScene.sks */,
 				CF4198682C481745000B3C50 /* GameScene.swift */,
+				3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */,
 				CF41986A2C481745000B3C50 /* GameViewController.swift */,
 				CF41986C2C481745000B3C50 /* Main.storyboard */,
 				CF41986F2C481746000B3C50 /* Assets.xcassets */,
 				CF4198712C481746000B3C50 /* LaunchScreen.storyboard */,
-				3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */,
 			);
 			path = Tokyo;
 			sourceTree = "<group>";
@@ -292,16 +317,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
+				334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */,
 				3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */,
 				3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
 				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
 				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
-                3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */,
+				3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */,
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
+				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
 				3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
 				3306B2262C592936004FE488 /* RestartButton.swift in Sources */,
@@ -311,13 +338,17 @@
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
 				CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */,
 				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
+				334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */,
 				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
 				BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */,
 				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
 				3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */,
 				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
 				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
+				334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */,
+				334E85822C5BC16300E61EA7 /* Item.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
+				334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */,
 				33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */,
 				CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */,
 			);
@@ -477,8 +508,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,8 +535,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

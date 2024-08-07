@@ -19,7 +19,6 @@ class JumpComponent: GKComponent {
         guard let physicsBody = (entity as? PlayerEntity)?.physicsComponent?.body else { return }
         
         if onGround {
-
             isJumping = true
             onGround = false
             doubleJumpAvailable = true
@@ -30,6 +29,11 @@ class JumpComponent: GKComponent {
             doubleJumpAvailable = false
             physicsBody.applyImpulse(CGVector(dx: 0, dy: jumpImpulse))
         }
+    }
+    
+    func resetJump(){
+        isJumping = false
+        doubleJumpAvailable = false
     }
 
     override func update(deltaTime seconds: TimeInterval) {
