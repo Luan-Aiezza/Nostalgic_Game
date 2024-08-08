@@ -27,14 +27,30 @@ class GhostEntity: GKEntity {
         return component(ofType: DemiseComponent.self)
     }
     
+    var spriteComponent: SpriteComponent? {
+        return component(ofType: SpriteComponent.self)
+    }
+    
+    var wanderComponent: WanderComponent? {
+        return component(ofType: WanderComponent.self)
+    }
+    
+    var moveComponent: MovementComponent? {
+        return component(ofType: MovementComponent.self)
+    }
+    
     
     public init(position : CGPoint, entityManager: SKEntityManager, spriteName : String) {
         
         super.init()
         
-        let node = SKSpriteNode(imageNamed: spriteName)
+        let spriteComp = SpriteComponent(sprite: SKSpriteNode(imageNamed: spriteName), spriteName: spriteName)
+        self.addComponent(spriteComp)
+        
+        
+        let node = spriteComp.returnSprite()
         node.position = position
-        node.size = CGSize(width: 130, height: 150)
+        node.size = CGSize(width: 100, height: 100)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
@@ -42,9 +58,7 @@ class GhostEntity: GKEntity {
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
         
-        
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
-        let body = SKPhysicsBody(rectangleOf: size)
+        let body = SKPhysicsBody(texture: node.texture!, size: node.size)
         body.isDynamic = true
         body.affectedByGravity = false
         body.mass = 0
@@ -58,21 +72,24 @@ class GhostEntity: GKEntity {
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
-        let death = SKAction.sequence([
-            .fadeOut(withDuration: 0.1),
-            .run {
-                [weak self] in
-                guard let self else {return}
-                entityManager.remove(entity: self)
-            }])
+        let death = SKAction.run {
+            [weak self] in
+            guard let self else {return}
+            entityManager.remove(entity: self)
+        }
         
         self.addComponent(DemiseComponent(death: death))
         
-        let stateMachine = GKStateMachine(states: [GhostDizzy(ghostEntity: self), GhostHealthy(ghostEntity: self)])
+        let stateMachine = GKStateMachine(states: [GhostHealthy(ghostEntity: self), GhostDizzy(ghostEntity: self), GhostDeath(ghostEntity: self)])
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         self.addComponent(stateComp)
         
         
+        let wanderComponent = WanderComponent()
+        self.addComponent(wanderComponent)
+        
+        let moveComp = MovementComponent(speed: 5)
+        self.addComponent(moveComp)
     }
     
     required init?(coder:NSCoder) {
@@ -85,16 +102,21 @@ class GhostEntity: GKEntity {
         }
     }
     
-    func ghostActions(_ animation: GhostAnimation) -> SKAction{
+    func ghostActions(_ animation: GhostAnimation, spriteName: String) -> SKAction{
         switch animation {
         case .dizzy:
-            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "redGhost%@", range: 2...3), timePerFrame: 0.1))
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "\(spriteName)%@", range: 3...4), timePerFrame: 0.2))
             return action
             
         case .healthy:
-            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "ghost1.png", range: 1...1), timePerFrame: 0.1))
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "\(spriteName)%@", range: 1...2), timePerFrame: 0.2))
+            return action
+        
+        case .death:
+            let action: SKAction = .animate(with: .init(withFormat: "\(spriteName)%@", range: 5...12), timePerFrame: 0.1)
             return action
         }
+        
     }
 }
 

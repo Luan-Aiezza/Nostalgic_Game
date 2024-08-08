@@ -44,7 +44,36 @@ class MovementComponent: GKComponent {
         self.direction = direction
         
         if(direction != .none) {
-        node?.xScale = abs(node?.xScale ?? 1) * direction.rawValue
+            node?.xScale = abs(node?.xScale ?? 1) * direction.rawValue
         }
+    }
+    
+    public func moveGhost(points : [CGPoint], duration: [TimeInterval], direction : Direction) -> [SKAction] {
+        var path : [SKAction] = []
+        self.direction = direction
+        var X = 0
+        var lastPoint = points[0]
+        
+        for point in points {
+            if lastPoint.x <= point.x {
+                let action = SKAction.run { [self] in
+                    node?.xScale = abs(node?.xScale ?? 1) * -1
+                }
+                path.append(action)
+            }
+            else if lastPoint.x > point.x {
+                let action = SKAction.run { [self] in
+                    node?.xScale = abs(node?.xScale ?? 1) * 1
+                }
+                path.append(action)
+            }
+            
+            let pointGo = SKAction.move(to: point, duration: duration[X])
+            path.append(pointGo)
+            X = X+1
+            lastPoint = point
+        }
+        print(path)
+        return path
     }
 }

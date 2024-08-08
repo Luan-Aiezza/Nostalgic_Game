@@ -29,14 +29,17 @@ extension GameScene: SKPhysicsContactDelegate {
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostEntity {
+            
             let ghost = entityB as! GhostEntity
             let player = entityA as! PlayerEntity
             
             if ghost.stateComponent?.stateMachine.currentState is GhostHealthy{
-                
-                
                 let playerAction = SKAction.sequence([
                     .run {
+                        
+                        for ghost in self.enemies {
+                            ghost.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true
+                        }
                         player.stateComponent?.stateMachine.enter(PlayerDeath.self)
                     },
                     .wait(forDuration: 1.3),
@@ -45,49 +48,47 @@ extension GameScene: SKPhysicsContactDelegate {
                     },
                     .wait(forDuration: 0.2),
                 ])
-                
                 let gameOverScene = SKAction.run {
                     self.gameOver()
                 }
                 
                 self.run(SKAction.sequence([playerAction, gameOverScene]))
-                
-                
-               }
+            }
+            
             else {
-                print("ghost morreu")
+                guard let index = enemies.firstIndex(of: entityB as! GhostEntity) else {return}
                 entityB.component(ofType: DemiseComponent.self)?.die()
-                guard let index = enemies.firstIndex(of: ghost) else {return}
                 enemies.remove(at: index)
+                entityB.component(ofType: StateMachineComponent.self)?.stateMachine.enter(GhostDeath.self)
             }
         }
     }
     
-    
     private func isContactWithCherry(entityA: GKEntity, entityB: GKEntity) {
         
-        let waitAction = SKAction.wait(forDuration: 5)
+        let waitAction = SKAction.wait(forDuration: 10)
         
         if entityA is PlayerEntity && entityB is CherryEntity {
             
             entityB.component(ofType: DemiseComponent.self)?.die()
             
+            
             for ghost in enemies{
                 
-                let dizzyGhost = SKAction.run {
+                let ghostDizzy = SKAction.run {
                     ghost.stateComponent?.stateMachine.enter(GhostDizzy.self)
                 }
                 
-                let healthyGhost = SKAction.run {
+                let ghostHealthy = SKAction.run {
                     ghost.stateComponent?.stateMachine.enter(GhostHealthy.self)
                 }
-                let sequence = SKAction.sequence([dizzyGhost, waitAction, healthyGhost])
+                
+                let sequence = SKAction.sequence([ghostDizzy, waitAction, ghostHealthy])
                 
                 run(sequence)
             }
         }
     }
-    
     private func isContactWithItem(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is ItemEntity {
@@ -134,9 +135,5 @@ extension GameScene: SKPhysicsContactDelegate {
         if entityA is PlayerEntity && entityB is TilesEntity {
             entityA.component(ofType: JumpComponent.self)?.resetJump()
         }
-        
-            
-        }
     }
-    
-
+}

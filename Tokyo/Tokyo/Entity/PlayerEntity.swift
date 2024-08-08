@@ -60,7 +60,7 @@ class PlayerEntity: GKEntity {
     
         let body = SKPhysicsBody(rectangleOf: node.size)
         body.isDynamic = true
-        body.mass = 1
+        body.mass = 0
         body.friction = 0.3
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
@@ -121,7 +121,7 @@ class PlayerEntity: GKEntity {
     func playerActions(_ animation: PlayerAnimation) -> SKAction{
         switch animation {
         case .idle:
-            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "andyIdle%@.png", range: 1...3), timePerFrame: 0.6))
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "andyIdle%@.png", range: 1...3), timePerFrame: 0.2))
             return action
             
         case .run:
@@ -131,6 +131,10 @@ class PlayerEntity: GKEntity {
             
         case .death:
             let action: SKAction = .animate(with: .init(withFormat: "andyDeath%@.png", range: 1...13), timePerFrame: 0.1)
+            return action
+            
+        case .eat:
+            let action: SKAction = .animate(with: .init(withFormat: "andyEatingCherry%@", range: 1...5), timePerFrame: 0.1)
             return action
         }
         

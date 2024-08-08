@@ -18,7 +18,8 @@ class GhostHealthy : GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        guard let action = ghostEnemy?.ghostActions(.healthy) else {return}
+        guard let spriteName = ghostEnemy?.spriteComponent?.returnSpriteName() else {return}
+        guard let action = ghostEnemy?.ghostActions(.healthy, spriteName: spriteName) else {return}
         ghostEnemy?.animationComponent?.play(action: action)
     }
     

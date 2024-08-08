@@ -21,8 +21,6 @@ class PlayerDeath: GKState {
         guard let action = playerEntity?.playerActions(.death) else {return}
         
         playerEntity?.animationComponent?.play(action: action)
-//        playerEntity?.spriteNode?.removeAllActions()
-//        playerEntity?.spriteNode?.removeFromParent()
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

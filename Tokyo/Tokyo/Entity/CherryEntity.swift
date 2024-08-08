@@ -17,27 +17,25 @@ class CherryEntity : GKEntity {
         return component(ofType: PhysicsComponent.self)
     }
     
-//    var DeathComponent: PhysicsComponent? {
-//        return component(ofType: DemiseComponent.self)
-//    }
-    
     var stateComponent: StateMachineComponent? {
         return component(ofType: StateMachineComponent.self)
+    }
+    
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
     }
     
     init(position : CGPoint, entityManager: SKEntityManager) {
         super.init()
         
-        let node = SKSpriteNode(imageNamed: "cherry_item.png")
+        let node = SKSpriteNode(imageNamed: "cherry")
         node.position = position
-        node.size = CGSize(width: 130, height: 150)
+        node.size = CGSize(width: 120, height: 120)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        
 
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
-        let body = SKPhysicsBody(rectangleOf: size)
+        let body = SKPhysicsBody(texture: node.texture!, size: node.size)
         body.isDynamic = false
         body.affectedByGravity = false
         body.mass = 0

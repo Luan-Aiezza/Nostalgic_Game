@@ -29,14 +29,13 @@ class ItemEntity : GKEntity {
         let node = SKSpriteNode(imageNamed: sprite)
         node.position = position
         node.size = size
-        node.size = CGSize(width: 130, height: 150)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
         
 
 //        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
-        let body = SKPhysicsBody(rectangleOf: size)
+        let body = SKPhysicsBody(texture: node.texture!, size: node.size)
         body.isDynamic = false
         body.affectedByGravity = true
         body.mass = 0

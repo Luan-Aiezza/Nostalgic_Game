@@ -13,9 +13,11 @@ public enum PlayerAnimation {
     case idle
     case run
     case death
+    case eat
 }
 
 enum GhostAnimation {
     case dizzy
     case healthy
+    case death
 }
