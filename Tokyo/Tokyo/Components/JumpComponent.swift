@@ -1,20 +1,16 @@
-//
-//  JumpComponent.swift
-//  Tokyo
-//
-//  Created by Cecília Guimarães on 30/07/24.
-//
-
 import Foundation
 import SpriteKit
 import GameplayKit
 
 class JumpComponent: GKComponent {
     var isJumping = false
-    var jumpImpulse: CGFloat = 500.0
-    var horizontalImpulse: CGFloat = 150.0
+    var jumpImpulse: CGFloat = 400.0
+    var horizontalImpulse: CGFloat = 100.0
     var doubleJumpAvailable = true
     var onGround = false
+    
+    var rightButtonPressed = false
+    var leftButtonPressed = false
 
     func jump(horizontalDirection: CGFloat) {
         guard let physicsBody = (entity as? PlayerEntity)?.physicsComponent?.body else { return }
@@ -33,7 +29,6 @@ class JumpComponent: GKComponent {
 
         }
     }
-    
     func resetJump(){
         isJumping = false
         doubleJumpAvailable = false

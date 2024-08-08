@@ -112,7 +112,11 @@ class GameScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches, isTouching: false)
+        
+        if !rightButtonPressed && !leftButtonPressed{
         playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
+        }
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -131,7 +135,7 @@ class GameScene: SKScene {
         }
         
         if let playerNode = playerEntity?.spriteNode {
-            self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 75)
+            self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 75 )
         }
         
         self.lastUpdateTime = currentTime
@@ -145,6 +149,8 @@ class GameScene: SKScene {
                 if isTouching {
                     playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                     playerEntity?.moveComponent?.change(direction: .right)
+                } else if !leftButtonPressed{
+                    playerEntity?.moveComponent?.stop()
                 }
             }
             
@@ -153,6 +159,8 @@ class GameScene: SKScene {
                 if isTouching {
                     playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                     playerEntity?.moveComponent?.change(direction: .left)
+                } else if !rightButtonPressed{
+                    playerEntity?.moveComponent?.stop()
                 }
             }
             if jump_button.contains(location) && isTouching {

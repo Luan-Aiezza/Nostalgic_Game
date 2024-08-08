@@ -47,4 +47,8 @@ class MovementComponent: GKComponent {
         node?.xScale = abs(node?.xScale ?? 1) * direction.rawValue
         }
     }
+    public func stop() {
+            self.direction = .none
+        }
+    
 }
