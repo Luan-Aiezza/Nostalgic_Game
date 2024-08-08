@@ -1,20 +1,17 @@
-//
-//  GameScene.swift
-//  Tokyo
-//
-//  Created by Luan Aiezza on 17/07/24.
-//
 
 import SpriteKit
 import GameplayKit
 
-
+struct PhysicsCategory {
+    static let none: UInt32 = 0
+    static let player: UInt32 = 0x1 << 0
+    static let ghost: UInt32 = 0x1 << 1
+    static let boss: UInt32 = 0x1 << 2
+    static let tile: UInt32 = 0x1 << 3
+    // Adicione outras categorias conforme necessário
+}
 
 class GameScene: SKScene {
-    
-    //    let playerCategory:UInt32 = 0x1 >> 0
-    //    let ghostCategory:UInt32 = 0x1 >> 1
-    
     
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "right")
@@ -47,6 +44,14 @@ class GameScene: SKScene {
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
+        
+        let boss = BossEntity(entityManager: entityManager!)
+        entityManager?.add(entity: boss)
+        
+        // Definindo posição inicial do Boss
+        if let bossNode = boss.spriteNode{
+            bossNode.position = CGPoint(x: 0, y: 50) // Defina a posição inicial desejada
+        }
         
         setupButtons()
         adjustButtonLayout()

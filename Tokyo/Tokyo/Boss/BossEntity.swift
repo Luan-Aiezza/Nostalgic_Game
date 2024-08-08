@@ -2,6 +2,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
+
 class BossEntity: GKEntity {
     
     var body: SKPhysicsBody?
@@ -44,11 +45,12 @@ class BossEntity: GKEntity {
         body.mass = 0
         body.friction = 0
         body.restitution = 0
-        body.usesPreciseCollisionDetection = true
+        body.usesPreciseCollisionDetection = false
         body.allowsRotation = false
         body.affectedByGravity = false
         body.categoryBitMask = PhysicsCategory.boss
         body.contactTestBitMask = PhysicsCategory.player
+        
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         

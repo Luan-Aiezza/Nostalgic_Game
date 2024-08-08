@@ -10,7 +10,7 @@ class BossPause: GKState {
     }
 
     override func didEnter(from previousState: GKState?) {
-        // Implement pause logic here (e.g., wait for a few seconds)
+        print("Entrou em pause")
         let wait = SKAction.wait(forDuration: 2.0)
         let action = SKAction.sequence([wait, SKAction.run {
             self.stateMachine?.enter(BossIdle.self)

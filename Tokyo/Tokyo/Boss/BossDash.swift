@@ -16,7 +16,7 @@ class BossDash: GKState {
 
     override func didEnter(from previousState: GKState?) {
         bossEntity.spriteNode?.run(bossEntity.playerActions(.dash))
-        
+        print("Entrou em daash")
         // Logica de dass
         if let playerNode = bossEntity.entityManager.playerEntity?.spriteNode {
             let duration = 1.0
@@ -30,7 +30,6 @@ class BossDash: GKState {
     }
 
     override func update(deltaTime seconds: TimeInterval) {
-        // Transition to pause after dash is completed
         if dashCompleted {
             stateMachine?.enter(BossPause.self)
         }
