@@ -51,6 +51,7 @@ class PlayerEntity: GKEntity {
         let node = SKSpriteNode(imageNamed: "andyIdle1")
         node.anchorPoint = .init(x: 0.5, y: 0.5)
         node.setScale(1)
+        node.texture?.filteringMode = .nearest
         self.addComponent(GKSKNodeComponent(node: node))
         
         
@@ -58,15 +59,16 @@ class PlayerEntity: GKEntity {
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
     
-        let body = SKPhysicsBody(rectangleOf: node.size)
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height - 5))
         body.isDynamic = true
         body.mass = 0
-        body.friction = 0.3
+        body.friction = 0.0
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
         body.affectedByGravity = true
         body.categoryBitMask = .player
+        body.linearDamping = 0
         body.contactTestBitMask = .ghost
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
@@ -93,7 +95,7 @@ class PlayerEntity: GKEntity {
         let inventoryComp = InventoryComponent()
         self.addComponent(inventoryComp)
         
-        let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self), PlayerDeath(playerEntity: self)])
+        let stateMachine = GKStateMachine(states: [PlayerIdle(playerEntity: self), PlayerRun(playerEntity: self), PlayerJump(playerEntity: self), PlayerDeath(playerEntity: self), PlayerWallSlide(playerEntity: self)])
         
         let stateComp = StateMachineComponent(stateMachine: stateMachine)
         
@@ -134,7 +136,11 @@ class PlayerEntity: GKEntity {
             return action
             
         case .eat:
-            let action: SKAction = .animate(with: .init(withFormat: "andyEatingCherry%@", range: 1...5), timePerFrame: 0.1)
+            let action: SKAction = .animate(with: .init(withFormat: "andyEatingCherry%@", range: 1...5), timePerFrame: 0.15)
+            return action
+            
+        case .wallSlide:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "andySlide%@.png", range: 1...3), timePerFrame: 0.1))
             return action
         }
         

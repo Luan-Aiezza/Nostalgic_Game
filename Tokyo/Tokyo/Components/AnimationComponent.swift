@@ -12,7 +12,7 @@ import GameplayKit
 class AnimationComponent: GKComponent {
     
 //    var action: SKAction
-    var node: SKNode?
+    weak var node: SKNode?
     
     
     override init() {

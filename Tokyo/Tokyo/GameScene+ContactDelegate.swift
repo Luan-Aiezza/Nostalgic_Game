@@ -24,22 +24,28 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithItem(entityA: entityB, entityB: entityA)
         isContactWithPoint(entityA: entityA, entityB: entityB)
         isContactWithPoint(entityA: entityB, entityB: entityA)
+        isContactWithWall(entityA: entityA, entityB: entityB)
+        isContactWithWall(entityA: entityB, entityB: entityA)
+        isContactWithGround(entityA: entityA, entityB: entityB)
+        isContactWithGround(entityA: entityB, entityB: entityA)
     }
-    
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostEntity {
-            
             let ghost = entityB as! GhostEntity
             let player = entityA as! PlayerEntity
             
             if ghost.stateComponent?.stateMachine.currentState is GhostHealthy{
+                
+                let pauseGhost = SKAction.sequence([SKAction.run {
+                    ghost.moveComponent?.change(direction: .none)
+                    ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
+                }, .wait(forDuration: 0.3), .run {
+                    ghost.component(ofType: GKSKNodeComponent.self)?.node.removeFromParent()
+                }])
+                
                 let playerAction = SKAction.sequence([
                     .run {
-                        
-                        for ghost in self.enemies {
-                            ghost.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true
-                        }
                         player.stateComponent?.stateMachine.enter(PlayerDeath.self)
                     },
                     .wait(forDuration: 1.3),
@@ -48,92 +54,124 @@ extension GameScene: SKPhysicsContactDelegate {
                     },
                     .wait(forDuration: 0.2),
                 ])
+                
                 let gameOverScene = SKAction.run {
                     self.gameOver()
                 }
                 
-                self.run(SKAction.sequence([playerAction, gameOverScene]))
+                self.run(SKAction.sequence([pauseGhost, playerAction, gameOverScene]))
             }
             
             else {
-                guard let index = enemies.firstIndex(of: entityB as! GhostEntity) else {return}
-                entityB.component(ofType: DemiseComponent.self)?.die()
-                enemies.remove(at: index)
-                entityB.component(ofType: StateMachineComponent.self)?.stateMachine.enter(GhostDeath.self)
+                
+                guard let spriteName = ghost.spriteComponent?.returnSpriteName() else {return}
+                let action = ghost.ghostActions(GhostAnimation.death, spriteName: spriteName)
+                
+                ghost.moveComponent?.change(direction: .none)
+                ghost.animationComponent?.play(action: action)
+                ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.64) {
+                    ghost.demiseComponent?.die()
+                    guard let index = self.enemies.firstIndex(of: ghost) else {return}
+                    self.enemies.remove(at: index)
+                }
             }
         }
     }
+    
     
     private func isContactWithCherry(entityA: GKEntity, entityB: GKEntity) {
         
-        let waitAction = SKAction.wait(forDuration: 10)
-        
         if entityA is PlayerEntity && entityB is CherryEntity {
+            let waitAction = SKAction.wait(forDuration: 10)
             
-            entityB.component(ofType: DemiseComponent.self)?.die()
+            let player = entityA as! PlayerEntity
+            let cherry = entityB as! CherryEntity
+
+            let eatCherry = SKAction.run {
+            player.animationComponent?.play(action: player.playerActions(.eat))
+            }
             
+            let eatenCherry = SKAction.run {
+            cherry.demiseComponent?.die()
+            }
+            
+            let group = SKAction.group([eatCherry, eatenCherry])
+            
+            self.run(group)
             
             for ghost in enemies{
                 
-                let ghostDizzy = SKAction.run {
+                let dizzyGhost = SKAction.run {
                     ghost.stateComponent?.stateMachine.enter(GhostDizzy.self)
                 }
                 
-                let ghostHealthy = SKAction.run {
+                let healthyGhost = SKAction.run {
                     ghost.stateComponent?.stateMachine.enter(GhostHealthy.self)
                 }
                 
-                let sequence = SKAction.sequence([ghostDizzy, waitAction, ghostHealthy])
-                
+                let sequence = SKAction.sequence([dizzyGhost, waitAction, healthyGhost])
                 run(sequence)
+        }
+    }
+}
+    
+private func isContactWithItem(entityA: GKEntity, entityB: GKEntity) {
+    
+    if entityA is PlayerEntity && entityB is ItemEntity {
+        
+        let keyItem = entityB as! ItemEntity
+        
+        keyItem.demiseComponent?.die()
+        
+        let name = keyItem.identityComponent?.returnName()
+        
+        let didAdd = playerEntity?.inventoryComponent?.items.contains(where: { item in item.name == name})
+        
+        if didAdd == false {
+            let item = Item(name: name!)
+            playerEntity?.inventoryComponent?.addItem(item: item)
+        }
+    }
+}
+
+private func isContactWithPoint(entityA: GKEntity, entityB: GKEntity) {
+    
+    if entityA is PlayerEntity && entityB is PointEntity {
+        
+        let player = entityA as! PlayerEntity
+        let point = entityB as! PointEntity
+        guard let pointName = point.identityComponent?.returnName() else {return}
+        guard let items = player.inventoryComponent?.items else {return}
+        
+        for i in items {
+            if i.name == pointName {
+                point.demiseComponent?.die()
+                print("alguma coisa acontece!")
+            }
+            else {
+                print("não tem " + pointName)
             }
         }
     }
-    private func isContactWithItem(entityA: GKEntity, entityB: GKEntity) {
+}
+    
+    func isContactWithWall(entityA: GKEntity, entityB: GKEntity){
         
-        if entityA is PlayerEntity && entityB is ItemEntity {
+        if entityA is PlayerEntity && entityB is WallEntity {
+            let player = entityA as? PlayerEntity
             
-            let keyItem = entityB as! ItemEntity
+            player?.stateComponent?.stateMachine.enter(PlayerWallSlide.self)
             
-            keyItem.demiseComponent?.die()
-            
-            let name = keyItem.identityComponent?.returnName()
-            
-            let didAdd = playerEntity?.inventoryComponent?.items.contains(where: { item in item.name == name})
-            
-            if didAdd == false {
-                let item = Item(name: name!)
-                playerEntity?.inventoryComponent?.addItem(item: item)
-            }
         }
     }
     
-    private func isContactWithPoint(entityA: GKEntity, entityB: GKEntity) {
+    func isContactWithGround(entityA: GKEntity, entityB: GKEntity){
         
-        if entityA is PlayerEntity && entityB is PointEntity {
+        if entityA is PlayerEntity && entityB is GroundEntity {
+            print("encostou no chão")
             
-            let player = entityA as! PlayerEntity
-            let point = entityB as! PointEntity
-            guard let pointName = point.identityComponent?.returnName() else {return}
-            guard let items = player.inventoryComponent?.items else {return}
-            
-            for i in items {
-                if i.name == pointName {
-                    point.demiseComponent?.die()
-                    print("alguma coisa acontece!")
-                }
-                else {
-                    print("não tem " + pointName)
-                }
-            }
-            
-            
-        }
-    }
-    private func isInContactWithTile(entityA: GKEntity, entityB: GKEntity){
-        
-        if entityA is PlayerEntity && entityB is TilesEntity {
-            entityA.component(ofType: JumpComponent.self)?.resetJump()
         }
     }
 }

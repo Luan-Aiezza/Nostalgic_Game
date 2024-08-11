@@ -17,7 +17,7 @@ enum Direction: CGFloat{
 }
 
 class MovementComponent: GKComponent {
-    var node: SKNode?
+    weak var node: SKNode?
     var speed: CGFloat
     var direction: Direction = .none
     var animationComp: AnimationComponent?
@@ -50,28 +50,33 @@ class MovementComponent: GKComponent {
     
     public func moveGhost(points : [CGPoint], duration: [TimeInterval], direction : Direction) -> [SKAction] {
         var path : [SKAction] = []
-        self.direction = direction
-        var X = 0
-        var lastPoint = points[0]
         
-        for point in points {
-            if lastPoint.x <= point.x {
-                let action = SKAction.run { [self] in
-                    node?.xScale = abs(node?.xScale ?? 1) * -1
-                }
-                path.append(action)
-            }
-            else if lastPoint.x > point.x {
-                let action = SKAction.run { [self] in
-                    node?.xScale = abs(node?.xScale ?? 1) * 1
-                }
-                path.append(action)
-            }
-            
-            let pointGo = SKAction.move(to: point, duration: duration[X])
+        let moveDirectonOnce = SKAction.run {
+            self.change(direction: direction)
+        }
+        
+        path.append(moveDirectonOnce)
+    
+        for point in 0...points.count-1 {
+            let pointGo = SKAction.move(to: points[point], duration: duration[point])
             path.append(pointGo)
-            X = X+1
-            lastPoint = point
+            
+            var nextIndex = point+1
+            
+            if nextIndex <= points.count-1{
+                if points[point].x <= points[nextIndex].x{
+                    let moveDirecton = SKAction.run {
+                        self.change(direction: .left)
+                    }
+                    path.append(moveDirecton)
+                }
+                else{
+                    let moveDirecton = SKAction.run {
+                        self.change(direction: .right)
+                    }
+                    path.append(moveDirecton)
+                }
+            }
         }
         print(path)
         return path

@@ -29,8 +29,9 @@ class CherryEntity : GKEntity {
         super.init()
         
         let node = SKSpriteNode(imageNamed: "cherry")
+        node.texture?.filteringMode = .nearest
         node.position = position
-        node.size = CGSize(width: 120, height: 120)
+        node.size = CGSize(width: 80, height: 80)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
@@ -50,12 +51,15 @@ class CherryEntity : GKEntity {
         self.addComponent(physicsComp)
         
         let death = SKAction.sequence([
-            .fadeOut(withDuration: 0.1),
+            .wait(forDuration: 0.2),
+            .fadeOut(withDuration: 0.2),
+            .removeFromParent(),
             .run {
                 [weak self] in
                 guard let self else {return}
                 entityManager.remove(entity: self)
-            }])
+            }
+        ])
         
         self.addComponent(DemiseComponent(death: death))
     }

@@ -5,6 +5,8 @@
 //  Created by Jessica Rodrigues on 25/07/24.
 //
 
+
+
 import Foundation
 import SpriteKit
 import GameplayKit
@@ -57,26 +59,22 @@ class GhostEntity: GKEntity {
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
-        
         let body = SKPhysicsBody(texture: node.texture!, size: node.size)
-        body.isDynamic = true
-        body.affectedByGravity = false
-        body.mass = 0
-        body.friction = 1
-        body.restitution = 1
-        body.usesPreciseCollisionDetection = true
-        body.allowsRotation = false
-        body.affectedByGravity = false
+        body.isDynamic = false
+        body.usesPreciseCollisionDetection = false
         body.categoryBitMask = .ghost
         body.contactTestBitMask = .player
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
-        let death = SKAction.run {
-            [weak self] in
-            guard let self else {return}
-            entityManager.remove(entity: self)
-        }
+        let death = SKAction.sequence([
+            .removeFromParent(),
+            .run {
+                [weak self] in
+                guard let self else {return}
+                entityManager.remove(entity: self)
+            }
+        ])
         
         self.addComponent(DemiseComponent(death: death))
         
@@ -113,7 +111,7 @@ class GhostEntity: GKEntity {
             return action
         
         case .death:
-            let action: SKAction = .animate(with: .init(withFormat: "\(spriteName)%@", range: 5...12), timePerFrame: 0.1)
+            let action: SKAction = .animate(with: .init(withFormat: "\(spriteName)%@", range: 5...12), timePerFrame: 0.08)
             return action
         }
         

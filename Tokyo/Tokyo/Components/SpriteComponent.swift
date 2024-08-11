@@ -12,7 +12,7 @@ import GameplayKit
 
 class SpriteComponent : GKComponent {
     
-    var  node : SKNode?
+    weak var  node : SKNode?
     var sprite : SKSpriteNode?
     var spriteName: String = ""
     

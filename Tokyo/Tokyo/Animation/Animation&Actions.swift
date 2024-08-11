@@ -14,6 +14,7 @@ public enum PlayerAnimation {
     case run
     case death
     case eat
+    case wallSlide
 }
 
 enum GhostAnimation {

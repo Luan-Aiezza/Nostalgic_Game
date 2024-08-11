@@ -13,7 +13,7 @@ class StateMachineComponent : GKComponent {
     
     
     var stateMachine : GKStateMachine
-    var node: SKNode?
+    weak var node: SKNode?
     
     init(stateMachine: GKStateMachine) {
         self.stateMachine  = stateMachine

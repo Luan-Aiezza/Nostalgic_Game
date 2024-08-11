@@ -12,7 +12,7 @@ import GameplayKit
 class WanderComponent : GKComponent {
     
     var path : SKAction = SKAction()
-    var node : SKNode?
+    weak var node : SKNode?
     
     
     override init() {
@@ -32,7 +32,7 @@ class WanderComponent : GKComponent {
     }
     
     public func wander(path : SKAction){
-        node?.run(path)
+        node?.run(path, withKey: "moving")
     }
     
 //    func moveRight(point : CGPoint, time : TimeInterval){

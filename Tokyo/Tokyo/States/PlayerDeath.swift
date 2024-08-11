@@ -19,7 +19,7 @@ class PlayerDeath: GKState {
     
     override func didEnter(from previousState: GKState?) {
         guard let action = playerEntity?.playerActions(.death) else {return}
-        
+        playerEntity?.physicsComponent?.body.linearDamping = 0
         playerEntity?.animationComponent?.play(action: action)
     }
     

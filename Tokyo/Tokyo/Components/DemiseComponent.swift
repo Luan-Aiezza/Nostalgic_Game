@@ -13,7 +13,7 @@ import GameplayKit
 
 class DemiseComponent : GKComponent {
     
-    var  node : SKNode?
+    weak var  node : SKNode?
     var death : SKAction
     
     init(death: SKAction) {
@@ -30,6 +30,7 @@ class DemiseComponent : GKComponent {
     }
     
     public func die(){
+        node?.removeAllActions()
         node?.run(death)
     }
     
