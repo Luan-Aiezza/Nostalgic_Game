@@ -51,8 +51,8 @@ class CherryEntity : GKEntity {
         self.addComponent(physicsComp)
         
         let death = SKAction.sequence([
-            .wait(forDuration: 0.2),
-            .fadeOut(withDuration: 0.2),
+//            .wait(forDuration: 0.2),
+//            .fadeOut(withDuration: 0.2),
             .removeFromParent(),
             .run {
                 [weak self] in

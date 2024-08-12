@@ -23,6 +23,16 @@ class PlayerIdle : GKState {
         playerEntity?.animationComponent?.play(action: action)
         playerEntity?.moveComponent?.change(direction: .none)
         playerEntity?.physicsComponent?.body.linearDamping = 0
+        
+    }
+    
+    func isValidNextState(_ stateClass: GKState) -> Bool {
+        switch stateClass {
+        case is PlayerWallSlide:
+            return false
+        default:
+            return true
+        }
     }
     
 }

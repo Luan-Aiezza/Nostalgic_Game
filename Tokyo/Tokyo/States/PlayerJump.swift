@@ -17,9 +17,9 @@ class PlayerJump: GKState {
     override func didEnter(from previousState: GKState?) {
         // Iniciar animação de pulo
 //        playerEntity.animationComponent?.playJumpAnimation()
-        playerEntity.physicsComponent?.body.linearDamping = 0
-        playerEntity.jumpComponent?.jump()
-
+        playerEntity.jumpComponent?.jump(horizontalDirection: 0)
+        
+        print("entrou em pulo")
     }
 
     override func update(deltaTime seconds: TimeInterval) {

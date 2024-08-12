@@ -26,9 +26,16 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithPoint(entityA: entityB, entityB: entityA)
         isContactWithWall(entityA: entityA, entityB: entityB)
         isContactWithWall(entityA: entityB, entityB: entityA)
-        isContactWithGround(entityA: entityA, entityB: entityB)
-        isContactWithGround(entityA: entityB, entityB: entityA)
     }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        guard let entityA = contact.bodyA.node?.entity,
+              let entityB = contact.bodyB.node?.entity else {return}
+        isNotInContactWithWall(entityA: entityA, entityB: entityB)
+        isNotInContactWithWall(entityA: entityB, entityB: entityA)
+        
+    }
+    
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostEntity {
@@ -85,6 +92,7 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if entityA is PlayerEntity && entityB is CherryEntity {
             let waitAction = SKAction.wait(forDuration: 10)
+            let waitActionCherry = SKAction.wait(forDuration: 0.5)
             
             let player = entityA as! PlayerEntity
             let cherry = entityB as! CherryEntity
@@ -97,7 +105,7 @@ extension GameScene: SKPhysicsContactDelegate {
             cherry.demiseComponent?.die()
             }
             
-            let group = SKAction.group([eatCherry, eatenCherry])
+            let group = SKAction.group([eatCherry, waitActionCherry ,eatenCherry])
             
             self.run(group)
             
@@ -162,15 +170,29 @@ private func isContactWithPoint(entityA: GKEntity, entityB: GKEntity) {
         if entityA is PlayerEntity && entityB is WallEntity {
             let player = entityA as? PlayerEntity
             
-            player?.stateComponent?.stateMachine.enter(PlayerWallSlide.self)
-            
+            if player?.physicsComponent?.body.velocity.dy != 0 {
+                player?.stateComponent?.stateMachine.enter(PlayerWallSlide.self)
+            }
+            else {
+                print("não deu para entrar em WallSlide pois a velocidade angular atual é de \(String(describing: player?.physicsComponent?.body.velocity.dy))")
+            }
         }
     }
     
-    func isContactWithGround(entityA: GKEntity, entityB: GKEntity){
+    func isNotInContactWithWall(entityA: GKEntity, entityB: GKEntity){
         
-        if entityA is PlayerEntity && entityB is GroundEntity {
-            print("encostou no chão")
+        if entityA is PlayerEntity && entityB is WallEntity {
+            let player = entityA as? PlayerEntity
+            
+            if rightButtonPressed == false && leftButtonPressed == false{
+                player?.stateComponent?.stateMachine.enter(PlayerIdle.self)
+            }
+            else {
+                player?.stateComponent?.stateMachine.enter(PlayerRun.self)
+            }
+            
+            player?.jumpComponent?.jumpImpulse = 500
+            player?.jumpComponent?.jumpImpulse = 100
             
         }
     }

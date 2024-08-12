@@ -22,5 +22,6 @@ class PlayerRun : GKState {
         guard let action = playerEntity?.playerActions(.run) else {return}
         playerEntity?.physicsComponent?.body.linearDamping = 0
         playerEntity?.animationComponent?.play(action: action)
+        
     }
 }

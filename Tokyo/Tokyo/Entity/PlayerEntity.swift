@@ -61,8 +61,8 @@ class PlayerEntity: GKEntity {
     
         let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height - 5))
         body.isDynamic = true
-        body.mass = 0
-        body.friction = 0.0
+        body.mass = 1
+        body.friction = 1
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
@@ -120,6 +120,10 @@ class PlayerEntity: GKEntity {
         stateComponent?.stateMachine.enter(PlayerJump.self)
     }
     
+    func jump(horizontalDirection: CGFloat) {
+        jumpComponent?.jump(horizontalDirection: horizontalDirection)
+    }
+    
     func playerActions(_ animation: PlayerAnimation) -> SKAction{
         switch animation {
         case .idle:
@@ -132,11 +136,11 @@ class PlayerEntity: GKEntity {
             
             
         case .death:
-            let action: SKAction = .animate(with: .init(withFormat: "andyDeath%@.png", range: 1...13), timePerFrame: 0.1)
+            let action: SKAction = .animate(with: .init(withFormat: "andyDeath%@.png", range: 1...15), timePerFrame: 0.1)
             return action
             
         case .eat:
-            let action: SKAction = .animate(with: .init(withFormat: "andyEatingCherry%@", range: 1...5), timePerFrame: 0.15)
+            let action: SKAction = .animate(with: .init(withFormat: "andyEatingCherry%@", range: 1...4), timePerFrame: 0.15)
             return action
             
         case .wallSlide:
