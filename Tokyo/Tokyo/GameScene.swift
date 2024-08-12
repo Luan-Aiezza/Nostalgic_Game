@@ -1,18 +1,9 @@
-
 import SpriteKit
 import GameplayKit
 
-struct PhysicsCategory {
-    static let none: UInt32 = 0
-    static let player: UInt32 = 0x1 << 0
-    static let ghost: UInt32 = 0x1 << 1
-    static let boss: UInt32 = 0x1 << 2
-    static let tile: UInt32 = 0x1 << 3
-    // Adicione outras categorias conforme necessário
-}
-
 class GameScene: SKScene {
     
+    var background: SKSpriteNode!
     var entityManager: SKEntityManager?
     var right_button = SKSpriteNode(imageNamed: "right")
     var left_button = SKSpriteNode(imageNamed: "left")
@@ -23,12 +14,16 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
     
+    private let playerLight = SKLightNode()  // Light node to follow the player
+
     override func sceneDidLoad() {
         
         self.physicsWorld.contactDelegate = self
         
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
+        
+        initializeBackground()
         
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
@@ -40,11 +35,25 @@ class GameScene: SKScene {
         self.camera?.setScale(0.75)
         //FIM DO CODIGO
         
+        let numberOfFireflies = 300  // Número de partículas que você quer criar
+        
+        for _ in 0..<numberOfFireflies {
+            let sparkleEmitter = createSparkleEffect()
+            
+            // Define uma posição aleatória dentro dos limites da cena
+            let randomX = CGFloat.random(in: -960...960)
+            let randomY = CGFloat.random(in: -1600...100)
+            sparkleEmitter.position = CGPoint(x: randomX, y: randomY)
+            
+            // Adiciona o emissor de partículas à cena
+            addChild(sparkleEmitter)
+        }
+        
         let playerEntity = PlayerEntity(entityManager: entityManager!)
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
-        
+
         let boss = BossEntity(entityManager: entityManager!)
         entityManager?.add(entity: boss)
         
@@ -55,8 +64,24 @@ class GameScene: SKScene {
         
         setupButtons()
         adjustButtonLayout()
+        
+        setupPlayerLight()  // Set up the light node
+    }
+
+    // Function to set up the light node
+    private func setupPlayerLight() {
+        playerLight.categoryBitMask = 1  // Define a categoria da luz
+        playerLight.lightColor = .white  // Cor da luz
+        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
+        playerLight.falloff = 1  // Quão rápido a luz escurece
+        playerLight.isEnabled = true
+
+        self.addChild(playerLight)  // Adiciona a luz à cena
+        
+        
     }
     
+
     func setupButtons(){
         right_button.name = "right_button"
         self.camera?.addChild(right_button)
@@ -100,6 +125,8 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         
+        updateBackgroundPosition()
+        
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
@@ -115,6 +142,7 @@ class GameScene: SKScene {
         
         if let playerNode = playerEntity?.spriteNode {
             self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 75)
+            playerLight.position = playerNode.position  // Make the light follow the player
         }
         
         self.lastUpdateTime = currentTime
@@ -166,4 +194,61 @@ class GameScene: SKScene {
         newScene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.view?.presentScene(newScene, transition: transition)
     }
+    
+    func createSparkleEffect() -> SKEmitterNode {
+        let sparkleEmitter = SKEmitterNode()
+        
+        sparkleEmitter.particleTexture = SKTexture(imageNamed: "Firefly")  // Textura da partícula
+        sparkleEmitter.particleColor = .yellow                           // Cor das partículas
+        
+        sparkleEmitter.particleBirthRate = 1                             // Taxa de geração das partículas
+        sparkleEmitter.particleLifetime = 2                            // Tempo de vida das partículas
+        sparkleEmitter.particleLifetimeRange = 1                       // Variação no tempo de vida
+        
+        sparkleEmitter.particlePositionRange = CGVector(dx: 10, dy: 10)  // Área de emissão das partículas
+        sparkleEmitter.particleSpeed = 10                                // Velocidade das partículas
+        sparkleEmitter.particleSpeedRange = 10                           // Variação na velocidade
+        
+        sparkleEmitter.emissionAngleRange = 360                          // Ângulo de emissão das partículas
+        
+        sparkleEmitter.particleScale = 0.4                               // Escala das partículas
+        sparkleEmitter.particleScaleRange = 0.1                          // Variação na escala
+        
+        sparkleEmitter.particleAlpha = 1.0                               // Transparência das partículas
+        sparkleEmitter.particleAlphaRange = 0.5                          // Variação na transparência
+        sparkleEmitter.particleAlphaSpeed = -0.5                         // Velocidade de alteração da transparência (fade)
+        
+        sparkleEmitter.particleBlendMode = .add                          // Modo de mistura (efeito de brilho)
+        
+        // Ação de piscar das partículas
+        sparkleEmitter.particleAction = SKAction.sequence([
+            SKAction.fadeAlpha(to: 0.1, duration: 0.3),
+            SKAction.fadeAlpha(to: 1.0, duration: 0.3)
+        ])
+        
+        return sparkleEmitter
+    }
+    
+    
+    func initializeBackground() {
+        //background adicionado à cena
+        background = SKSpriteNode(imageNamed: "background1")
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
+        background.zPosition = -1 // Coloque atrás dos outros nodes
+        background.alpha = 0.6
+        background.setScale(3)
+        background.texture?.filteringMode = .nearest
+        addChild(background)
+    }
+    
+    func updateBackgroundPosition() {
+        guard let playerNode = playerEntity?.spriteNode else { return }
+        
+        // Ajuste a posição do background com base na posição do player
+        // Ajuste o fator de parallax para criar o efeito desejado
+        let parallaxFactor: CGFloat = 0.5
+        background.position = CGPoint(x: playerNode.position.x * parallaxFactor, y: playerNode.position.y * parallaxFactor)
+    }
 }
+

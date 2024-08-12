@@ -10,20 +10,23 @@ import Foundation
 
 public extension UInt32 {
     
+    static let none: UInt32 = 0
+    static let boss: UInt32 = 0x1 << 2
     static let base:  UInt32 = 0b1
     static let player = UInt32.base << 0
     static let ghost = UInt32.base << 1
     static let spike = UInt32.base << 2
     static let items = UInt32.base << 3
     static let points = UInt32.base << 3
-    
+    static let tile = UInt32.base << 4
     
     static var allMasks: [UInt32] = [
         .player,
         .ghost,
         .spike,
         .items,
-        .points
+        .points,
+        .tile
     ]
     
     static func contactWithAllCategories(less: [UInt32] = []) -> UInt32 {

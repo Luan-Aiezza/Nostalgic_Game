@@ -42,15 +42,18 @@ class BossEntity: GKEntity {
         let radius = min(node.size.width, node.size.height) / 2
         let body = SKPhysicsBody(circleOfRadius: radius)
         body.isDynamic = true
-        body.mass = 0
-        body.friction = 0
         body.restitution = 0
-        body.usesPreciseCollisionDetection = false
+        body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
-        body.affectedByGravity = false
-        body.categoryBitMask = PhysicsCategory.boss
-        body.contactTestBitMask = PhysicsCategory.player
-        
+        body.affectedByGravity = false  // Desabilitar gravidade para o Boss
+
+        // Configura as categorias de física
+        body.categoryBitMask = UInt32.boss
+
+        // Permite contato, mas ignora a colisão com o tilemap
+        body.collisionBitMask = UInt32.player
+        body.contactTestBitMask = UInt32.player
+
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         

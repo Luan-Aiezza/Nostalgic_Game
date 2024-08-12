@@ -18,7 +18,9 @@ class TilesEntity: GKEntity {
             if let tileMapNode = scenarioNode.childNode(withName: "*/ground") as? SKTileMapNode{
                 tileMapNode.addPhysicsToTileMap(entityManager: entityManager)
             }
+            
         }
+
     }
     
     required  init?(coder: NSCoder) {

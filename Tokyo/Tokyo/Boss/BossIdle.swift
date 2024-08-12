@@ -13,7 +13,6 @@ class BossIdle: GKState {
 
     override func didEnter(from previousState: GKState?) {
         bossEntity.spriteNode?.run(bossEntity.playerActions(.idle))
-        print("Entrou em idle")
     }
 
     override func update(deltaTime seconds: TimeInterval) {
