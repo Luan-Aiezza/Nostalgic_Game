@@ -8,6 +8,10 @@ class BossEntity: GKEntity {
     var body: SKPhysicsBody?
     let entityManager: SKEntityManager
     
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
+    
     var moveComponent: BossMovementComponent? {
         return component(ofType: BossMovementComponent.self)
     }
@@ -29,6 +33,7 @@ class BossEntity: GKEntity {
     }
     
     init(entityManager: SKEntityManager) {
+        
         self.entityManager = entityManager
         super.init()
         let node = SKSpriteNode(imageNamed: "bossIdle1")
@@ -58,12 +63,13 @@ class BossEntity: GKEntity {
         self.addComponent(physicsComp)
         
         let death = SKAction.sequence([
-            .fadeOut(withDuration: 0.1),
+            .removeFromParent(),
             .run {
                 [weak self] in
-                guard let self else { return }
+                guard let self else {return}
                 entityManager.remove(entity: self)
-            }])
+            }
+        ])
         
         self.addComponent(DemiseComponent(death: death))
         
@@ -99,13 +105,17 @@ class BossEntity: GKEntity {
                 return action
                 
             case .dash:
-                let action: SKAction = .animate(with: .init(withFormat: "bossDash%@.png", range: 1...3), timePerFrame: 0.1)
+                let action: SKAction = .animate(with: .init(withFormat: "bossDash%@.png", range: 1...3), timePerFrame: 0.6)
                 return action
+            
+            case .death:
+            let action: SKAction = .animate(with: .init(withFormat: "bossDash%@.png", range: 4...15), timePerFrame: 0.08)
+            return action
         }
     }
 }
 
 
 enum BossAnimation {
-    case idle, dash
+    case idle, dash, death
 }
