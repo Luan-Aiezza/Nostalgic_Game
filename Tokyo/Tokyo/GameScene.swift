@@ -28,14 +28,12 @@ class GameScene: SKScene {
     
     var rightButtonPressed = false
     var leftButtonPressed = false
-
+    
     
     override func sceneDidLoad() {
         
+        
         self.physicsWorld.contactDelegate = self
-        
-        
-        
         
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
@@ -68,6 +66,11 @@ class GameScene: SKScene {
         
         let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: 0), entityManager: entityManager!)
         entityManager?.add(entity: cherryEntity)
+       
+        if let entityManager = entityManager {
+            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 140, y: -200), lifetime: 3.0, entityManager: entityManager)
+            entityManager.add(entity: temporaryBlock)
+        }
         
         setupButtons()
         adjustButtonLayout()
@@ -114,7 +117,7 @@ class GameScene: SKScene {
         captureInput(touches: touches, isTouching: false)
         
         if !rightButtonPressed && !leftButtonPressed{
-        playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
+            playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
         }
         
     }

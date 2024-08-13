@@ -23,6 +23,7 @@ class SKEntityManager {
         self.scene = scene
     }
     
+    
     func add(entity: GKEntity){
         entities.insert(entity)
         
@@ -33,6 +34,20 @@ class SKEntityManager {
         
     func remove(entity: GKEntity){
         entities.remove(entity)
+        
+        if let nodeComponent = entity.component(ofType: GKSKNodeComponent.self) {
+                    nodeComponent.node.removeFromParent()
+                }
     }
+    
+    func entity(for node: SKNode) -> GKEntity? {
+            // Busca a entidade que contém o node fornecido
+            return entities.first(where: { entity in
+                if let nodeComponent = entity.component(ofType: GKSKNodeComponent.self) {
+                    return nodeComponent.node == node
+                }
+                return false
+            })
+        }
     
 }
