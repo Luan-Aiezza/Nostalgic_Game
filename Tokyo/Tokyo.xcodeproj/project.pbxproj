@@ -52,6 +52,11 @@
 		CF41986E2C481745000B3C50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF41986C2C481745000B3C50 /* Main.storyboard */; };
 		CF4198702C481746000B3C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF41986F2C481746000B3C50 /* Assets.xcassets */; };
 		CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4198712C481746000B3C50 /* LaunchScreen.storyboard */; };
+		CF84E8262C63ACD20035CD09 /* BossEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8212C63ACD20035CD09 /* BossEntity.swift */; };
+		CF84E8272C63ACD20035CD09 /* BossDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8222C63ACD20035CD09 /* BossDash.swift */; };
+		CF84E8282C63ACD20035CD09 /* BossMovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8232C63ACD20035CD09 /* BossMovementComponent.swift */; };
+		CF84E8292C63ACD20035CD09 /* BossIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8242C63ACD20035CD09 /* BossIdle.swift */; };
+		CF84E82A2C63ACD20035CD09 /* BossPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8252C63ACD20035CD09 /* BossPause.swift */; };
 		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
 		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
 		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
@@ -104,6 +109,11 @@
 		CF41986D2C481745000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF41986F2C481746000B3C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4198722C481746000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF84E8212C63ACD20035CD09 /* BossEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossEntity.swift; path = Tokyo/Boss/BossEntity.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8222C63ACD20035CD09 /* BossDash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossDash.swift; path = Tokyo/Boss/BossDash.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8232C63ACD20035CD09 /* BossMovementComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossMovementComponent.swift; path = Tokyo/Boss/BossMovementComponent.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8242C63ACD20035CD09 /* BossIdle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossIdle.swift; path = Tokyo/Boss/BossIdle.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8252C63ACD20035CD09 /* BossPause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossPause.swift; path = Tokyo/Boss/BossPause.swift; sourceTree = SOURCE_ROOT; };
 		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
 		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
 		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
@@ -242,6 +252,7 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				CF84E8202C63ACB50035CD09 /* GhostingBoss */,
 				334E85802C5BC15600E61EA7 /* Class */,
 				3306B1F12C53E326004FE488 /* Animation */,
 				CF17CFBF2C52A56900898033 /* Stage02 */,
@@ -261,6 +272,18 @@
 				CF4198712C481746000B3C50 /* LaunchScreen.storyboard */,
 			);
 			path = Tokyo;
+			sourceTree = "<group>";
+		};
+		CF84E8202C63ACB50035CD09 /* GhostingBoss */ = {
+			isa = PBXGroup;
+			children = (
+				CF84E8222C63ACD20035CD09 /* BossDash.swift */,
+				CF84E8212C63ACD20035CD09 /* BossEntity.swift */,
+				CF84E8242C63ACD20035CD09 /* BossIdle.swift */,
+				CF84E8232C63ACD20035CD09 /* BossMovementComponent.swift */,
+				CF84E8252C63ACD20035CD09 /* BossPause.swift */,
+			);
+			path = GhostingBoss;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +365,7 @@
 				336A9F6C2C6676BE00C1803B /* SKSpriteNode+Tools.swift in Sources */,
 				334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */,
 				3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */,
+				CF84E8262C63ACD20035CD09 /* BossEntity.swift in Sources */,
 				3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */,
 				336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
@@ -354,10 +378,13 @@
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
+				CF84E82A2C63ACD20035CD09 /* BossPause.swift in Sources */,
 				3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
+				CF84E8272C63ACD20035CD09 /* BossDash.swift in Sources */,
 				336A9F692C66766C00C1803B /* WallEntity.swift in Sources */,
 				3306B2262C592936004FE488 /* RestartButton.swift in Sources */,
 				BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */,
+				CF84E8292C63ACD20035CD09 /* BossIdle.swift in Sources */,
 				33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */,
 				CF4198692C481745000B3C50 /* GameScene.swift in Sources */,
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
@@ -366,6 +393,7 @@
 				334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */,
 				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
 				BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */,
+				CF84E8282C63ACD20035CD09 /* BossMovementComponent.swift in Sources */,
 				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
 				336A9F652C666AC000C1803B /* PlayerWallSlide.swift in Sources */,
 				3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */,

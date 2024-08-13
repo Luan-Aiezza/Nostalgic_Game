@@ -35,4 +35,12 @@ class SKEntityManager {
         entities.remove(entity)
     }
     
+    func getEntities<T: GKEntity>(ofType type: T.Type) -> [T] {
+        return entities.compactMap { $0 as? T }
+    }
+    
+    var playerEntity: PlayerEntity? {
+        return getEntities(ofType: PlayerEntity.self).first
+    }
+    
 }
