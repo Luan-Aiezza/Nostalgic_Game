@@ -26,6 +26,9 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithPoint(entityA: entityB, entityB: entityA)
         isContactWithWall(entityA: entityA, entityB: entityB)
         isContactWithWall(entityA: entityB, entityB: entityA)
+        isContactWithGhostCherry(entityA: entityA, entityB: entityB)
+        isContactWithGhostCherry(entityA: entityB, entityB: entityA)
+    
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
@@ -33,6 +36,8 @@ extension GameScene: SKPhysicsContactDelegate {
               let entityB = contact.bodyB.node?.entity else {return}
         isNotInContactWithWall(entityA: entityA, entityB: entityB)
         isNotInContactWithWall(entityA: entityB, entityB: entityA)
+        isContactWithEventTrigger(entityA: entityA, entityB: entityB)
+        isContactWithEventTrigger(entityA: entityB, entityB: entityA)
         
     }
     
@@ -127,6 +132,44 @@ extension GameScene: SKPhysicsContactDelegate {
         }
     }
     
+    private func isContactWithGhostCherry(entityA: GKEntity, entityB: GKEntity) {
+        
+        if entityA is PlayerEntity && entityB is GhostCherryEntity {
+            let waitAction = SKAction.wait(forDuration: 10)
+            let waitActionCherry = SKAction.wait(forDuration: 0.1)
+            
+            let player = entityA as! PlayerEntity
+            let cherry = entityB as! GhostCherryEntity
+            
+            cherry.component(ofType: GKSKNodeComponent.self)?.node.alpha = 0
+            
+            let eatCherry = SKAction.run {
+                player.animationComponent?.play(action: player.playerActions(.eat))
+            }
+            
+            let eatenCherry = SKAction.run {
+                cherry.demiseComponent?.die()
+            }
+            
+            let group = SKAction.group([eatCherry, waitActionCherry])
+            
+            self.run(SKAction.sequence([group,eatenCherry]))
+            
+            guard let ghostBoss = entityManager?.returnBoss() else {return}
+                
+                let dizzyGhost = SKAction.run {
+                    ghostBoss.stateComponent?.stateMachine.enter(GhostDizzy.self)
+                }
+                
+                let healthyGhost = SKAction.run {
+                    ghostBoss.stateComponent?.stateMachine.enter(GhostHealthy.self)
+                }
+                
+                let sequence = SKAction.sequence([dizzyGhost, waitAction, healthyGhost])
+                run(sequence)
+        }
+    }
+    
     private func isContactWithItem(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is ItemEntity {
@@ -142,6 +185,7 @@ extension GameScene: SKPhysicsContactDelegate {
             if didAdd == false {
                 let item = Item(name: name!)
                 playerEntity?.inventoryComponent?.addItem(item: item)
+                print("adquiriu o \(item.returnName())")
             }
         }
     }
@@ -164,6 +208,18 @@ extension GameScene: SKPhysicsContactDelegate {
                     print("não tem " + pointName)
                 }
             }
+        }
+    }
+    
+    private func isContactWithEventTrigger(entityA: GKEntity, entityB: GKEntity) {
+        
+        if entityA is PlayerEntity && entityB is EventTriggerEntity {
+            let eventTrigger = entityB as! EventTriggerEntity
+            
+            guard let action = eventTrigger.actionComponent?.action else {return}
+            
+            run(action)
+            
         }
     }
     

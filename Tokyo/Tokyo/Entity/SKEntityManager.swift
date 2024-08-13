@@ -43,4 +43,10 @@ class SKEntityManager {
         return getEntities(ofType: PlayerEntity.self).first
     }
     
+    func returnBoss() -> BossEntity? {
+        let boss = getEntities(ofType: BossEntity.self).first
+        
+        return boss
+    }
+    
 }
