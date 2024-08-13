@@ -52,14 +52,14 @@ class GhostEntity: GKEntity {
         
         let node = spriteComp.returnSprite()
         node.position = position
-        node.size = CGSize(width: 100, height: 100)
+        node.size = CGSize(width: 75, height: 75)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
-        let body = SKPhysicsBody(texture: node.texture!, size: node.size)
+        let body = SKPhysicsBody(texture: SKTexture(imageNamed: "blueGhost1"), size: node.size)
         body.isDynamic = false
         body.usesPreciseCollisionDetection = false
         body.categoryBitMask = .ghost

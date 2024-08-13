@@ -31,7 +31,7 @@ class CherryEntity : GKEntity {
         let node = SKSpriteNode(imageNamed: "cherry")
         node.texture?.filteringMode = .nearest
         node.position = position
-        node.size = CGSize(width: 80, height: 80)
+        node.size = CGSize(width: 50, height: 50)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
