@@ -1,10 +1,3 @@
-//
-//  PlayerEntity.swift
-//  Tokyo
-//
-//  Created by Jessica Rodrigues on 23/07/24.
-//
-
 import Foundation
 import SpriteKit
 import GameplayKit
@@ -54,8 +47,6 @@ class PlayerEntity: GKEntity {
         node.texture?.filteringMode = .nearest
         self.addComponent(GKSKNodeComponent(node: node))
         
-        
-        
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
     
@@ -75,7 +66,13 @@ class PlayerEntity: GKEntity {
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
-    
+        
+        // Configurando lightingBitMask e shadowBitMasks para interagir com a luz
+        spriteNode?.lightingBitMask = 0       // A máscara que será afetada pela luz
+        spriteNode?.shadowCastBitMask = 1     // Permite que o jogador lance sombras
+        spriteNode?.shadowedBitMask = 1       // Permite que o jogador seja sombreado
+        spriteNode?.color = .white            // Cor base do sprite
+        spriteNode?.colorBlendFactor = 0.5    // Intensidade da mistura de cores
         
         let death = SKAction.sequence([
             .run {

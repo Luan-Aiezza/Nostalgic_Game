@@ -24,6 +24,10 @@ class StateMachineComponent : GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func update(deltaTime seconds: TimeInterval) {
+        stateMachine.update(deltaTime: seconds)
+    }
+    
     override func didAddToEntity() {
         node = entity?.component(ofType: GKSKNodeComponent.self)?.node
     }

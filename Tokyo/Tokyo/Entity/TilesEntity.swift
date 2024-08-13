@@ -29,7 +29,9 @@ class TilesEntity: GKEntity {
                     child?.addPhysicsToGround(entityManager: entityManager)
                 }
             }
+            
         }
+
     }
     
     required  init?(coder: NSCoder) {
