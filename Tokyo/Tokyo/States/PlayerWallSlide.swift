@@ -22,7 +22,6 @@ class PlayerWallSlide : GKState {
         guard let action = playerEntity?.playerActions(.wallSlide) else {return}
         playerEntity?.animationComponent?.play(action: action)
         playerEntity?.physicsComponent?.body.linearDamping = 25
-        print("Entrou em WallSlide")
         
     }
     

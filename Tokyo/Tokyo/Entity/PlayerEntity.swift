@@ -37,8 +37,6 @@ class PlayerEntity: GKEntity {
         return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
     }
     
-    
-    
     init(entityManager : SKEntityManager) {
         super.init()
         let node = SKSpriteNode(imageNamed: "andyIdle1")
@@ -50,7 +48,7 @@ class PlayerEntity: GKEntity {
         let moveComp = MovementComponent(speed: 5)
         self.addComponent(moveComp)
     
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height - 5))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height))
         body.isDynamic = true
         body.mass = 1
         body.friction = 1
@@ -60,7 +58,8 @@ class PlayerEntity: GKEntity {
         body.affectedByGravity = true
         body.categoryBitMask = .player
         body.linearDamping = 0
-        body.contactTestBitMask = .ghost
+        body.contactTestBitMask = .ghost | .trigger
+        body.collisionBitMask = .tile | .ghost
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
