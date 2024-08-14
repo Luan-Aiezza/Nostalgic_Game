@@ -4,7 +4,7 @@ import GameplayKit
 
 class BossIdle: GKState {
     unowned let bossEntity: BossEntity
-    let timeToDash: TimeInterval = 1
+    let timeToDash: TimeInterval = 4
     var timeAcumulated: TimeInterval = 0
 
     init(bossEntity: BossEntity) {
@@ -12,7 +12,7 @@ class BossIdle: GKState {
     }
 
     override func didEnter(from previousState: GKState?) {
-        bossEntity.spriteNode?.run(bossEntity.playerActions(.idle))
+        bossEntity.spriteNode?.run(bossEntity.bossActions(.idle))
     }
 
     override func update(deltaTime seconds: TimeInterval) {

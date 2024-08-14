@@ -9,15 +9,19 @@ class GameScene: SKScene {
     var left_button = SKSpriteNode(imageNamed: "left")
     var jump_button = SKSpriteNode(imageNamed: "jump")
     var enemies:[GhostEntity] = []
+    var boss:[BossEntity] = []
     public var stateMachine : GKStateMachine?
     public var stateMachineEnemy : GKStateMachine?
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
     var rightButtonPressed = false
     var leftButtonPressed = false
-    var songOneIsPlaying = false
-    var audioPlayer = AudioManager.shared
+    var songOneIsPlaying = true
+    var audioPlayerOne = AudioManager.shared
+    var audioPlayerTwo = AudioManager.shared
     private let playerLight = SKLightNode()  // Light node to follow the player
+    var textBox = TextDialogue(sprite: SKSpriteNode(imageNamed: "box"), label: SKLabelNode(text: ""))
+    var isTextBoxHidden = true
     
     override func sceneDidLoad() {
         
@@ -27,7 +31,9 @@ class GameScene: SKScene {
         //Adicionando Level02 (CÓDIGO LUAN)
         
         initializeBackground()
-        AudioManager.shared.playLevelOneSong()
+//        AudioManager.shared.playLevelOneSong()
+        
+        textBox.isHidden = true
         
         
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
@@ -59,17 +65,18 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
+        
         let keyItem = ItemEntity(position: CGPoint(x: 0, y: -580), size: CGSize(width: 100, height: 100), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
         entityManager?.add(entity: keyItem)
         
-        let cherryItem = CherryEntity(position: CGPoint(x: 160, y: -255), entityManager: entityManager!)
+        let cherryItem = GhostCherryEntity(position: CGPoint(x: 160, y: -255), entityManager: entityManager!)
         entityManager?.add(entity: cherryItem)
         
         setupButtons()
+        addEventTriggers()
         adjustButtonLayout()
         ghostAdd()
-        addEventTriggers()
         addCheckpoints()
         setupPlayerLight()  // Set up the light node
     }
@@ -101,6 +108,9 @@ class GameScene: SKScene {
         jump_button.texture?.filteringMode = .nearest
         self.camera?.addChild(jump_button)
         
+        textBox.sprite.texture?.filteringMode = .nearest
+        self.camera?.addChild(textBox)
+        
     }
     
     func adjustButtonLayout() {
@@ -113,10 +123,13 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX - 250, y: cameraFrame.minY - 90 )
+        left_button.position = CGPoint(x: cameraFrame.minX - 150, y: cameraFrame.minY - 60 )
         right_button.position = CGPoint(x: left_button.position.x + buttonSize.width + 20, y: left_button.position.y)
         
-        jump_button.position = CGPoint(x: cameraFrame.maxX + 250, y:left_button.position.y)
+        jump_button.position = CGPoint(x: cameraFrame.maxX + 150, y:left_button.position.y)
+        
+        textBox.sprite.size = CGSize(width: 200, height: 40)
+        textBox.position = CGPoint(x: 0, y: 80)
     }
     override func didChangeSize(_ oldSize: CGSize) {
         super.didChangeSize(oldSize)
@@ -310,22 +323,37 @@ class GameScene: SKScene {
     }
     
     func addEventTriggers(){
-        let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -190), size: CGSize(width: 60, height: 1), action: SKAction.run { [self] in
+//        let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 150, y: -230), size: CGSize(width: 60, height: 1), action: SKAction.run { [self] in
+//            
+//            if songOneIsPlaying == true{
+//                audioPlayerTwo.playLevelTwoSong()
+//                audioPlayerOne.pauseLevelOneSong()
+//                songOneIsPlaying = false
+//            }
+//            
+//            else {
+//                audioPlayerOne.playLevelOneSong()
+//                audioPlayerTwo.pauseLevelOneSong()
+//                songOneIsPlaying = true
+//            }
+//            
+//        })
+//        entityManager?.add(entity: eventTriggerOne)
+        
+        
+        
+        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x: 150, y: -230), size: CGSize(width: 60, height: 1), action: SKAction.run { [self] in
             
-            if songOneIsPlaying == true{
-                audioPlayer.stopLevelOneSong()
-                audioPlayer.playLevelTwoSong()
-                songOneIsPlaying = false
+            if boss.count < 1 {
+                let bossGhost = BossEntity(entityManager: entityManager!)
+                boss.append(bossGhost)
+                entityManager?.add(entity: bossGhost)
             }
-            else {
-                audioPlayer.stopLevelOneSong()
-                audioPlayer.playLevelOneSong()
-                songOneIsPlaying = true
-            }
-            
         })
-        entityManager?.add(entity: eventTriggerOne)
+        entityManager?.add(entity: eventTriggerTwo)
     }
+        
+    
     
     func addCheckpoints(){
         let checkpointOne = PointEntity(position: CGPoint(x: 990, y: -1240), size: CGSize(width: 45, height: 47), entityManager: entityManager!)

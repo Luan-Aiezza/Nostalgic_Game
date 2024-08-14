@@ -28,6 +28,8 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithWall(entityA: entityB, entityB: entityA)
         isContactWithGhostCherry(entityA: entityA, entityB: entityB)
         isContactWithGhostCherry(entityA: entityB, entityB: entityA)
+        isContactWithBoss(entityA: entityA, entityB: entityB)
+        isContactWithBoss(entityA: entityB, entityB: entityA)
     
     }
     
@@ -87,6 +89,56 @@ extension GameScene: SKPhysicsContactDelegate {
                     ghost.demiseComponent?.die()
                     guard let index = self.enemies.firstIndex(of: ghost) else {return}
                     self.enemies.remove(at: index)
+                }
+            }
+        }
+    }
+    
+    private func isContactWithBoss(entityA: GKEntity, entityB: GKEntity) {
+        
+        if entityA is PlayerEntity && entityB is BossEntity {
+            let ghost = entityB as! BossEntity
+            let player = entityA as! PlayerEntity
+            
+            guard let isKillable = ghost.killableComponent?.returnIsKillable() else {return}
+            
+            if isKillable != true{
+                
+                let pauseGhost = SKAction.sequence([SKAction.run {
+                    ghost.stateComponent?.stateMachine.enter(BossIdle.self)
+                    ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
+                }, .wait(forDuration: 0.3), .run {
+                    ghost.component(ofType: GKSKNodeComponent.self)?.node.removeFromParent()
+                }])
+                
+                let playerAction = SKAction.sequence([
+                    .run {
+                        player.stateComponent?.stateMachine.enter(PlayerDeath.self)
+                    },
+                    .wait(forDuration: 1.3),
+                    .run {
+                        player.demiseComponent?.die()
+                    },
+                    .wait(forDuration: 0.2),
+                ])
+                
+                let gameOverScene = SKAction.run {
+                    self.gameOver()
+                }
+                
+                self.run(SKAction.sequence([pauseGhost, playerAction, gameOverScene]))
+            }
+            
+            else {
+                
+            
+                let action = ghost.bossActions(BossAnimation.death)
+                ghost.animationComponent?.play(action: action)
+                ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.64) {
+                    ghost.demiseComponent?.die()
+                    self.boss.removeAll()
                 }
             }
         }
@@ -155,18 +207,9 @@ extension GameScene: SKPhysicsContactDelegate {
             
             self.run(SKAction.sequence([group,eatenCherry]))
             
-            guard let ghostBoss = entityManager?.returnBoss() else {return}
-                
-                let dizzyGhost = SKAction.run {
-                    ghostBoss.stateComponent?.stateMachine.enter(GhostDizzy.self)
-                }
-                
-                let healthyGhost = SKAction.run {
-                    ghostBoss.stateComponent?.stateMachine.enter(GhostHealthy.self)
-                }
-                
-                let sequence = SKAction.sequence([dizzyGhost, waitAction, healthyGhost])
-                run(sequence)
+            for bossGhost in boss {
+                bossGhost.killableComponent?.isCurretlyKillable()
+            }
         }
     }
     
@@ -185,7 +228,24 @@ extension GameScene: SKPhysicsContactDelegate {
             if didAdd == false {
                 let item = Item(name: name!)
                 playerEntity?.inventoryComponent?.addItem(item: item)
-                print("adquiriu o \(item.returnName())")
+                let message = SKAction.sequence([
+                
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "you got \(item.returnName())!")
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                
+                ])
+                self.run(message)
             }
         }
     }

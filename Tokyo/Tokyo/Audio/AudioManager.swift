@@ -13,9 +13,13 @@ import AVFoundation
 class AudioManager {
     static let shared = AudioManager()
     
-    var backgroundMusicPlayer: AVAudioPlayer?
+    private var backgroundMusicPlayer: AVAudioPlayer?
     
-    init(){}
+    private init(){}
+    
+    func playerOne(){
+        
+    }
     
     func playLevelOneSong() {
         if let url = Bundle.main.url(forResource: "song1", withExtension: "mp3") {
@@ -32,13 +36,16 @@ class AudioManager {
             print("Audio file not found.")
         }
     }
-
-    
+         
     func stopLevelOneSong(){
         backgroundMusicPlayer?.setVolume(0, fadeDuration: 1)
         backgroundMusicPlayer?.stop()
     }
-
+    
+    func pauseLevelOneSong(){
+        backgroundMusicPlayer?.setVolume(0, fadeDuration: 1)
+        backgroundMusicPlayer?.pause()
+    }
     
     func playLevelTwoSong() {
         if let url = Bundle.main.url(forResource: "song2", withExtension: "mp3") {
@@ -54,5 +61,15 @@ class AudioManager {
         } else {
             print("Audio file not found.")
         }
+    }
+    
+    func stopLevelTwoSong(){
+        backgroundMusicPlayer?.setVolume(0, fadeDuration: 1)
+        backgroundMusicPlayer?.stop()
+    }
+    
+    func pauseLevelTwoSong(){
+        backgroundMusicPlayer?.setVolume(0, fadeDuration: 1)
+        backgroundMusicPlayer?.pause()
     }
 }
