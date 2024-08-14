@@ -24,7 +24,7 @@ class GameScene: SKScene {
     var isTextBoxHidden = true
     
     override func sceneDidLoad() {
-        
+    
         self.physicsWorld.contactDelegate = self
         
         entityManager = SKEntityManager(scene: self)
@@ -43,7 +43,7 @@ class GameScene: SKScene {
         self.addChild(cameraNode)
         self.camera = cameraNode
         
-        self.camera?.setScale(0.35)
+        self.camera?.setScale(0.50)
         //FIM DO CODIGO
         
         let numberOfFireflies = 300  // Número de partículas que você quer criar
@@ -257,7 +257,7 @@ class GameScene: SKScene {
         background.position = CGPoint(x: frame.midX, y: frame.midY)
         background.zPosition = -1 // Coloque atrás dos outros nodes
         background.alpha = 0.6
-        background.setScale(3)
+        background.setScale(1)
         background.texture?.filteringMode = .nearest
         addChild(background)
     }

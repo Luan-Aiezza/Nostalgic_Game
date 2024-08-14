@@ -25,4 +25,11 @@ extension SKSpriteNode {
         
         entityManager.add(entity: entity)
     }
+    
+    func rendenringStone(entityManager: SKEntityManager){
+        
+        let entity = GroundEntity(node: self)
+        
+        entityManager.add(entity: entity)
+    }
 }
