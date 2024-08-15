@@ -25,6 +25,7 @@ class GameScene: SKScene {
     public var stateMachineEnemy : GKStateMachine?
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
+    var temporaryBlock: TemporaryBlockEntity?
     
     var rightButtonPressed = false
     var leftButtonPressed = false
@@ -66,11 +67,11 @@ class GameScene: SKScene {
         
         let cherryEntity = CherryEntity(position: CGPoint(x: 140, y: 0), entityManager: entityManager!)
         entityManager?.add(entity: cherryEntity)
-       
-        if let entityManager = entityManager {
-            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 140, y: -200), lifetime: 3.0, entityManager: entityManager)
-            entityManager.add(entity: temporaryBlock)
-        }
+        
+        let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 140, y: -150), lifetime: 5.0)
+        entityManager?.add(entity: temporaryBlock)
+        self.temporaryBlock = temporaryBlock
+
         
         setupButtons()
         adjustButtonLayout()

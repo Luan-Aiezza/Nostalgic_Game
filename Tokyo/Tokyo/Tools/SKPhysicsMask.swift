@@ -13,11 +13,13 @@ public extension UInt32 {
     static let base:  UInt32 = 0b1
     static let player = UInt32.base << 0
     static let ghost = UInt32.base << 1
+    static let tempMask = UInt32.base << 10
     
     
     static var allMasks: [UInt32] = [
         .player,
-        .ghost
+        .ghost,
+        .tempMask
     ]
     
     static func contactWithAllCategories(less: [UInt32] = []) -> UInt32 {

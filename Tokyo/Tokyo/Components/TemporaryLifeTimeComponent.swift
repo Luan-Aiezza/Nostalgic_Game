@@ -9,15 +9,18 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
+import Foundation
+import GameplayKit
+import SpriteKit
+
 public class LifetimeComponent: GKComponent {
     
     private var remainingLifetime: TimeInterval
-    private var shouldStartCountdown: Bool = false
-    private weak var entityManager: SKEntityManager?
+    private var physicsComponent: PhysicsComponent?
+    private var itShouldFall: Bool = false
     
-    init(lifetime: TimeInterval, entityManager: SKEntityManager) {
-        self.remainingLifetime = lifetime
-        self.entityManager = entityManager
+    init(lifetime: TimeInterval) {
+        remainingLifetime = lifetime
         super.init()
     }
     
@@ -25,22 +28,29 @@ public class LifetimeComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func startCountdown() {
-        self.shouldStartCountdown = true
+    public func shouldFall(itShouldFall: Bool) {
+        self.itShouldFall = itShouldFall
+        print(itShouldFall)
     }
     
     public override func update(deltaTime seconds: TimeInterval) {
         super.update(deltaTime: seconds)
+
+        if physicsComponent == nil {
+            physicsComponent = entity?.component(ofType: PhysicsComponent.self)
+        }
         
-        if shouldStartCountdown {
+        if itShouldFall {
             remainingLifetime -= seconds
             if remainingLifetime <= 0 {
-                if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
-                    node.removeFromParent()
+                //let the block fall after the time ends
+                if let physicsComponent = physicsComponent {
+                    physicsComponent.body.isDynamic = true
+                    physicsComponent.body.affectedByGravity = true
+                    physicsComponent.body.collisionBitMask = .contactWithAllCategories()
                 }
-                if let entity = entity {
-                    entityManager?.remove(entity: entity)
-                }
+                // Reset itShouldFall to false after the block falls
+                itShouldFall = false
             }
         }
     }
