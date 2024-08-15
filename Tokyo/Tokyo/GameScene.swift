@@ -19,8 +19,8 @@ class GameScene: SKScene {
     var songOneIsPlaying = true
     var audioPlayerOne = AudioManager.shared
     var audioPlayerTwo = AudioManager.shared
-    private let playerLight = SKLightNode()  // Light node to follow the player
-    var textBox = TextDialogue(sprite: SKSpriteNode(imageNamed: "box"), label: SKLabelNode(text: ""))
+   /* private let playerLight = SKLightNode() */ // Light node to follow the player
+    var textBox = TextDialogue(sprite: SKSpriteNode(imageNamed: "textBox1"), label: SKLabelNode(text: ""))
     var isTextBoxHidden = true
     
     override func sceneDidLoad() {
@@ -35,9 +35,10 @@ class GameScene: SKScene {
         
         textBox.isHidden = true
         
-        
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
+        
+        printSystemFonts()
         
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
@@ -66,33 +67,33 @@ class GameScene: SKScene {
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
         
-        let keyItem = ItemEntity(position: CGPoint(x: 100, y: -100), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
+        let keyItem = ItemEntity(position: CGPoint(x: 100, y: -200), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
         entityManager?.add(entity: keyItem)
         
-        let cherryItem = CherryEntity(position: CGPoint(x: 60, y: -255), entityManager: entityManager!)
-        entityManager?.add(entity: cherryItem)
+        let sign = SignEntity(position: CGPoint(x: 1500, y: -1255))
+        entityManager?.add(entity: sign)
         
         setupButtons()
-//        addEventTriggers()
+        addCherries()
         adjustButtonLayout()
         ghostAdd()
         addCheckpoints()
-        setupPlayerLight()  // Set up the light node
+//        setupPlayerLight()  // Set up the light node
     }
     
     // Function to set up the light node
-    private func setupPlayerLight() {
-        playerLight.categoryBitMask = 1  // Define a categoria da luz
-        playerLight.lightColor = .white  // Cor da luz
-        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
-        playerLight.falloff = 1  // Quão rápido a luz escurece
-        playerLight.isEnabled = true
-        
-        self.addChild(playerLight)  // Adiciona a luz à cena
-        
-        
-    }
+//    private func setupPlayerLight() {
+//        playerLight.categoryBitMask = 1  // Define a categoria da luz
+//        playerLight.lightColor = .white  // Cor da luz
+//        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
+//        playerLight.falloff = 1  // Quão rápido a luz escurece
+//        playerLight.isEnabled = true
+//        
+//        self.addChild(playerLight)  // Adiciona a luz à cena
+//        
+//        
+//    }
     
     
     func setupButtons(){
@@ -123,12 +124,12 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX, y: cameraFrame.minY - 30 )
-        right_button.position = CGPoint(x: left_button.position.x + buttonSize.width + 20, y: left_button.position.y)
+        left_button.position = CGPoint(x: cameraFrame.minX-200, y: cameraFrame.minY - 90 )
+        right_button.position = CGPoint(x: left_button.position.x + buttonSize.width+20, y: left_button.position.y)
         
-        jump_button.position = CGPoint(x: cameraFrame.maxX, y:left_button.position.y)
+        jump_button.position = CGPoint(x: cameraFrame.maxX+180, y:left_button.position.y)
         
-        textBox.sprite.size = CGSize(width: 200, height: 40)
+//        textBox.sprite.size = CGSize(width: 500, height: 500)
         textBox.position = CGPoint(x: 0, y: 80)
     }
     override func didChangeSize(_ oldSize: CGSize) {
@@ -170,7 +171,7 @@ class GameScene: SKScene {
         
         if let playerNode = playerEntity?.spriteNode {
             self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 35)
-            playerLight.position = playerNode.position  // Make the light follow the player
+//            playerLight.position = playerNode.position  // Make the light follow the player
         }
         
         self.lastUpdateTime = currentTime
@@ -373,7 +374,7 @@ class GameScene: SKScene {
         })
         entityManager?.add(entity: chestPoint)
         
-        let stonePoint = PointEntity(position: CGPoint(x: 980, y: -1220), size: CGSize(width: 120, height: 80), entityManager: entityManager!, texture: SKTexture(imageNamed: "pedraDesmoronando1"))
+        let stonePoint = PointEntity(position: CGPoint(x: 980, y: -1223), size: CGSize(width: 120, height: 85), entityManager: entityManager!, texture: SKTexture(imageNamed: "pedraDesmoronando1"))
         stonePoint.identityComponent?.name(name: "pickaxe")
         stonePoint.actionComponent?.addAction(action: SKAction.run {
             let action: SKAction = stonePoint.pointActions(.stone)
@@ -398,4 +399,38 @@ class GameScene: SKScene {
         entityManager?.add(entity: stonePoint)
     }
     
+    func addCherries() {
+        let cherryItem1 = CherryEntity(position: CGPoint(x: -685, y: -80), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem1)
+        
+        let cherryItem2 = CherryEntity(position: CGPoint(x: -670, y: -350), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem2)
+        
+        let cherryItem3 = CherryEntity(position: CGPoint(x: 700, y: -970), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem3)
+        
+        let cherryItem4 = CherryEntity(position: CGPoint(x: 700, y: -970), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem4)
+        
+        let cherryItem5 = CherryEntity(position: CGPoint(x: -320, y: -1240), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem5)
+        
+        let cherryItem6 = CherryEntity(position: CGPoint(x: -320, y: -1240), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem6)
+        
+        let cherryItem7 = CherryEntity(position: CGPoint(x: -820, y: -970), entityManager: entityManager!)
+        entityManager?.add(entity: cherryItem7)
+    }
+    
+    public func printSystemFonts() {
+        // Use this identifier to filter out the system fonts in the logs.
+        let identifier: String = "[SYSTEM FONTS]"
+        // Here's the functionality that prints all the system fonts.
+        for family in UIFont.familyNames as [String] {
+            debugPrint("\(identifier) FONT FAMILY :  \(family)")
+            for name in UIFont.fontNames(forFamilyName: family) {
+                debugPrint("\(identifier) FONT NAME :  \(name)")
+            }
+        }
+    }
 }

@@ -30,7 +30,9 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithGhostCherry(entityA: entityB, entityB: entityA)
         isContactWithBoss(entityA: entityA, entityB: entityB)
         isContactWithBoss(entityA: entityB, entityB: entityA)
-    
+        isContactWithSign(entityA: entityA, entityB: entityB)
+        isContactWithSign(entityA: entityB, entityB: entityA)
+        
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
@@ -131,7 +133,7 @@ extension GameScene: SKPhysicsContactDelegate {
             
             else {
                 
-            
+                
                 let action = ghost.bossActions(BossAnimation.death)
                 ghost.animationComponent?.play(action: action)
                 ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
@@ -153,25 +155,6 @@ extension GameScene: SKPhysicsContactDelegate {
             
             let player = entityA as! PlayerEntity
             let cherry = entityB as! CherryEntity
-            
-            let message = SKAction.sequence([
-            
-                SKAction.run {
-                    self.textBox.isHidden = false
-                },
-                
-                SKAction.run {
-                    self.textBox.textUpdate(text: "you eaten cherry!")
-                },
-                
-                SKAction.wait(forDuration: 1.5),
-                
-                SKAction.run {
-                    self.textBox.isHidden = true
-                }
-            
-            ])
-            self.run(message)
             
             cherry.component(ofType: GKSKNodeComponent.self)?.node.alpha = 0
             
@@ -247,7 +230,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 let item = Item(name: name!)
                 playerEntity?.inventoryComponent?.addItem(item: item)
                 let message = SKAction.sequence([
-                
+                    
                     SKAction.run {
                         self.textBox.isHidden = false
                     },
@@ -261,7 +244,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     SKAction.run {
                         self.textBox.isHidden = true
                     }
-                
+                    
                 ])
                 self.run(message)
             }
@@ -271,8 +254,6 @@ extension GameScene: SKPhysicsContactDelegate {
     private func isContactWithPoint(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is PointEntity {
-            
-            print("entrou em contato")
             
             let player = entityA as! PlayerEntity
             let point = entityB as! PointEntity
@@ -288,59 +269,38 @@ extension GameScene: SKPhysicsContactDelegate {
                     
                 }
             }
-//
-//                if items.count != 0 && i.name != pointName {
-//                    let message = SKAction.sequence([
-//                    
-//                        SKAction.run {
-//                            self.textBox.isHidden = false
-//                        },
-//                        
-//                        SKAction.run {
-//                            self.textBox.textUpdate(text: "you can't open it.")
-//                        },
-//                        
-//                        SKAction.wait(forDuration: 1.5),
-//                        
-//                        SKAction.run {
-//                            self.textBox.isHidden = true
-//                        }
-//                    ])
-//                    self.run(message)
-//                }
-//            }
-                
-                if doesPlayerHaveIt {
-                    guard let action = point.actionComponent?.action else {return}
-                    run(action)
-                }else {
-                            let message = SKAction.sequence([
-                            SKAction.run {
-                            self.textBox.isHidden = false},
+            
+            if doesPlayerHaveIt {
+                guard let action = point.actionComponent?.action else {return}
+                run(action)
+            }else {
+                let message = SKAction.sequence([
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "you can't open it.")
+                    },
                     
-                                            SKAction.run {
-                                                self.textBox.textUpdate(text: "you can't open it.")
-                                            },
+                    SKAction.run {
+                        self.textBox.isHidden = false},
                     
-                                            SKAction.wait(forDuration: 1.5),
+                    SKAction.wait(forDuration: 1.5),
                     
-                                            SKAction.run {
-                                                self.textBox.isHidden = true
-                                            }
-                                        ])
-                                        self.run(message)
-                }
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                ])
+                self.run(message)
+            }
             
             
             if items.count == 0 {
                 let message = SKAction.sequence([
-                
-                    SKAction.run {
-                        self.textBox.isHidden = false
-                    },
                     
                     SKAction.run {
                         self.textBox.textUpdate(text: "you can't open it.")
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = false
                     },
                     
                     SKAction.wait(forDuration: 1.5),
@@ -394,6 +354,33 @@ extension GameScene: SKPhysicsContactDelegate {
             
             player?.jumpComponent?.jumpImpulse = 500
             player?.jumpComponent?.jumpImpulse = 100
+            
+        }
+    }
+    
+    func isContactWithSign(entityA: GKEntity, entityB: GKEntity){
+        
+        if entityA is PlayerEntity && entityB is SignEntity {
+            let message = SKAction.sequence([
+                
+                SKAction.run {
+                    self.textBox.textUpdate(text: "soon")
+                },
+                
+                SKAction.run {
+                    self.textBox.isHidden = false},
+                
+                SKAction.run {
+                    self.textBox.textUpdate(text: "soon")
+                },
+                
+                SKAction.wait(forDuration: 1.5),
+                
+                SKAction.run {
+                    self.textBox.isHidden = true
+                }
+            ])
+            self.run(message)
             
         }
     }
