@@ -22,6 +22,14 @@ class WallEntity: GKEntity{
         body.isDynamic = false
         body.affectedByGravity = false
         self.addComponent(PhysicsComponent(body: body))
+        
+        // Configurando lightingBitMask e shadowBitMasks para interagir com a luz
+        node.lightingBitMask = 0       // A máscara que será afetada pela luz
+        node.shadowCastBitMask = 1     // Permite que o jogador lance sombras
+        node.shadowedBitMask = 1       // Permite que o jogador seja sombreado
+        node.color = .white            // Cor base do sprite
+        node.colorBlendFactor = 0.5
+    
     }
     
     init(node: SKNode){

@@ -103,6 +103,12 @@ class GameScene: SKScene {
         
     }
     
+    public func setButtonsActive(_ isActive: Bool) {
+        right_button.isUserInteractionEnabled = isActive
+        left_button.isUserInteractionEnabled = isActive
+        jump_button.isUserInteractionEnabled = isActive
+    }
+    
     func adjustButtonLayout() {
         guard let camera = self.camera else { return }
         let buttonSize = CGSize(width: 80, height: 80)
@@ -242,7 +248,7 @@ class GameScene: SKScene {
         background = SKSpriteNode(imageNamed: "background1")
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.position = CGPoint(x: frame.midX, y: frame.midY)
-        background.zPosition = -1 // Coloque atrás dos outros nodes
+        background.zPosition = -5 // Coloque atrás dos outros nodes
         background.alpha = 0.6
         background.setScale(1)
         background.texture?.filteringMode = .nearest
@@ -310,18 +316,11 @@ class GameScene: SKScene {
     }
     
     func addEventTriggers(){
-        let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -190), size: CGSize(width: 60, height: 1), action: SKAction.run { [self] in
+        let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
             
-            if songOneIsPlaying == true{
-                audioPlayer.stopLevelOneSong()
-                audioPlayer.playLevelTwoSong()
-                songOneIsPlaying = false
-            }
-            else {
-                audioPlayer.stopLevelOneSong()
-                audioPlayer.playLevelOneSong()
-                songOneIsPlaying = true
-            }
+            audioPlayer.stopLevelOneSong()
+            audioPlayer.playLevelTwoSong()
+            songOneIsPlaying = true
             
         })
         entityManager?.add(entity: eventTriggerOne)

@@ -20,7 +20,6 @@
 		3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
 		3306B2232C592344004FE488 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2222C592344004FE488 /* GameOverScene.swift */; };
 		3306B2262C592936004FE488 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2252C592936004FE488 /* RestartButton.swift */; };
-		3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2272C593196004FE488 /* SpikeEntity.swift */; };
 		334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */; };
 		334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */; };
 		334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */; };
@@ -66,6 +65,10 @@
 		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
 		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
 		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
+		CFE9E8A82C6DBECE00CF5EC2 /* SpikesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */; };
+		CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */; };
+		CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */; };
+		CFE9E8B62C6E3A0000CF5EC2 /* ScenarioTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,7 +85,6 @@
 		3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
 		3306B2222C592344004FE488 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		3306B2252C592936004FE488 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
-		3306B2272C593196004FE488 /* SpikeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeEntity.swift; sourceTree = "<group>"; };
 		334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierComponent.swift; sourceTree = "<group>"; };
 		334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -129,6 +131,10 @@
 		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
 		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
 		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
+		CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikesEntity.swift; sourceTree = "<group>"; };
+		CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1. A World of Ghosts.mp3"; sourceTree = "<group>"; };
+		CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2. A World of Ghosts.mp3"; sourceTree = "<group>"; };
+		CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTiles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,14 +203,15 @@
 				33EDD5692C50885A00880E83 /* PlayerEntity.swift */,
 				3306B1D52C529B41004FE488 /* GhostEntity.swift */,
 				3306B1EB2C534081004FE488 /* CherryEntity.swift */,
-				3306B2272C593196004FE488 /* SpikeEntity.swift */,
 				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
 				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
+				336A9F682C66766C00C1803B /* WallEntity.swift */,
 				334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */,
 				334E85832C5BD93700E61EA7 /* PointEntity.swift */,
-				336A9F682C66766C00C1803B /* WallEntity.swift */,
 				335410AF2C6B9944002B2C1B /* EventTriggerEntity.swift */,
 				338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */,
+				CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */,
+				CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -302,6 +309,8 @@
 				CF41986C2C481745000B3C50 /* Main.storyboard */,
 				CF41986F2C481746000B3C50 /* Assets.xcassets */,
 				CF4198712C481746000B3C50 /* LaunchScreen.storyboard */,
+				CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */,
+				CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */,
 				335410A52C6B9508002B2C1B /* song1.mp3 */,
 				335410A72C6B950F002B2C1B /* song2.mp3 */,
 			);
@@ -380,9 +389,11 @@
 			files = (
 				CF17CFC32C52A7FE00898033 /* Level02.sks in Resources */,
 				335410A82C6B950F002B2C1B /* song2.mp3 in Resources */,
+				CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
+				CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */,
 				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
 				CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */,
 				336A9F6E2C66961100C1803B /* LevelDEBUG.sks in Resources */,
@@ -400,9 +411,9 @@
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
 				336A9F6C2C6676BE00C1803B /* SKSpriteNode+Tools.swift in Sources */,
 				334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */,
-				3306B2282C593196004FE488 /* SpikeEntity.swift in Sources */,
 				CF84E8262C63ACD20035CD09 /* BossEntity.swift in Sources */,
 				3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */,
+				CFE9E8A82C6DBECE00CF5EC2 /* SpikesEntity.swift in Sources */,
 				336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */,
 				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
 				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
@@ -418,6 +429,7 @@
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
 				335410AA2C6B9830002B2C1B /* ActionComponent.swift in Sources */,
 				CF84E82A2C63ACD20035CD09 /* BossPause.swift in Sources */,
+				CFE9E8B62C6E3A0000CF5EC2 /* ScenarioTiles.swift in Sources */,
 				3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
 				CF84E8272C63ACD20035CD09 /* BossDash.swift in Sources */,
 				336A9F692C66766C00C1803B /* WallEntity.swift in Sources */,

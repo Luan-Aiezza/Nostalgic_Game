@@ -15,7 +15,6 @@ public extension UInt32 {
     static let base:  UInt32 = 0b1
     static let player = UInt32.base << 0
     static let ghost = UInt32.base << 1
-    static let spike = UInt32.base << 2
     static let items = UInt32.base << 3
     static let points = UInt32.base << 3
     static let tile = UInt32.base << 4
@@ -24,7 +23,6 @@ public extension UInt32 {
     static var allMasks: [UInt32] = [
         .player,
         .ghost,
-        .spike,
         .items,
         .points,
         .tile,

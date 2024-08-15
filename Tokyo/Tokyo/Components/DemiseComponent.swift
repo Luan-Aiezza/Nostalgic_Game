@@ -1,12 +1,5 @@
-//
-//  DemiseComponent.swift
-//  Tokyo
-//
-//  Created by Jessica Rodrigues on 25/07/24.
-//
 
 import Foundation
-
 import SpriteKit
 import GameplayKit
 

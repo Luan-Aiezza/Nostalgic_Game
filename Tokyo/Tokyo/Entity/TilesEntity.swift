@@ -29,10 +29,7 @@ class TilesEntity: GKEntity {
                     child?.addPhysicsToGround(entityManager: entityManager)
                 }
                 
-//                else if child.name == "stone"{
-//                    let child = child as? SKSpriteNode
-//                    child?.texture?.filteringMode = .nearest
-//                }
+                
             }
             
         }

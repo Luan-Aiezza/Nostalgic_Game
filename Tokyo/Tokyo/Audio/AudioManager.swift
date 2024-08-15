@@ -1,10 +1,3 @@
-//
-//  AudioManager.swift
-//  Tokyo
-//
-//  Created by Jessica Rodrigues on 13/08/24.
-//
-
 import Foundation
 import AVFAudio
 import SpriteKit
@@ -18,7 +11,7 @@ class AudioManager {
     init(){}
     
     func playLevelOneSong() {
-        if let url = Bundle.main.url(forResource: "song1", withExtension: "mp3") {
+        if let url = Bundle.main.url(forResource: "1. A World of Ghosts", withExtension: "mp3") {
             print("Playing song1.mp3")
             do {
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)
@@ -41,7 +34,7 @@ class AudioManager {
 
     
     func playLevelTwoSong() {
-        if let url = Bundle.main.url(forResource: "song2", withExtension: "mp3") {
+        if let url = Bundle.main.url(forResource: "2. A World of Ghosts", withExtension: "mp3") {
             print("Playing song2.mp3")
             do {
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)

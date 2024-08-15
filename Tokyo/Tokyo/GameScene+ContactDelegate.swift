@@ -1,20 +1,12 @@
-//
-//  GameScene+ContactDelegate.swift
-//  Tokyo
-//
-//  Created by Jessica Rodrigues on 25/07/24.
-//
-
 import Foundation
 import SpriteKit
 import GameplayKit
 
 extension GameScene: SKPhysicsContactDelegate {
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
         guard let entityA = contact.bodyA.node?.entity,
-              let entityB = contact.bodyB.node?.entity else {return}
-        
+              let entityB = contact.bodyB.node?.entity else { return }
         
         isContactWithEnemy(entityA: entityA, entityB: entityB)
         isContactWithEnemy(entityA: entityB, entityB: entityA)
@@ -28,19 +20,33 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithWall(entityA: entityB, entityB: entityA)
         isContactWithGhostCherry(entityA: entityA, entityB: entityB)
         isContactWithGhostCherry(entityA: entityB, entityB: entityA)
-    
+        isContactWithSpikes(entityA: entityA, entityB: entityB)
+        isContactWithSpikes(entityA: entityB, entityB: entityA)
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
         guard let entityA = contact.bodyA.node?.entity,
-              let entityB = contact.bodyB.node?.entity else {return}
+              let entityB = contact.bodyB.node?.entity else { return }
+        
         isNotInContactWithWall(entityA: entityA, entityB: entityB)
         isNotInContactWithWall(entityA: entityB, entityB: entityA)
         isContactWithEventTrigger(entityA: entityA, entityB: entityB)
         isContactWithEventTrigger(entityA: entityB, entityB: entityA)
-        
     }
     
+    private func isContactWithSpikes(entityA: GKEntity, entityB: GKEntity) {
+        if entityA is PlayerEntity && entityB is SpikesEntity {
+            let player = entityA as! PlayerEntity
+            player.demiseComponent?.die()
+
+            // Transição para a cena de game over, por exemplo
+            let gameOverScene = SKAction.run {
+                self.gameOver()
+            }
+            self.run(gameOverScene)
+        }
+    }
+
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostEntity {
