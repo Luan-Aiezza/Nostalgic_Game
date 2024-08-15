@@ -8,8 +8,10 @@
 import SpriteKit
 
 class PausePopUp: SKNode {
-    private var background: SKSpriteNode!
-    private var resumeButton: SKLabelNode!
+    var backgroud: SKSpriteNode?
+    var startButton: SKSpriteNode?
+    var playButton: SKSpriteNode?
+    var restartButton: SKSpriteNode?
     
     override init() {
         super.init()
@@ -17,33 +19,51 @@ class PausePopUp: SKNode {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupPopUp()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupPopUp() {
-        // Background for the pop-up
-        background = SKSpriteNode(color: .black, size: CGSize(width: 300, height: 150))
-        background.alpha = 0.75
-        background.zPosition = 10
-        addChild(background)
+        backgroud = SKSpriteNode(imageNamed: "backgroundPaused")
+        backgroud?.zPosition = 5
+        backgroud?.position = CGPoint(x: 0, y: 0)
+        backgroud?.setScale(1.5)
+        guard let backgroud = backgroud else { return }
+        addChild(backgroud)
         
-        // Resume Button
-        resumeButton = SKLabelNode(text: "Continue")
-        resumeButton.zPosition = 12
-        resumeButton.fontName = "Arial"
-        resumeButton.fontSize = 24
-        resumeButton.position = CGPoint(x: 0, y: 0)
-        resumeButton.name = "resumeButton"
-        addChild(resumeButton)
+        let backgrounWidth = backgroud.size.width
+        
+        startButton = SKSpriteNode(imageNamed: "inicio")
+        startButton?.zPosition = 6
+        startButton?.position = CGPoint(x:  -(backgrounWidth/3) , y: 0)
+        startButton?.setScale(1.5)
+        startButton?.name = "startButton"
+        guard let startButton = startButton else {return}
+        addChild(startButton)
+        
+        playButton = SKSpriteNode(imageNamed: "play")
+        playButton?.zPosition = 6
+        playButton?.position = CGPoint(x: 0, y: 0)
+        playButton?.setScale(1.5)
+        playButton?.name = "playButton"
+        guard let playButton = playButton else {return}
+        addChild(playButton)
+        
+        restartButton = SKSpriteNode(imageNamed: "reiniciar")
+        restartButton?.zPosition = 6
+        restartButton?.position = CGPoint(x: backgrounWidth/3, y:0)
+        restartButton?.setScale(1.5)
+        restartButton?.name = "restartButton"
+        guard let restartButton = restartButton else {return}
+        addChild(restartButton)
+        
+        
+        
     }
-    
-    func show(in scene: SKScene) {
-        position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
-        scene.addChild(self)
+    func show(in scene: SKScene){
+//        position = CGPoint(x: 0, y: -150)
+        scene.camera?.addChild(self)
     }
-    
-    func hide() {
+    func hide(){
         removeFromParent()
     }
 }

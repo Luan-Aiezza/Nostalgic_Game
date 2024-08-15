@@ -16,7 +16,11 @@ class GameScene: SKScene {
     var rightButtonPressed = false
     var leftButtonPressed = false
     private let playerLight = SKLightNode()  // Light node to follow the player
+    
     var pauseButton = SKSpriteNode(imageNamed: "pause")
+    var pausePopUp: PausePopUp?
+    
+    
     
     override func sceneDidLoad() {
         
@@ -77,6 +81,9 @@ class GameScene: SKScene {
         ghostAdd()
         setupPlayerLight()  // Set up the light node
         setupPauseButton()
+        
+        let pausePopUp = PausePopUp()
+        self.pausePopUp = pausePopUp
     }
     
     func setupPauseButton(){
@@ -140,11 +147,14 @@ class GameScene: SKScene {
             let location = touch.location(in: camera!)
             
             if pauseButton.contains(location) {
-                if self.isPaused {
-                    self.isPaused = false
+                isPaused.toggle()
+                
+                if (isPaused) {
+                    self.pausePopUp?.show(in: self)
                 } else {
-                    self.isPaused = true
+                    self.pausePopUp?.hide()
                 }
+                
             }
         }
         
@@ -153,13 +163,7 @@ class GameScene: SKScene {
     
     
     
-    func exitGame() {
-        // Código para sair do jogo ou voltar ao menu principal
-        // Exemplo: Apresentar uma nova cena
-        let menuScene = MenuScene(size: self.size)
-        menuScene.scaleMode = .aspectFill
-        self.view?.presentScene(menuScene)
-    }
+ 
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches, isTouching: false)
