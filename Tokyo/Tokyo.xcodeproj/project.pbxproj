@@ -41,6 +41,10 @@
 		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
 		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
 		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
+		33E3AB942C6E3F92008D5B29 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB932C6E3F92008D5B29 /* Level02.sks */; };
+		33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB962C6E6391008D5B29 /* pixel.otf */; };
+		33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */; };
+		33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -114,6 +118,11 @@
 		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
 		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
 		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
+		33E3AB932C6E3F92008D5B29 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
+		33E3AB962C6E6391008D5B29 /* pixel.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixel.otf; sourceTree = "<group>"; };
+		33E3AB972C6E63C8008D5B29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignEntity.swift; sourceTree = "<group>"; };
+		33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "the-first-palm-pda-font.ttf"; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -223,6 +232,15 @@
 			path = Nodes;
 			sourceTree = "<group>";
 		};
+		33E3AB952C6E6377008D5B29 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */,
+				33E3AB962C6E6391008D5B29 /* pixel.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +256,7 @@
 				334E85832C5BD93700E61EA7 /* PointEntity.swift */,
 				335410AF2C6B9944002B2C1B /* EventTriggerEntity.swift */,
 				338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */,
+				33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */,
 				CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */,
 				CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */,
 			);
@@ -320,6 +339,8 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				33E3AB972C6E63C8008D5B29 /* Info.plist */,
+				33E3AB952C6E6377008D5B29 /* Fonts */,
 				338EE0AA2C6CE17C00A26A9D /* Nodes */,
 				3354109C2C6B8E48002B2C1B /* Audio */,
 				CF84E8202C63ACB50035CD09 /* GhostingBoss */,
@@ -426,6 +447,9 @@
 				BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
+				33E3AB942C6E3F92008D5B29 /* Level02.sks in Resources */,
+				33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */,
+				33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
 				CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */,
 				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
@@ -460,6 +484,7 @@
 				BB2629672C6BE5AD0077DD35 /* StartScene.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
+				33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */,
 				338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
@@ -653,6 +678,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A887TW3BVK;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tokyo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -681,6 +707,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A887TW3BVK;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tokyo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

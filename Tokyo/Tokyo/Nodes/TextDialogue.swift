@@ -16,6 +16,7 @@ class TextDialogue : SKNode {
     
     init(sprite : SKSpriteNode, label : SKLabelNode) {
         self.sprite = sprite
+        self.sprite.size = CGSize(width: 300, height: 50)
         self.label = label
         super.init()
         
@@ -23,6 +24,7 @@ class TextDialogue : SKNode {
         self.addChild(label)
         
         label.zPosition = 10
+        label.position =  CGPoint(x: 0, y: -10)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,5 +33,7 @@ class TextDialogue : SKNode {
     
     func textUpdate(text : String){
         self.label.text = text
+        self.label.fontName = "TheFirstPalmPDAFont"
+        self.label.fontSize = 16
     }
 }
