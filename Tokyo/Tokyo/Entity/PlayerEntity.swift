@@ -59,8 +59,8 @@ class PlayerEntity: GKEntity {
         body.affectedByGravity = true
         body.categoryBitMask = .player
         body.linearDamping = 0
-        body.contactTestBitMask = .ghost | .trigger
-        body.collisionBitMask = .tile | .ghost
+        body.contactTestBitMask = .ghost | .trigger | .tempMask
+        body.collisionBitMask = .tile | .ghost | .tempMask
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         

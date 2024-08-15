@@ -25,7 +25,7 @@ public extension UInt32 {
     static var allMasks: [UInt32] = [
         .player,
         .ghost,
-        .tempMask
+        .tempMask,
         .items,
         .points,
         .tile,

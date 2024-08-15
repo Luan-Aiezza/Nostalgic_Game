@@ -15,10 +15,6 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
     var temporaryBlock: TemporaryBlockEntity?
-    var rightButtonPressed = false
-    var leftButtonPressed = false
-    
-    override func sceneDidLoad() {
         
     var rightButtonPressed = false
     var leftButtonPressed = false

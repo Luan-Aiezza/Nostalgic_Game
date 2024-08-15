@@ -50,6 +50,7 @@
 		33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5702C5088D100880E83 /* PlayerIdle.swift */; };
 		BB2629632C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */; };
 		BB2629652C69BA2D0077DD35 /* TemporaryBlockEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */; };
+		BB42994D2C6EC8F60095146C /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB42994C2C6EC8F60095146C /* Level02.sks */; };
 		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
 		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
 		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
@@ -72,7 +73,6 @@
 		CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */; };
 		CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */; };
 		CFE9E8B62C6E3A0000CF5EC2 /* ScenarioTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */; };
-		CFE9E8BC2C6EB7A000CF5EC2 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8BB2C6EB7A000CF5EC2 /* Level02.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +119,7 @@
 		33EDD5702C5088D100880E83 /* PlayerIdle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIdle.swift; sourceTree = "<group>"; };
 		BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryLifeTimeComponent.swift; sourceTree = "<group>"; };
 		BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryBlockEntity.swift; sourceTree = "<group>"; };
+		BB42994C2C6EC8F60095146C /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
 		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
@@ -142,7 +143,6 @@
 		CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1. A World of Ghosts.mp3"; sourceTree = "<group>"; };
 		CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2. A World of Ghosts.mp3"; sourceTree = "<group>"; };
 		CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTiles.swift; sourceTree = "<group>"; };
-		CFE9E8BB2C6EB7A000CF5EC2 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +283,7 @@
 		CF17CFBF2C52A56900898033 /* Stage02 */ = {
 			isa = PBXGroup;
 			children = (
-				CFE9E8BB2C6EB7A000CF5EC2 /* Level02.sks */,
+				BB42994C2C6EC8F60095146C /* Level02.sks */,
 				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
 				336A9F6D2C66961100C1803B /* LevelDEBUG.sks */,
 			);
@@ -408,7 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				335410A82C6B950F002B2C1B /* song2.mp3 in Resources */,
-				CFE9E8BC2C6EB7A000CF5EC2 /* Level02.sks in Resources */,
+				BB42994D2C6EC8F60095146C /* Level02.sks in Resources */,
 				CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
