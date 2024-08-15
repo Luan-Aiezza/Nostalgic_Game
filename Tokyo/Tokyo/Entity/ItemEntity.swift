@@ -27,6 +27,7 @@ class ItemEntity : GKEntity {
         super.init()
         
         let node = SKSpriteNode(imageNamed: sprite)
+        node.texture?.filteringMode = .nearest
         node.position = position
         node.size = size
         node.setScale(0.5)

@@ -32,7 +32,6 @@ class JumpComponent: GKComponent {
             isJumping = true
             doubleJumpAvailable = false
             physicsBody.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: jumpImpulse))
-
         }
     }
     
@@ -51,6 +50,7 @@ class JumpComponent: GKComponent {
             jumpImpulse = 400
             horizontalImpulse = 1
         }
+        
         else if physicsBody.linearDamping == 25{
             onGround = true
             isJumping = false
