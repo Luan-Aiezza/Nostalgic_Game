@@ -154,6 +154,25 @@ extension GameScene: SKPhysicsContactDelegate {
             let player = entityA as! PlayerEntity
             let cherry = entityB as! CherryEntity
             
+            let message = SKAction.sequence([
+            
+                SKAction.run {
+                    self.textBox.isHidden = false
+                },
+                
+                SKAction.run {
+                    self.textBox.textUpdate(text: "you eaten cherry!")
+                },
+                
+                SKAction.wait(forDuration: 1.5),
+                
+                SKAction.run {
+                    self.textBox.isHidden = true
+                }
+            
+            ])
+            self.run(message)
+            
             cherry.component(ofType: GKSKNodeComponent.self)?.node.alpha = 0
             
             let eatCherry = SKAction.run {
@@ -187,7 +206,6 @@ extension GameScene: SKPhysicsContactDelegate {
     private func isContactWithGhostCherry(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostCherryEntity {
-            let waitAction = SKAction.wait(forDuration: 10)
             let waitActionCherry = SKAction.wait(forDuration: 0.1)
             
             let player = entityA as! PlayerEntity
@@ -261,8 +279,8 @@ extension GameScene: SKPhysicsContactDelegate {
             
             for i in items {
                 if i.name == pointName {
-                    point.demiseComponent?.die()
-                    print("alguma coisa acontece!")
+                    guard let action = point.actionComponent?.action else {return}
+                    run(action)
                 }
                 else {
                     print("não tem " + pointName)

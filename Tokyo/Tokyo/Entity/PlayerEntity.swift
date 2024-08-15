@@ -41,6 +41,7 @@ class PlayerEntity: GKEntity {
         super.init()
         let node = SKSpriteNode(imageNamed: "andyIdle1")
         node.anchorPoint = .init(x: 0.5, y: 0.5)
+//        node.position = CGPoint(x: -2880, y: 340)
         node.setScale(0.75)
         node.texture?.filteringMode = .nearest
         self.addComponent(GKSKNodeComponent(node: node))

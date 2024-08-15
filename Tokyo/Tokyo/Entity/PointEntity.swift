@@ -24,13 +24,20 @@ class PointEntity : GKEntity {
         return component(ofType: DemiseComponent.self)
     }
     
-    init(position : CGPoint, size : CGSize, entityManager: SKEntityManager) {
+    var actionComponent: ActionComponent? {
+        return component(ofType: ActionComponent.self)
+    }
+    
+    var animationComponent: AnimationComponent? {
+        return component(ofType: AnimationComponent.self)
+    }
+    
+    init(position : CGPoint, size : CGSize, entityManager: SKEntityManager, texture: SKTexture) {
         super.init()
         
-        let node = SKSpriteNode()
+        let node = SKSpriteNode(texture: texture)
         node.position = position
-        node.size = size
-        node.size = CGSize(width: 130, height: 150)
+        node.size = node.texture?.size() ?? size
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
@@ -58,6 +65,12 @@ class PointEntity : GKEntity {
         
         self.addComponent(DemiseComponent(death: death))
         self.addComponent(IdentifierComponent())
+        
+        let animationComp = AnimationComponent()
+        self.addComponent(animationComp)
+        
+        let actionComp = ActionComponent()
+        self.addComponent(actionComp)
     }
     
     required init?(coder: NSCoder) {
@@ -71,4 +84,12 @@ class PointEntity : GKEntity {
         }
     }
     
+    func pointActions(_ animation: PointAnimation) -> SKAction{
+        switch animation {
+        case .chest:
+            let action: SKAction = .animate(with: .init(withFormat: "bau%@.png", range: 1...12), timePerFrame: 0.1)
+            return action
+            
+        }
+    }
 }
