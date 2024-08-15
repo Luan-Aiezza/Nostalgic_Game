@@ -17,28 +17,27 @@ class CherryEntity : GKEntity {
         return component(ofType: PhysicsComponent.self)
     }
     
-//    var DeathComponent: PhysicsComponent? {
-//        return component(ofType: DemiseComponent.self)
-//    }
-    
     var stateComponent: StateMachineComponent? {
         return component(ofType: StateMachineComponent.self)
+    }
+    
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
     }
     
     init(position : CGPoint, entityManager: SKEntityManager) {
         super.init()
         
-        let node = SKSpriteNode(imageNamed: "cherry_item.png")
+        let node = SKSpriteNode(imageNamed: "cherry")
+        node.texture?.filteringMode = .nearest
         node.position = position
-        node.size = CGSize(width: 130, height: 150)
+        node.size = CGSize(width: 50, height: 50)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        
 
-        let size : CGSize = .init(width: 15 * 7, height: 20 * 7)
-        let body = SKPhysicsBody(rectangleOf: size)
-        body.isDynamic = true
+        let body = SKPhysicsBody(texture: node.texture!, size: node.size)
+        body.isDynamic = false
         body.affectedByGravity = false
         body.mass = 0
         body.friction = 1
@@ -52,12 +51,15 @@ class CherryEntity : GKEntity {
         self.addComponent(physicsComp)
         
         let death = SKAction.sequence([
-            .fadeOut(withDuration: 0.1),
+//            .wait(forDuration: 0.2),
+//            .fadeOut(withDuration: 0.2),
+            .removeFromParent(),
             .run {
                 [weak self] in
                 guard let self else {return}
                 entityManager.remove(entity: self)
-            }])
+            }
+        ])
         
         self.addComponent(DemiseComponent(death: death))
     }

@@ -11,11 +11,11 @@ import GameplayKit
 
 class WanderComponent : GKComponent {
     
-    var path : SKAction
-    var node : SKNode?
+    var path : SKAction = SKAction()
+    weak var node : SKNode?
     
-    init(path : SKAction) {
-        self.path = path
+    
+    override init() {
         super.init()
     }
     
@@ -27,14 +27,34 @@ class WanderComponent : GKComponent {
         node = entity?.component(ofType: GKSKNodeComponent.self)?.node
     }
     
-    public func wander(){
-        node?.run(path)
+    public func path (path : SKAction){
+        self.path = path
     }
     
-    public func follow(playerPosition : CGPoint){
-        let action : SKAction = .move(to: playerPosition, duration: 1)
-        node?.run(action)
+    public func wander(path : SKAction){
+        node?.run(path, withKey: "moving")
     }
+    
+//    func moveRight(point : CGPoint, time : TimeInterval){
+//        node?.xScale = abs(node?.xScale ?? 1) * 1
+//        node?.run(SKAction.move(to: point, duration: 1))
+//    }
+//    
+//    func moveLeft(point : CGPoint, time : TimeInterval){
+//        node?.run(SKAction.group([.run { [self] in
+//            node?.run(SKAction.move(to: point, duration: 1))
+//        }, .run { [self] in
+//            node?.xScale = abs(node?.xScale ?? 1) * -1
+//        }]))
+//    }
+//    
+//    func moveUp(point : CGPoint, time : TimeInterval){
+//        node?.run(SKAction.move(to: point, duration: 1))
+//    }
+//    
+//    func moveDown(point : CGPoint, time : TimeInterval){
+//        node?.run(SKAction.move(to: point, duration: 1))
+//    }
 }
 
 

@@ -13,7 +13,7 @@ class StateMachineComponent : GKComponent {
     
     
     var stateMachine : GKStateMachine
-    var node: SKNode?
+    weak var node: SKNode?
     
     init(stateMachine: GKStateMachine) {
         self.stateMachine  = stateMachine
@@ -22,6 +22,10 @@ class StateMachineComponent : GKComponent {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func update(deltaTime seconds: TimeInterval) {
+        stateMachine.update(deltaTime: seconds)
     }
     
     override func didAddToEntity() {

@@ -19,7 +19,8 @@ class GhostDizzy : GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        guard let action = ghostEnemy?.ghostActions(.dizzy) else {return}
+        guard let spriteName = ghostEnemy?.spriteComponent?.returnSpriteName() else {return}
+        guard let action = ghostEnemy?.ghostActions(.dizzy, spriteName: spriteName) else {return}
         ghostEnemy?.animationComponent?.play(action: action)
     }
     

@@ -18,6 +18,8 @@ class PlayerJump: GKState {
         // Iniciar animação de pulo
 //        playerEntity.animationComponent?.playJumpAnimation()
         playerEntity.jumpComponent?.jump(horizontalDirection: 0)
+        
+        print("entrou em pulo")
     }
 
     override func update(deltaTime seconds: TimeInterval) {

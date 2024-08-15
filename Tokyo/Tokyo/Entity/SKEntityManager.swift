@@ -15,7 +15,7 @@ class SKEntityManager {
     // utiliza set para não repetir entities dentro da cena
     var entities = Set<GKEntity>()
     
-    var scene: GameScene
+    weak var scene: GameScene?
     
     
     //referencia a cena
@@ -27,8 +27,8 @@ class SKEntityManager {
     func add(entity: GKEntity){
         entities.insert(entity)
         
-        if let node = entity.component(ofType: GKSKNodeComponent.self)?.node{
-            scene.addChild(node)
+        if let node = entity.component(ofType: GKSKNodeComponent.self)?.node, node.parent == nil {
+            scene?.addChild(node)
         }
     }
         
@@ -49,5 +49,18 @@ class SKEntityManager {
                 return false
             })
         }
+    func getEntities<T: GKEntity>(ofType type: T.Type) -> [T] {
+        return entities.compactMap { $0 as? T }
+    }
+    
+    var playerEntity: PlayerEntity? {
+        return getEntities(ofType: PlayerEntity.self).first
+    }
+    
+    func returnBoss() -> BossEntity? {
+        let boss = getEntities(ofType: BossEntity.self).first
+        
+        return boss
+    }
     
 }

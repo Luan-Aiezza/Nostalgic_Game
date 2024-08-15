@@ -11,7 +11,7 @@ import GameplayKit
 
 class PhysicsComponent: GKComponent{
     
-    var node:SKNode?
+    weak var node:SKNode?
     var texture: SKTexture?
     var size: CGSize?
     var body: SKPhysicsBody

@@ -1,19 +1,12 @@
-//
-//  DemiseComponent.swift
-//  Tokyo
-//
-//  Created by Jessica Rodrigues on 25/07/24.
-//
 
 import Foundation
-
 import SpriteKit
 import GameplayKit
 
 
 class DemiseComponent : GKComponent {
     
-    var  node : SKNode?
+    weak var  node : SKNode?
     var death : SKAction
     
     init(death: SKAction) {
@@ -30,6 +23,7 @@ class DemiseComponent : GKComponent {
     }
     
     public func die(){
+        node?.removeAllActions()
         node?.run(death)
     }
     
