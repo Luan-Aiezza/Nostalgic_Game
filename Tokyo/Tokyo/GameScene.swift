@@ -66,7 +66,7 @@ class GameScene: SKScene {
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
         
-        let keyItem = ItemEntity(position: CGPoint(x: 100, y: -100), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
+        let keyItem = ItemEntity(position: CGPoint(x: 0, y: -700), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
         entityManager?.add(entity: keyItem)
         
@@ -77,22 +77,22 @@ class GameScene: SKScene {
         addEventTriggers()
         adjustButtonLayout()
         ghostAdd()
-        //        addCheckpoints()
-        setupPlayerLight()  // Set up the light node
+        addCheckpoints()
+        //setupPlayerLight()  // Set up the light node
     }
     
     // Function to set up the light node
-    private func setupPlayerLight() {
-        playerLight.categoryBitMask = 1  // Define a categoria da luz
-        playerLight.lightColor = .white  // Cor da luz
-        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
-        playerLight.falloff = 1  // Quão rápido a luz escurece
-        playerLight.isEnabled = true
-        
-        self.addChild(playerLight)  // Adiciona a luz à cena
-        
-        
-    }
+//    private func setupPlayerLight() {
+//        playerLight.categoryBitMask = 1  // Define a categoria da luz
+//        playerLight.lightColor = .white  // Cor da luz
+//        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
+//        playerLight.falloff = 1  // Quão rápido a luz escurece
+//        playerLight.isEnabled = true
+//        
+//        self.addChild(playerLight)  // Adiciona a luz à cena
+//        
+//        
+//    }
     
     
     func setupButtons(){
@@ -326,14 +326,15 @@ class GameScene: SKScene {
     func addEventTriggers(){
         let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
             
-            audioPlayerOne.stopLevelOneSong()
-            audioPlayerTwo.playLevelTwoSong()
-            songOneIsPlaying = true
-            
             if boss.count < 1 {
                 let bossGhost = BossEntity(entityManager: entityManager!)
                 boss.append(bossGhost)
                 entityManager?.add(entity: bossGhost)
+                
+                audioPlayerOne.stopLevelOneSong()
+                audioPlayerTwo.playLevelTwoSong()
+                songOneIsPlaying = true
+                
             }
             
             
