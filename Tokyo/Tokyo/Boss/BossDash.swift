@@ -15,7 +15,7 @@ class BossDash: GKState {
     }
 
     override func didEnter(from previousState: GKState?) {
-        bossEntity.spriteNode?.run(bossEntity.playerActions(.dash))
+        bossEntity.spriteNode?.run(bossEntity.bossActions(.dash))
         // Logica de dass
         if let playerNode = bossEntity.entityManager.playerEntity?.spriteNode {
             let duration = 1.0

@@ -39,6 +39,9 @@
 		336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE2182C65156F002D5ABC /* GhostDeath.swift */; };
 		336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE21A2C651CC3002D5ABC /* PlayerEating.swift */; };
 		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
+		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
+		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
+		33E3AB942C6E3F92008D5B29 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB932C6E3F92008D5B29 /* Level02.sks */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -49,7 +52,6 @@
 		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
 		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
 		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
-		CF17CFC32C52A7FE00898033 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC22C52A7FE00898033 /* Level02.sks */; };
 		CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198622C481745000B3C50 /* AppDelegate.swift */; };
 		CF4198652C481745000B3C50 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF4198642C481745000B3C50 /* GameScene.sks */; };
 		CF4198692C481745000B3C50 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198682C481745000B3C50 /* GameScene.swift */; };
@@ -104,6 +106,9 @@
 		336CE2182C65156F002D5ABC /* GhostDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostDeath.swift; sourceTree = "<group>"; };
 		336CE21A2C651CC3002D5ABC /* PlayerEating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEating.swift; sourceTree = "<group>"; };
 		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
+		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
+		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
+		33E3AB932C6E3F92008D5B29 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -114,7 +119,6 @@
 		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
 		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
-		CF17CFC22C52A7FE00898033 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level02.sks; sourceTree = "<group>"; };
 		CF41985F2C481745000B3C50 /* Tokyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4198622C481745000B3C50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF4198642C481745000B3C50 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -196,6 +200,14 @@
 			path = "Audio Files";
 			sourceTree = "<group>";
 		};
+		338EE0AA2C6CE17C00A26A9D /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
 		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +242,7 @@
 				334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */,
 				334E85D12C63A4C300E61EA7 /* SpriteComponent.swift */,
 				335410A92C6B9830002B2C1B /* ActionComponent.swift */,
+				338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -264,8 +277,8 @@
 		CF17CFBF2C52A56900898033 /* Stage02 */ = {
 			isa = PBXGroup;
 			children = (
+				33E3AB932C6E3F92008D5B29 /* Level02.sks */,
 				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
-				CF17CFC22C52A7FE00898033 /* Level02.sks */,
 				336A9F6D2C66961100C1803B /* LevelDEBUG.sks */,
 			);
 			path = Stage02;
@@ -290,6 +303,7 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				338EE0AA2C6CE17C00A26A9D /* Nodes */,
 				3354109C2C6B8E48002B2C1B /* Audio */,
 				CF84E8202C63ACB50035CD09 /* GhostingBoss */,
 				334E85802C5BC15600E61EA7 /* Class */,
@@ -387,11 +401,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF17CFC32C52A7FE00898033 /* Level02.sks in Resources */,
 				335410A82C6B950F002B2C1B /* song2.mp3 in Resources */,
 				CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
+				33E3AB942C6E3F92008D5B29 /* Level02.sks in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
 				CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */,
 				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
@@ -424,6 +438,7 @@
 				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
 				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
 				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
+				338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
@@ -453,6 +468,7 @@
 				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
 				334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */,
 				334E85822C5BC16300E61EA7 /* Item.swift in Sources */,
+				338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
 				334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */,
 				336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */,
@@ -610,7 +626,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K4H4UFJU24;
+				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -638,7 +654,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K4H4UFJU24;
+				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

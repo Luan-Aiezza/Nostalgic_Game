@@ -22,6 +22,10 @@ class ActionComponent: GKComponent {
         super.init()
     }
     
+    override init() {
+        super.init()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -32,5 +36,9 @@ class ActionComponent: GKComponent {
     
     public func runCode(scene: SKScene){
         scene.run(action!)
+    }
+    
+    public func addAction(action : SKAction){
+        self.action = action
     }
 }

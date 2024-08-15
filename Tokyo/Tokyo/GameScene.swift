@@ -9,15 +9,19 @@ class GameScene: SKScene {
     var left_button = SKSpriteNode(imageNamed: "left")
     var jump_button = SKSpriteNode(imageNamed: "jump")
     var enemies:[GhostEntity] = []
+    var boss:[BossEntity] = []
     public var stateMachine : GKStateMachine?
     public var stateMachineEnemy : GKStateMachine?
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
     var rightButtonPressed = false
     var leftButtonPressed = false
-    var songOneIsPlaying = false
-    var audioPlayer = AudioManager.shared
+    var songOneIsPlaying = true
+    var audioPlayerOne = AudioManager.shared
+    var audioPlayerTwo = AudioManager.shared
     private let playerLight = SKLightNode()  // Light node to follow the player
+    var textBox = TextDialogue(sprite: SKSpriteNode(imageNamed: "box"), label: SKLabelNode(text: ""))
+    var isTextBoxHidden = true
     
     override func sceneDidLoad() {
     
@@ -27,7 +31,9 @@ class GameScene: SKScene {
         //Adicionando Level02 (CÓDIGO LUAN)
         
         initializeBackground()
-        AudioManager.shared.playLevelOneSong()
+//        AudioManager.shared.playLevelOneSong()
+        
+        textBox.isHidden = true
         
         
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
@@ -59,17 +65,18 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
-        let keyItem = ItemEntity(position: CGPoint(x: 0, y: -580), size: CGSize(width: 100, height: 100), entityManager: entityManager!, sprite: "key")
+        
+        let keyItem = ItemEntity(position: CGPoint(x: 100, y: -100), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
         entityManager?.add(entity: keyItem)
         
-        let cherryItem = CherryEntity(position: CGPoint(x: 160, y: -255), entityManager: entityManager!)
+        let cherryItem = CherryEntity(position: CGPoint(x: 60, y: -255), entityManager: entityManager!)
         entityManager?.add(entity: cherryItem)
         
         setupButtons()
+//        addEventTriggers()
         adjustButtonLayout()
         ghostAdd()
-        addEventTriggers()
         addCheckpoints()
         setupPlayerLight()  // Set up the light node
     }
@@ -101,12 +108,9 @@ class GameScene: SKScene {
         jump_button.texture?.filteringMode = .nearest
         self.camera?.addChild(jump_button)
         
-    }
-    
-    public func setButtonsActive(_ isActive: Bool) {
-        right_button.isUserInteractionEnabled = isActive
-        left_button.isUserInteractionEnabled = isActive
-        jump_button.isUserInteractionEnabled = isActive
+        textBox.sprite.texture?.filteringMode = .nearest
+        self.camera?.addChild(textBox)
+        
     }
     
     func adjustButtonLayout() {
@@ -119,10 +123,13 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX - 250, y: cameraFrame.minY - 90 )
+        left_button.position = CGPoint(x: cameraFrame.minX, y: cameraFrame.minY - 30 )
         right_button.position = CGPoint(x: left_button.position.x + buttonSize.width + 20, y: left_button.position.y)
         
-        jump_button.position = CGPoint(x: cameraFrame.maxX + 250, y:left_button.position.y)
+        jump_button.position = CGPoint(x: cameraFrame.maxX, y:left_button.position.y)
+        
+        textBox.sprite.size = CGSize(width: 200, height: 40)
+        textBox.position = CGPoint(x: 0, y: 80)
     }
     override func didChangeSize(_ oldSize: CGSize) {
         super.didChangeSize(oldSize)
@@ -316,22 +323,79 @@ class GameScene: SKScene {
     }
     
     func addEventTriggers(){
-        let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
-            
-            audioPlayer.stopLevelOneSong()
-            audioPlayer.playLevelTwoSong()
-            songOneIsPlaying = true
-            
-        })
-        entityManager?.add(entity: eventTriggerOne)
+        
+//        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x: 150, y: -230), size: CGSize(width: 60, height: 1), action: SKAction.run { [self] in
+//            
+//            if boss.count < 1 {
+//                let bossGhost = BossEntity(entityManager: entityManager!)
+//                boss.append(bossGhost)
+//                entityManager?.add(entity: bossGhost)
+//            }
+//        })
+//        entityManager?.add(entity: eventTriggerTwo)
     }
+        
+    
     
     func addCheckpoints(){
-        let checkpointOne = PointEntity(position: CGPoint(x: 990, y: -1240), size: CGSize(width: 45, height: 47), entityManager: entityManager!)
+        let chestPoint = PointEntity(position: CGPoint(x: 240, y: 344), size: CGSize(width: 32, height: 48), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"))
+        chestPoint.identityComponent?.name(name: "key")
+        chestPoint.actionComponent?.addAction(action: SKAction.run {
+            let action: SKAction = chestPoint.pointActions(.chest)
+            
+            chestPoint.animationComponent?.play(action: action)
+            
+            let didAdd = self.playerEntity?.inventoryComponent?.items.contains(where: { item in item.name == "pickaxe"})
+            
+            if didAdd == false {
+                let item = Item(name: "pickaxe")
+                self.playerEntity?.inventoryComponent?.addItem(item: item)
+                let message = SKAction.sequence([
+                
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "you got a pickaxe!")
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                
+                ])
+                self.run(message)
+            }
         
-        checkpointOne.identityComponent?.name(name: "key")
+        })
+        entityManager?.add(entity: chestPoint)
         
-        entityManager?.add(entity: checkpointOne)
+        let stonePoint = PointEntity(position: CGPoint(x: 980, y: -1220), size: CGSize(width: 120, height: 80), entityManager: entityManager!, texture: SKTexture(imageNamed: "pedraDesmoronando1"))
+        stonePoint.identityComponent?.name(name: "pickaxe")
+        stonePoint.actionComponent?.addAction(action: SKAction.run {
+            let action: SKAction = stonePoint.pointActions(.stone)
+            
+            let animation = SKAction.run {
+                stonePoint.animationComponent?.play(action: action)
+            }
+            
+            let die = SKAction.run {
+                stonePoint.demiseComponent?.die()
+            }
+            
+            let wait = SKAction.wait(forDuration: 1)
+            
+            let sequence = SKAction.sequence([animation, wait, die])
+            
+            self.run(sequence)
+            
+            self.entityManager?.remove(entity: stonePoint)
+        
+        })
+        entityManager?.add(entity: stonePoint)
     }
     
 }

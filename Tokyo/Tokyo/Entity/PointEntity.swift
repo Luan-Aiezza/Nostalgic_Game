@@ -24,22 +24,32 @@ class PointEntity : GKEntity {
         return component(ofType: DemiseComponent.self)
     }
     
-    init(position : CGPoint, size : CGSize, entityManager: SKEntityManager) {
+    var actionComponent: ActionComponent? {
+        return component(ofType: ActionComponent.self)
+    }
+    
+    var animationComponent: AnimationComponent? {
+        return component(ofType: AnimationComponent.self)
+    }
+    
+    init(position : CGPoint, size : CGSize, entityManager: SKEntityManager, texture: SKTexture) {
         super.init()
         
-        let node = SKSpriteNode()
+        let node = SKSpriteNode(texture: texture)
         node.position = position
+        node.texture?.filteringMode = .nearest
         node.size = size
-        node.size = CGSize(width: 130, height: 150)
-        node.setScale(0.5)
+//        node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
-        let body = SKPhysicsBody(rectangleOf: size)
+        let body = SKPhysicsBody(texture: node.texture!, size: size)
         body.isDynamic = false
+        
         body.affectedByGravity = false
         body.mass = 0
+//        body.area
         body.friction = 1
-        body.restitution = 1
+        body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
         body.affectedByGravity = false
@@ -53,11 +63,18 @@ class PointEntity : GKEntity {
             .run {
                 [weak self] in
                 guard let self else {return}
+                self.component(ofType: GKSKNodeComponent.self)?.node.removeFromParent()
                 entityManager.remove(entity: self)
             }])
         
         self.addComponent(DemiseComponent(death: death))
         self.addComponent(IdentifierComponent())
+        
+        let animationComp = AnimationComponent()
+        self.addComponent(animationComp)
+        
+        let actionComp = ActionComponent()
+        self.addComponent(actionComp)
     }
     
     required init?(coder: NSCoder) {
@@ -71,4 +88,18 @@ class PointEntity : GKEntity {
         }
     }
     
+    func pointActions(_ animation: PointAnimation) -> SKAction{
+        switch animation {
+        case .chest:
+            let action: SKAction = .animate(with: .init(withFormat: "bau%@.png", range: 1...12), timePerFrame: 0.1)
+            return action
+            
+        
+        
+        case .stone:
+        let action: SKAction = .animate(with: .init(withFormat: "pedraDesmoronando%@.png", range: 1...11), timePerFrame: 0.1)
+        return action
+        
+    }
+    }
 }

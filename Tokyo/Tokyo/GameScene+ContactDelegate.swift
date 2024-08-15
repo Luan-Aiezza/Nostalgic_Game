@@ -1,12 +1,20 @@
+//
+//  GameScene+ContactDelegate.swift
+//  Tokyo
+//
+//  Created by Jessica Rodrigues on 25/07/24.
+//
+
 import Foundation
 import SpriteKit
 import GameplayKit
 
 extension GameScene: SKPhysicsContactDelegate {
-
+    
     func didBegin(_ contact: SKPhysicsContact) {
         guard let entityA = contact.bodyA.node?.entity,
-              let entityB = contact.bodyB.node?.entity else { return }
+              let entityB = contact.bodyB.node?.entity else {return}
+        
         
         isContactWithEnemy(entityA: entityA, entityB: entityB)
         isContactWithEnemy(entityA: entityB, entityB: entityA)
@@ -20,33 +28,21 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithWall(entityA: entityB, entityB: entityA)
         isContactWithGhostCherry(entityA: entityA, entityB: entityB)
         isContactWithGhostCherry(entityA: entityB, entityB: entityA)
-        isContactWithSpikes(entityA: entityA, entityB: entityB)
-        isContactWithSpikes(entityA: entityB, entityB: entityA)
+        isContactWithBoss(entityA: entityA, entityB: entityB)
+        isContactWithBoss(entityA: entityB, entityB: entityA)
+    
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
         guard let entityA = contact.bodyA.node?.entity,
-              let entityB = contact.bodyB.node?.entity else { return }
-        
+              let entityB = contact.bodyB.node?.entity else {return}
         isNotInContactWithWall(entityA: entityA, entityB: entityB)
         isNotInContactWithWall(entityA: entityB, entityB: entityA)
         isContactWithEventTrigger(entityA: entityA, entityB: entityB)
         isContactWithEventTrigger(entityA: entityB, entityB: entityA)
+        
     }
     
-    private func isContactWithSpikes(entityA: GKEntity, entityB: GKEntity) {
-        if entityA is PlayerEntity && entityB is SpikesEntity {
-            let player = entityA as! PlayerEntity
-            player.demiseComponent?.die()
-
-            // Transição para a cena de game over, por exemplo
-            let gameOverScene = SKAction.run {
-                self.gameOver()
-            }
-            self.run(gameOverScene)
-        }
-    }
-
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostEntity {
@@ -98,6 +94,56 @@ extension GameScene: SKPhysicsContactDelegate {
         }
     }
     
+    private func isContactWithBoss(entityA: GKEntity, entityB: GKEntity) {
+        
+        if entityA is PlayerEntity && entityB is BossEntity {
+            let ghost = entityB as! BossEntity
+            let player = entityA as! PlayerEntity
+            
+            guard let isKillable = ghost.killableComponent?.returnIsKillable() else {return}
+            
+            if isKillable != true{
+                
+                let pauseGhost = SKAction.sequence([SKAction.run {
+                    ghost.stateComponent?.stateMachine.enter(BossIdle.self)
+                    ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
+                }, .wait(forDuration: 0.3), .run {
+                    ghost.component(ofType: GKSKNodeComponent.self)?.node.removeFromParent()
+                }])
+                
+                let playerAction = SKAction.sequence([
+                    .run {
+                        player.stateComponent?.stateMachine.enter(PlayerDeath.self)
+                    },
+                    .wait(forDuration: 1.3),
+                    .run {
+                        player.demiseComponent?.die()
+                    },
+                    .wait(forDuration: 0.2),
+                ])
+                
+                let gameOverScene = SKAction.run {
+                    self.gameOver()
+                }
+                
+                self.run(SKAction.sequence([pauseGhost, playerAction, gameOverScene]))
+            }
+            
+            else {
+                
+            
+                let action = ghost.bossActions(BossAnimation.death)
+                ghost.animationComponent?.play(action: action)
+                ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.64) {
+                    ghost.demiseComponent?.die()
+                    self.boss.removeAll()
+                }
+            }
+        }
+    }
+    
     
     private func isContactWithCherry(entityA: GKEntity, entityB: GKEntity) {
         
@@ -107,6 +153,25 @@ extension GameScene: SKPhysicsContactDelegate {
             
             let player = entityA as! PlayerEntity
             let cherry = entityB as! CherryEntity
+            
+            let message = SKAction.sequence([
+            
+                SKAction.run {
+                    self.textBox.isHidden = false
+                },
+                
+                SKAction.run {
+                    self.textBox.textUpdate(text: "you eaten cherry!")
+                },
+                
+                SKAction.wait(forDuration: 1.5),
+                
+                SKAction.run {
+                    self.textBox.isHidden = true
+                }
+            
+            ])
+            self.run(message)
             
             cherry.component(ofType: GKSKNodeComponent.self)?.node.alpha = 0
             
@@ -141,7 +206,6 @@ extension GameScene: SKPhysicsContactDelegate {
     private func isContactWithGhostCherry(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostCherryEntity {
-            let waitAction = SKAction.wait(forDuration: 10)
             let waitActionCherry = SKAction.wait(forDuration: 0.1)
             
             let player = entityA as! PlayerEntity
@@ -161,18 +225,9 @@ extension GameScene: SKPhysicsContactDelegate {
             
             self.run(SKAction.sequence([group,eatenCherry]))
             
-            guard let ghostBoss = entityManager?.returnBoss() else {return}
-                
-                let dizzyGhost = SKAction.run {
-                    ghostBoss.stateComponent?.stateMachine.enter(GhostDizzy.self)
-                }
-                
-                let healthyGhost = SKAction.run {
-                    ghostBoss.stateComponent?.stateMachine.enter(GhostHealthy.self)
-                }
-                
-                let sequence = SKAction.sequence([dizzyGhost, waitAction, healthyGhost])
-                run(sequence)
+            for bossGhost in boss {
+                bossGhost.killableComponent?.isCurretlyKillable()
+            }
         }
     }
     
@@ -191,7 +246,24 @@ extension GameScene: SKPhysicsContactDelegate {
             if didAdd == false {
                 let item = Item(name: name!)
                 playerEntity?.inventoryComponent?.addItem(item: item)
-                print("adquiriu o \(item.returnName())")
+                let message = SKAction.sequence([
+                
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "you got \(item.returnName())!")
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                
+                ])
+                self.run(message)
             }
         }
     }
@@ -200,19 +272,84 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if entityA is PlayerEntity && entityB is PointEntity {
             
+            print("entrou em contato")
+            
             let player = entityA as! PlayerEntity
             let point = entityB as! PointEntity
             guard let pointName = point.identityComponent?.returnName() else {return}
             guard let items = player.inventoryComponent?.items else {return}
+            var doesPlayerHaveIt = false
             
             for i in items {
                 if i.name == pointName {
-                    point.demiseComponent?.die()
-                    print("alguma coisa acontece!")
+                    //                    guard let action = point.actionComponent?.action else {return}
+                    //                    run(action)
+                    doesPlayerHaveIt = true
+                    
                 }
-                else {
-                    print("não tem " + pointName)
+            }
+//
+//                if items.count != 0 && i.name != pointName {
+//                    let message = SKAction.sequence([
+//                    
+//                        SKAction.run {
+//                            self.textBox.isHidden = false
+//                        },
+//                        
+//                        SKAction.run {
+//                            self.textBox.textUpdate(text: "you can't open it.")
+//                        },
+//                        
+//                        SKAction.wait(forDuration: 1.5),
+//                        
+//                        SKAction.run {
+//                            self.textBox.isHidden = true
+//                        }
+//                    ])
+//                    self.run(message)
+//                }
+//            }
+                
+                if doesPlayerHaveIt {
+                    guard let action = point.actionComponent?.action else {return}
+                    run(action)
+                }else {
+                            let message = SKAction.sequence([
+                            SKAction.run {
+                            self.textBox.isHidden = false},
+                    
+                                            SKAction.run {
+                                                self.textBox.textUpdate(text: "you can't open it.")
+                                            },
+                    
+                                            SKAction.wait(forDuration: 1.5),
+                    
+                                            SKAction.run {
+                                                self.textBox.isHidden = true
+                                            }
+                                        ])
+                                        self.run(message)
                 }
+            
+            
+            if items.count == 0 {
+                let message = SKAction.sequence([
+                
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "you can't open it.")
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                ])
+                self.run(message)
             }
         }
     }

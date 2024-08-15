@@ -22,3 +22,8 @@ enum GhostAnimation {
     case healthy
     case death
 }
+
+enum PointAnimation {
+    case chest
+    case stone
+}

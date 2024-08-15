@@ -8,10 +8,6 @@ class BossEntity: GKEntity {
     var body: SKPhysicsBody?
     let entityManager: SKEntityManager
     
-    var demiseComponent: DemiseComponent? {
-        return component(ofType: DemiseComponent.self)
-    }
-    
     var moveComponent: BossMovementComponent? {
         return component(ofType: BossMovementComponent.self)
     }
@@ -32,8 +28,15 @@ class BossEntity: GKEntity {
         return component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
     }
     
+    var killableComponent: KillableComponent? {
+        return component(ofType: KillableComponent.self)
+    }
+    
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
+    
     init(entityManager: SKEntityManager) {
-        
         self.entityManager = entityManager
         super.init()
         let node = SKSpriteNode(imageNamed: "bossIdle1")
@@ -46,32 +49,34 @@ class BossEntity: GKEntity {
         
         let radius = min(node.size.width, node.size.height) / 2
         let body = SKPhysicsBody(circleOfRadius: radius)
-        body.isDynamic = true
+        body.isDynamic = false
         body.restitution = 0
-        body.usesPreciseCollisionDetection = true
+        body.usesPreciseCollisionDetection = false
         body.allowsRotation = false
         body.affectedByGravity = false  // Desabilitar gravidade para o Boss
 
         // Configura as categorias de física
-        body.categoryBitMask = UInt32.boss
+        body.categoryBitMask = .boss
 
         // Permite contato, mas ignora a colisão com o tilemap
-        body.collisionBitMask = UInt32.player
-        body.contactTestBitMask = UInt32.player
+        body.collisionBitMask = .none
+        body.contactTestBitMask = .player
 
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
         let death = SKAction.sequence([
-            .removeFromParent(),
+            .fadeOut(withDuration: 0.1),
             .run {
                 [weak self] in
-                guard let self else {return}
+                guard let self else { return }
                 entityManager.remove(entity: self)
-            }
-        ])
+            }])
         
         self.addComponent(DemiseComponent(death: death))
+        
+        let killableComp = KillableComponent()
+        self.addComponent(killableComp)
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
@@ -98,18 +103,18 @@ class BossEntity: GKEntity {
         moveComponent?.moveToPosition(position, duration: duration)
     }
     
-    func playerActions(_ animation: BossAnimation) -> SKAction {
+    func bossActions(_ animation: BossAnimation) -> SKAction {
         switch animation {
             case .idle:
                 let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "bossIdle%@.png", range: 1...3), timePerFrame: 0.6))
                 return action
                 
             case .dash:
-                let action: SKAction = .animate(with: .init(withFormat: "bossDash%@.png", range: 1...3), timePerFrame: 0.6)
+                let action: SKAction = .animate(with: .init(withFormat: "bossDash%@.png", range: 1...3), timePerFrame: 0.1)
                 return action
             
-            case .death:
-            let action: SKAction = .animate(with: .init(withFormat: "bossDash%@.png", range: 4...15), timePerFrame: 0.08)
+        case .death:
+            let action: SKAction = .animate(with: .init(withFormat: "boss%@.png", range: 4...15), timePerFrame: 0.1)
             return action
         }
     }

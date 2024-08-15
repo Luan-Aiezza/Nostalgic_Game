@@ -32,4 +32,11 @@ extension SKSpriteNode {
         
         entityManager.add(entity: entity)
     }
+    
+//    func breakableStone(entityManager: SKEntityManager){
+//        
+//        let entity = PointEntity(node: self)
+//        
+//        entityManager.add(entity: entity)
+//    }
 }
