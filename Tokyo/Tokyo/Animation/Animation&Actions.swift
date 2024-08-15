@@ -25,4 +25,5 @@ enum GhostAnimation {
 
 enum PointAnimation {
     case chest
+    case stone
 }

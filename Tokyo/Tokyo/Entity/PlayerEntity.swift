@@ -41,12 +41,12 @@ class PlayerEntity: GKEntity {
         super.init()
         let node = SKSpriteNode(imageNamed: "andyIdle1")
         node.anchorPoint = .init(x: 0.5, y: 0.5)
-//        node.position = CGPoint(x: -2880, y: 340)
+        node.position = CGPoint(x: -280, y: 360)
         node.setScale(0.75)
         node.texture?.filteringMode = .nearest
         self.addComponent(GKSKNodeComponent(node: node))
         
-        let moveComp = MovementComponent(speed: 5)
+        let moveComp = MovementComponent(speed: 3.5)
         self.addComponent(moveComp)
     
         let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height))

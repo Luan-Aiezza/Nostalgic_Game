@@ -66,7 +66,7 @@ class GameScene: SKScene {
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
         
-        let keyItem = ItemEntity(position: CGPoint(x: -530, y: -190), size: CGSize(width: 100, height: 100), entityManager: entityManager!, sprite: "key")
+        let keyItem = ItemEntity(position: CGPoint(x: 100, y: -100), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
         entityManager?.add(entity: keyItem)
         
@@ -255,7 +255,7 @@ class GameScene: SKScene {
         background = SKSpriteNode(imageNamed: "background1")
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.position = CGPoint(x: frame.midX, y: frame.midY)
-        background.zPosition = -1 // Coloque atrás dos outros nodes
+        background.zPosition = -5 // Coloque atrás dos outros nodes
         background.alpha = 0.6
         background.setScale(1)
         background.texture?.filteringMode = .nearest
@@ -338,7 +338,7 @@ class GameScene: SKScene {
     
     
     func addCheckpoints(){
-        let chestPoint = PointEntity(position: CGPoint(x: 160, y: -235), size: CGSize(width: 64, height: 96), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"))
+        let chestPoint = PointEntity(position: CGPoint(x: 240, y: 344), size: CGSize(width: 32, height: 48), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"))
         chestPoint.identityComponent?.name(name: "key")
         chestPoint.actionComponent?.addAction(action: SKAction.run {
             let action: SKAction = chestPoint.pointActions(.chest)
@@ -357,7 +357,7 @@ class GameScene: SKScene {
                     },
                     
                     SKAction.run {
-                        self.textBox.textUpdate(text: "you got a\(item.returnName())!")
+                        self.textBox.textUpdate(text: "you got a pickaxe!")
                     },
                     
                     SKAction.wait(forDuration: 1.5),
@@ -372,6 +372,30 @@ class GameScene: SKScene {
         
         })
         entityManager?.add(entity: chestPoint)
+        
+        let stonePoint = PointEntity(position: CGPoint(x: 980, y: -1220), size: CGSize(width: 120, height: 80), entityManager: entityManager!, texture: SKTexture(imageNamed: "pedraDesmoronando1"))
+        stonePoint.identityComponent?.name(name: "pickaxe")
+        stonePoint.actionComponent?.addAction(action: SKAction.run {
+            let action: SKAction = stonePoint.pointActions(.stone)
+            
+            let animation = SKAction.run {
+                stonePoint.animationComponent?.play(action: action)
+            }
+            
+            let die = SKAction.run {
+                stonePoint.demiseComponent?.die()
+            }
+            
+            let wait = SKAction.wait(forDuration: 1)
+            
+            let sequence = SKAction.sequence([animation, wait, die])
+            
+            self.run(sequence)
+            
+            self.entityManager?.remove(entity: stonePoint)
+        
+        })
+        entityManager?.add(entity: stonePoint)
     }
     
 }

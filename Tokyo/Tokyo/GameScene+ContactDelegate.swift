@@ -272,19 +272,84 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if entityA is PlayerEntity && entityB is PointEntity {
             
+            print("entrou em contato")
+            
             let player = entityA as! PlayerEntity
             let point = entityB as! PointEntity
             guard let pointName = point.identityComponent?.returnName() else {return}
             guard let items = player.inventoryComponent?.items else {return}
+            var doesPlayerHaveIt = false
             
             for i in items {
                 if i.name == pointName {
+                    //                    guard let action = point.actionComponent?.action else {return}
+                    //                    run(action)
+                    doesPlayerHaveIt = true
+                    
+                }
+            }
+//
+//                if items.count != 0 && i.name != pointName {
+//                    let message = SKAction.sequence([
+//                    
+//                        SKAction.run {
+//                            self.textBox.isHidden = false
+//                        },
+//                        
+//                        SKAction.run {
+//                            self.textBox.textUpdate(text: "you can't open it.")
+//                        },
+//                        
+//                        SKAction.wait(forDuration: 1.5),
+//                        
+//                        SKAction.run {
+//                            self.textBox.isHidden = true
+//                        }
+//                    ])
+//                    self.run(message)
+//                }
+//            }
+                
+                if doesPlayerHaveIt {
                     guard let action = point.actionComponent?.action else {return}
                     run(action)
+                }else {
+                            let message = SKAction.sequence([
+                            SKAction.run {
+                            self.textBox.isHidden = false},
+                    
+                                            SKAction.run {
+                                                self.textBox.textUpdate(text: "you can't open it.")
+                                            },
+                    
+                                            SKAction.wait(forDuration: 1.5),
+                    
+                                            SKAction.run {
+                                                self.textBox.isHidden = true
+                                            }
+                                        ])
+                                        self.run(message)
                 }
-                else {
-                    print("não tem " + pointName)
-                }
+            
+            
+            if items.count == 0 {
+                let message = SKAction.sequence([
+                
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "you can't open it.")
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                ])
+                self.run(message)
             }
         }
     }
