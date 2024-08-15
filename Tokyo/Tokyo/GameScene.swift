@@ -24,14 +24,14 @@ class GameScene: SKScene {
     var isTextBoxHidden = true
     
     override func sceneDidLoad() {
-    
+        audioPlayerOne.playLevelOneSong()
         self.physicsWorld.contactDelegate = self
         
         entityManager = SKEntityManager(scene: self)
         //Adicionando Level02 (CÓDIGO LUAN)
         
         initializeBackground()
-//        AudioManager.shared.playLevelOneSong()
+        //        AudioManager.shared.playLevelOneSong()
         
         textBox.isHidden = true
         
@@ -74,10 +74,10 @@ class GameScene: SKScene {
         entityManager?.add(entity: cherryItem)
         
         setupButtons()
-//        addEventTriggers()
+        addEventTriggers()
         adjustButtonLayout()
         ghostAdd()
-        addCheckpoints()
+        //        addCheckpoints()
         setupPlayerLight()  // Set up the light node
     }
     
@@ -322,19 +322,25 @@ class GameScene: SKScene {
         
     }
     
+    
     func addEventTriggers(){
-        
-//        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x: 150, y: -230), size: CGSize(width: 60, height: 1), action: SKAction.run { [self] in
-//            
-//            if boss.count < 1 {
-//                let bossGhost = BossEntity(entityManager: entityManager!)
-//                boss.append(bossGhost)
-//                entityManager?.add(entity: bossGhost)
-//            }
-//        })
-//        entityManager?.add(entity: eventTriggerTwo)
+        let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
+            
+            audioPlayerOne.stopLevelOneSong()
+            audioPlayerTwo.playLevelTwoSong()
+            songOneIsPlaying = true
+            
+            if boss.count < 1 {
+                let bossGhost = BossEntity(entityManager: entityManager!)
+                boss.append(bossGhost)
+                entityManager?.add(entity: bossGhost)
+            }
+            
+            
+        })
+        entityManager?.add(entity: eventTriggerOne)
     }
-        
+    
     
     
     func addCheckpoints(){
@@ -351,7 +357,7 @@ class GameScene: SKScene {
                 let item = Item(name: "pickaxe")
                 self.playerEntity?.inventoryComponent?.addItem(item: item)
                 let message = SKAction.sequence([
-                
+                    
                     SKAction.run {
                         self.textBox.isHidden = false
                     },
@@ -365,11 +371,11 @@ class GameScene: SKScene {
                     SKAction.run {
                         self.textBox.isHidden = true
                     }
-                
+                    
                 ])
                 self.run(message)
             }
-        
+            
         })
         entityManager?.add(entity: chestPoint)
         
@@ -393,7 +399,7 @@ class GameScene: SKScene {
             self.run(sequence)
             
             self.entityManager?.remove(entity: stonePoint)
-        
+            
         })
         entityManager?.add(entity: stonePoint)
     }
