@@ -29,6 +29,11 @@ class TilesEntity: GKEntity {
                     child?.addPhysicsToGround(entityManager: entityManager)
                 }
                 
+                else if child.name == "deepEnd" {
+                    let child = child as? SKSpriteNode
+                    child?.addPhysicsTodeepEnd(entityManager: entityManager)
+                }
+                
                 
             }
             

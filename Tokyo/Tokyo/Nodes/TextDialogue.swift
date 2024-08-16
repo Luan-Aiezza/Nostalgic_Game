@@ -16,7 +16,7 @@ class TextDialogue : SKNode {
     
     init(sprite : SKSpriteNode, label : SKLabelNode) {
         self.sprite = sprite
-        self.sprite.size = CGSize(width: 300, height: 50)
+        self.sprite.size = CGSize(width: 400, height: 50)
         self.label = label
         super.init()
         

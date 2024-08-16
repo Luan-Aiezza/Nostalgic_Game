@@ -35,6 +35,8 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithBoss(entityA: entityB, entityB: entityA)
         isContactWithSign(entityA: entityA, entityB: entityB)
         isContactWithSign(entityA: entityB, entityB: entityA)
+        isContactWithDeepEnd(entityA: entityA, entityB: entityB)
+        isContactWithDeepEnd(entityA: entityB, entityB: entityA)
         
     }
     
@@ -133,6 +135,8 @@ extension GameScene: SKPhysicsContactDelegate {
                 }
                 
                 self.run(SKAction.sequence([pauseGhost, playerAction, gameOverScene]))
+                
+                print("something")
             }
             
             else {
@@ -240,7 +244,7 @@ extension GameScene: SKPhysicsContactDelegate {
                     },
                     
                     SKAction.run {
-                        self.textBox.textUpdate(text: "you got \(item.returnName())!")
+                        self.textBox.textUpdate(text: "you got a \(item.returnName())!")
                     },
                     
                     SKAction.wait(forDuration: 1.5),
@@ -325,7 +329,15 @@ extension GameScene: SKPhysicsContactDelegate {
             
             guard let action = eventTrigger.actionComponent?.action else {return}
             
-            run(action)
+            let dieAction = SKAction.run {
+                eventTrigger.demiseComponent?.die()
+            }
+            
+            let sequence = SKAction.sequence([action, dieAction])
+            
+            run(sequence)
+            
+            
             
         }
     }
@@ -363,13 +375,26 @@ extension GameScene: SKPhysicsContactDelegate {
     }
     
     private func isContactWithTemporaryBlock(entityA: GKEntity, entityB: GKEntity) {
-        // Verifica se entityA é o jogador e entityB é o bloco temporário
-        if entityA is PlayerEntity, let block = entityB as? TemporaryBlockEntity {
-            print("Entrou no contactdelegate")
-            if let lifetimeComponent = entityB.component(ofType: LifetimeComponent.self) {
-                lifetimeComponent.shouldFall(itShouldFall: true)
-                
+      
+        if entityA is PlayerEntity && entityB is TemporaryBlockEntity {
+            let waitAction = SKAction.wait(forDuration: 0.6)
+        
+            let block = entityB as! TemporaryBlockEntity
+            
+            let action = block.platformActions(.breakable)
+            
+            let breakAction = SKAction.run {
+                block.animationComponent?.play(action: action)
             }
+            
+            let blockDeath = SKAction.run {
+                block.demiseComponent?.die()
+            }
+            
+            self.run(SKAction.sequence([breakAction, waitAction, blockDeath]))
+        
+        }
+    }
     func isContactWithSign(entityA: GKEntity, entityB: GKEntity){
         
         if entityA is PlayerEntity && entityB is SignEntity {
@@ -395,17 +420,31 @@ extension GameScene: SKPhysicsContactDelegate {
             self.run(message)
             
         }
+    }
+    
+    private func isContactWithDeepEnd(entityA: GKEntity, entityB: GKEntity) {
         
-        // Verifica se entityB é o jogador e entityA é o bloco temporário
-        if entityB is PlayerEntity, let block = entityA as? TemporaryBlockEntity {
-            print("Entrou no contactdelegate")
-            if let lifetimeComponent = entityA.component(ofType: LifetimeComponent.self) {
-                lifetimeComponent.shouldFall(itShouldFall: true)
+        if entityA is PlayerEntity && entityB is DeepEndEntity {
+            let player = entityA as! PlayerEntity
+                
+                let playerAction = SKAction.sequence([
+                    .run {
+                        player.stateComponent?.stateMachine.enter(PlayerDeath.self)
+                    },
+                    .wait(forDuration: 1.3),
+                    .run {
+                        player.demiseComponent?.die()
+                    },
+                    .wait(forDuration: 0.2),
+                ])
+                
+                let gameOverScene = SKAction.run {
+                    self.gameOver()
+                }
+                
+                self.run(SKAction.sequence([playerAction, gameOverScene]))
             }
         }
     }
-    
-    
-    
-    
-}
+
+

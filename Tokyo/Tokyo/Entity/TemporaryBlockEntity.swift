@@ -19,7 +19,15 @@ public class TemporaryBlockEntity: GKEntity{
         return self.component(ofType: LifetimeComponent.self)
     }
     
-    init(position: CGPoint, lifetime: TimeInterval) {
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
+    
+    var animationComponent: AnimationComponent? {
+        return component(ofType: AnimationComponent.self)
+    }
+    
+    init(position: CGPoint, entityManager : SKEntityManager) {
         super.init()
         
         //
@@ -34,13 +42,36 @@ public class TemporaryBlockEntity: GKEntity{
         body.collisionBitMask = .contactWithAllCategories()
         body.contactTestBitMask = .player
         self.addComponent(PhysicsComponent(body: body))
-        self.addComponent(LifetimeComponent(lifetime: lifetime))
+//        self.addComponent(LifetimeComponent(lifetime: lifetime))
+        
+        let death = SKAction.sequence([
+            .removeFromParent(),
+            .run {
+                [weak self] in
+                guard let self else {return}
+                entityManager.remove(entity: self)
+            }
+        ])
+        
+        self.addComponent(DemiseComponent(death: death))
+        
+        let animationComp = AnimationComponent()
+        self.addComponent(animationComp)
         
 
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func platformActions(_ animation: PlatformAnimation) -> SKAction{
+        switch animation {
+        case .breakable:
+            let action: SKAction = .repeatForever(.animate(with: .init(withFormat: "plataformaQuebravel%@.png", range: 1...5), timePerFrame: 0.1))
+            return action
+        }
+        
     }
 }
 

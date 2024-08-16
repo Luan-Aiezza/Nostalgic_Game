@@ -41,10 +41,10 @@
 		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
 		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
 		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
-		33E3AB942C6E3F92008D5B29 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB932C6E3F92008D5B29 /* Level02.sks */; };
 		33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB962C6E6391008D5B29 /* pixel.otf */; };
 		33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */; };
 		33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */; };
+		33E3ABA42C6F0708008D5B29 /* DeepEndEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -54,11 +54,11 @@
 		33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5702C5088D100880E83 /* PlayerIdle.swift */; };
 		BB2629632C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */; };
 		BB2629652C69BA2D0077DD35 /* TemporaryBlockEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */; };
-		BB42994D2C6EC8F60095146C /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB42994C2C6EC8F60095146C /* Level02.sks */; };
 		BB2629672C6BE5AD0077DD35 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629662C6BE5AD0077DD35 /* StartScene.swift */; };
 		BB2629692C6C6E7A0077DD35 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629682C6C6E7A0077DD35 /* MenuScene.swift */; };
 		BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB26296A2C6CCFBA0077DD35 /* StartScene.sks */; };
 		BB26296D2C6CF6CB0077DD35 /* PausePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */; };
+		BB42994D2C6EC8F60095146C /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB42994C2C6EC8F60095146C /* Level02.sks */; };
 		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
 		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
 		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
@@ -118,11 +118,11 @@
 		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
 		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
 		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
-		33E3AB932C6E3F92008D5B29 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 		33E3AB962C6E6391008D5B29 /* pixel.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixel.otf; sourceTree = "<group>"; };
 		33E3AB972C6E63C8008D5B29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignEntity.swift; sourceTree = "<group>"; };
 		33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "the-first-palm-pda-font.ttf"; sourceTree = "<group>"; };
+		33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepEndEntity.swift; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -132,11 +132,11 @@
 		33EDD5702C5088D100880E83 /* PlayerIdle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIdle.swift; sourceTree = "<group>"; };
 		BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryLifeTimeComponent.swift; sourceTree = "<group>"; };
 		BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryBlockEntity.swift; sourceTree = "<group>"; };
-		BB42994C2C6EC8F60095146C /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 		BB2629662C6BE5AD0077DD35 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		BB2629682C6C6E7A0077DD35 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		BB26296A2C6CCFBA0077DD35 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePopUp.swift; sourceTree = "<group>"; };
+		BB42994C2C6EC8F60095146C /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
 		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
@@ -259,6 +259,7 @@
 				33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */,
 				CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */,
 				CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */,
+				33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -443,11 +444,9 @@
 				335410A82C6B950F002B2C1B /* song2.mp3 in Resources */,
 				BB42994D2C6EC8F60095146C /* Level02.sks in Resources */,
 				CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */,
-				CF17CFC32C52A7FE00898033 /* Level02.sks in Resources */,
 				BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
-				33E3AB942C6E3F92008D5B29 /* Level02.sks in Resources */,
 				33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */,
 				33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
@@ -466,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E3ABA42C6F0708008D5B29 /* DeepEndEntity.swift in Sources */,
 				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
 				336A9F6C2C6676BE00C1803B /* SKSpriteNode+Tools.swift in Sources */,
 				334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */,
@@ -676,9 +676,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A887TW3BVK;
+				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tokyo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -705,9 +706,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A887TW3BVK;
+				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tokyo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

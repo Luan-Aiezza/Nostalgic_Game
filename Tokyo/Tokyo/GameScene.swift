@@ -40,11 +40,12 @@ class GameScene: SKScene {
         //        AudioManager.shared.playLevelOneSong()
         
         textBox.isHidden = true
+        self.camera?.setScale(0.50)
         
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
         
-        printSystemFonts()
+        print(left_button.position)
         
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
@@ -75,7 +76,7 @@ class GameScene: SKScene {
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
         
-        let keyItem = ItemEntity(position: CGPoint(x: 100, y: -200), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
+        let keyItem = ItemEntity(position: CGPoint(x: 0, y: -530), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
         entityManager?.add(entity: keyItem)
         
@@ -85,10 +86,16 @@ class GameScene: SKScene {
         
         for i in 0..<3{
             let xDistance = 90 * i
-            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 80 - xDistance, y: -1280), lifetime: 1.0)
+            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 80 - xDistance, y: -1280), entityManager: entityManager!)
             entityManager?.add(entity: temporaryBlock)
-            self.temporaryBlock = temporaryBlock
         }
+        
+        let temporaryBlock1 = TemporaryBlockEntity(position: CGPoint(x: 100, y: -760), entityManager: entityManager!)
+        entityManager?.add(entity: temporaryBlock1)
+        let temporaryBlock2 = TemporaryBlockEntity(position: CGPoint(x: -80, y: -680), entityManager: entityManager!)
+        entityManager?.add(entity: temporaryBlock2)
+        let temporaryBlock3 = TemporaryBlockEntity(position: CGPoint(x: 80, y: -640), entityManager: entityManager!)
+        entityManager?.add(entity: temporaryBlock3)
         
         setupButtons()
         addCherries()
@@ -121,7 +128,8 @@ class GameScene: SKScene {
         
         pauseButton.name = "pauseButton"
         pauseButton.size = CGSize(width: 32, height: 32)
-        pauseButton.position = CGPoint(x: cameraFrame.maxX + 100, y: cameraFrame.maxY + 100)
+        pauseButton.texture?.filteringMode = .nearest
+        pauseButton.position = CGPoint(x: cameraFrame.maxX + 195, y: cameraFrame.maxY + 100)
         pauseButton.zPosition = 10
         pauseButton.setScale(2)
         self.camera?.addChild(pauseButton)
@@ -129,6 +137,7 @@ class GameScene: SKScene {
     
     
     func setupButtons(){
+        
         right_button.name = "right_button"
         right_button.texture?.filteringMode = .nearest
         self.camera?.addChild(right_button)
@@ -156,19 +165,19 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX-200, y: cameraFrame.minY - 90 )
-        right_button.position = CGPoint(x: left_button.position.x + buttonSize.width+20, y: left_button.position.y)
+        left_button.position = CGPoint(x: cameraFrame.minX-230, y: cameraFrame.minY - 100 )
+        right_button.position = CGPoint(x: left_button.position.x + buttonSize.width+30, y: left_button.position.y)
         
-        jump_button.position = CGPoint(x: cameraFrame.maxX+180, y:left_button.position.y)
+        jump_button.position = CGPoint(x: cameraFrame.maxX+220, y:left_button.position.y)
         
 //        textBox.sprite.size = CGSize(width: 500, height: 500)
-        textBox.position = CGPoint(x: 0, y: 80)
-    }
-    override func didChangeSize(_ oldSize: CGSize) {
-        super.didChangeSize(oldSize)
-        adjustButtonLayout()
+        textBox.position = CGPoint(x: 0, y: 60)
     }
     
+    override func didChangeSize(_ oldSize: CGSize) {
+        super.didChangeSize(oldSize)
+//        adjustButtonLayout()
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -385,14 +394,55 @@ class GameScene: SKScene {
                 boss.append(bossGhost)
                 entityManager?.add(entity: bossGhost)
                 
+                let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
+                entityManager?.add(entity: ghostCherry)
                 audioPlayerOne.stopLevelOneSong()
                 audioPlayerTwo.playLevelTwoSong()
                 songOneIsPlaying = true
                 
+                
+                let messageOne = SKAction.sequence([
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "beware the Boss.")
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                ])
+                
+                let messageTwo = SKAction.sequence([
+                    
+                    SKAction.run {
+                        self.textBox.textUpdate(text: "hint: there is a cherry somewhere that can help.")
+                    },
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = false
+                    },
+                    
+                    SKAction.wait(forDuration: 1.5),
+                    
+                    SKAction.run {
+                        self.textBox.isHidden = true
+                    }
+                ])
+                
+                let sequence =  SKAction.sequence([messageOne, messageTwo])
+                
+                self.run(sequence)
+                
             }
             
             
-        })
+        }, entityManager: entityManager!)
         entityManager?.add(entity: eventTriggerOne)
     }
     
@@ -447,7 +497,7 @@ class GameScene: SKScene {
                 stonePoint.demiseComponent?.die()
             }
             
-            let wait = SKAction.wait(forDuration: 1)
+            let wait = SKAction.wait(forDuration: 1.1)
             
             let sequence = SKAction.sequence([animation, wait, die])
             

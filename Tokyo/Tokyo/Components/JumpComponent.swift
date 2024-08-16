@@ -5,7 +5,7 @@ import GameplayKit
 class JumpComponent: GKComponent {
     var isJumping = false
     var jumpImpulse: CGFloat = 400.0
-    var horizontalImpulse: CGFloat = 0.5
+    var horizontalImpulse: CGFloat = 0.2
     var doubleJumpAvailable = true
     var onGround = false
     
@@ -41,14 +41,14 @@ class JumpComponent: GKComponent {
             onGround = true
             isJumping = false
             jumpImpulse = 400
-            horizontalImpulse = 0.5
+            horizontalImpulse = 0.2
         }
         
         else if physicsBody.linearDamping == 25{
             onGround = true
             isJumping = false
-            jumpImpulse = 600
-            horizontalImpulse = 0.5
+            jumpImpulse = 480
+            horizontalImpulse = 0.2
         }
     }
 }

@@ -41,18 +41,17 @@ class CherryEntity : GKEntity {
         body.affectedByGravity = false
         body.mass = 0
         body.friction = 1
-        body.restitution = 1
+        body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
         body.affectedByGravity = false
         body.categoryBitMask = .ghost
         body.contactTestBitMask = .player
+        body.collisionBitMask = .none
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
         let death = SKAction.sequence([
-//            .wait(forDuration: 0.2),
-//            .fadeOut(withDuration: 0.2),
             .removeFromParent(),
             .run {
                 [weak self] in

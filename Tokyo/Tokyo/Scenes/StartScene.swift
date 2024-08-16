@@ -25,6 +25,7 @@ class StartScene: SKScene {
         let button = SKSpriteNode(imageNamed: "play")
         button.position = CGPoint(x: 250, y: -100)
         button.name = "startButton"
+        button.texture?.filteringMode = .nearest
         button.setScale(2)
         
         

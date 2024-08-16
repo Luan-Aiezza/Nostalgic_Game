@@ -20,8 +20,12 @@ class EventTriggerEntity : GKEntity {
     var actionComponent: ActionComponent? {
         return component(ofType: ActionComponent.self)
     }
+
+    var demiseComponent: DemiseComponent? {
+        return component(ofType: DemiseComponent.self)
+    }
     
-    init(position : CGPoint, size : CGSize, action: SKAction) {
+    init(position : CGPoint, size : CGSize, action: SKAction, entityManager : SKEntityManager) {
         super.init()
         
         let node = SKSpriteNode()
@@ -41,6 +45,17 @@ class EventTriggerEntity : GKEntity {
         
         let actionComp = ActionComponent(action: action)
         self.addComponent(actionComp)
+        
+        let death = SKAction.sequence([
+            .removeFromParent(),
+            .run {
+                [weak self] in
+                guard let self else {return}
+                entityManager.remove(entity: self)
+            }
+        ])
+        
+        self.addComponent(DemiseComponent(death: death))
     }
     
     required init?(coder: NSCoder) {

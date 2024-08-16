@@ -27,3 +27,7 @@ enum PointAnimation {
     case chest
     case stone
 }
+
+enum PlatformAnimation {
+    case breakable
+}

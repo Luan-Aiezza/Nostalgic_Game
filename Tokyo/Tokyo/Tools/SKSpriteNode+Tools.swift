@@ -26,6 +26,13 @@ extension SKSpriteNode {
         entityManager.add(entity: entity)
     }
     
+    func addPhysicsTodeepEnd(entityManager: SKEntityManager){
+        
+        let entity = DeepEndEntity(node: self)
+        
+        entityManager.add(entity: entity)
+    }
+    
     func rendenringStone(entityManager: SKEntityManager){
         
         let entity = GroundEntity(node: self)
