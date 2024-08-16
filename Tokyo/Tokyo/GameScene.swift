@@ -24,6 +24,10 @@ class GameScene: SKScene {
     private let playerLight = SKLightNode()  // Light node to follow the player
     var textBox = TextDialogue(sprite: SKSpriteNode(imageNamed: "box"), label: SKLabelNode(text: ""))
     var isTextBoxHidden = true
+    var pauseButton = SKSpriteNode(imageNamed: "pause")
+    var pausePopUp: PausePopUp?
+    
+    
     
     override func sceneDidLoad() {
         audioPlayerOne.playLevelOneSong()
@@ -60,6 +64,8 @@ class GameScene: SKScene {
             
             // Adiciona o emissor de partículas à cena
             addChild(sparkleEmitter)
+            
+            
         }
         
         let playerEntity = PlayerEntity(entityManager: entityManager!)
@@ -67,6 +73,13 @@ class GameScene: SKScene {
         self.playerEntity = playerEntity
         playerEntity.stateComponent?.stateMachine.enter(PlayerIdle.self)
         
+        //        let boss = BossEntity(entityManager: entityManager!)
+        //        entityManager?.add(entity: boss)
+        
+        // Definindo posição inicial do Boss
+        //        if let bossNode = boss.spriteNode{
+        //            bossNode.position = CGPoint(x: 0, y: 50) // Defina a posição inicial desejada
+        //        }
         
         let keyItem = ItemEntity(position: CGPoint(x: 0, y: -700), size: CGSize(width: 100, height: 110), entityManager: entityManager!, sprite: "key")
         keyItem.identityComponent?.name(name: "key")
@@ -78,7 +91,7 @@ class GameScene: SKScene {
         
         for i in 0..<3{
             let xDistance = 90 * i
-            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 80 - xDistance, y: -1280), lifetime: 2.0)
+            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 80 - xDistance, y: -1280), lifetime: 1.0)
             entityManager?.add(entity: temporaryBlock)
             self.temporaryBlock = temporaryBlock
         }
@@ -88,21 +101,23 @@ class GameScene: SKScene {
         adjustButtonLayout()
         ghostAdd()
         addCheckpoints()
-        //setupPlayerLight()  // Set up the light node
+        setupPauseButton()
+        
+        let pausePopUp = PausePopUp()
+        self.pausePopUp = pausePopUp
     }
     
-    // Function to set up the light node
-//    private func setupPlayerLight() {
-//        playerLight.categoryBitMask = 1  // Define a categoria da luz
-//        playerLight.lightColor = .white  // Cor da luz
-//        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
-//        playerLight.falloff = 1  // Quão rápido a luz escurece
-//        playerLight.isEnabled = true
-//        
-//        self.addChild(playerLight)  // Adiciona a luz à cena
-//        
-//        
-//    }
+    func setupPauseButton(){
+        guard let camera = self.camera else { return }
+        let cameraFrame = camera.calculateAccumulatedFrame()
+        
+        pauseButton.name = "pauseButton"
+        pauseButton.size = CGSize(width: 32, height: 32)
+        pauseButton.position = CGPoint(x: cameraFrame.maxX + 100, y: cameraFrame.maxY + 100)
+        pauseButton.zPosition = 10
+        pauseButton.setScale(2)
+        self.camera?.addChild(pauseButton)
+    }
     
     
     func setupButtons(){
@@ -148,8 +163,29 @@ class GameScene: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        if let touch = touches.first {
+            let location = touch.location(in: camera!)
+            
+            if pauseButton.contains(location) {
+                isPaused.toggle()
+                
+//                if (isPaused) {
+//                    self.pausePopUp?.show(in: self)
+//                } else {
+//                    self.pausePopUp?.hide()
+//                }
+                
+            }
+        }
+        
         captureInput(touches: touches, isTouching: true)
     }
+    
+    
+    
+ 
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches, isTouching: false)
