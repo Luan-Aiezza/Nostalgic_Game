@@ -23,7 +23,7 @@ public class TemporaryBlockEntity: GKEntity{
         super.init()
         
         //
-        let blockNode = SKSpriteNode(color: .red, size: CGSize(width: 50, height: 10 ))
+        let blockNode = SKSpriteNode(imageNamed: "plataformaQuebravel1")
         blockNode.position = position
         self.addComponent(GKSKNodeComponent(node: blockNode))
         
@@ -35,6 +35,7 @@ public class TemporaryBlockEntity: GKEntity{
         body.contactTestBitMask = .player
         self.addComponent(PhysicsComponent(body: body))
         self.addComponent(LifetimeComponent(lifetime: lifetime))
+        
 
     }
     

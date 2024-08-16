@@ -75,10 +75,13 @@ class GameScene: SKScene {
         let cherryItem = CherryEntity(position: CGPoint(x: 60, y: -255), entityManager: entityManager!)
         entityManager?.add(entity: cherryItem)
         
-        let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 140, y: -150), lifetime: 5.0)
-        entityManager?.add(entity: temporaryBlock)
-        self.temporaryBlock = temporaryBlock
-
+        
+        for i in 0..<3{
+            let xDistance = 90 * i
+            let temporaryBlock = TemporaryBlockEntity(position: CGPoint(x: 80 - xDistance, y: -1280), lifetime: 2.0)
+            entityManager?.add(entity: temporaryBlock)
+            self.temporaryBlock = temporaryBlock
+        }
         
         setupButtons()
         addEventTriggers()
@@ -176,7 +179,7 @@ class GameScene: SKScene {
         }
         
         if let playerNode = playerEntity?.spriteNode {
-            self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 75 )
+            self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 35 )
         }
         
         self.lastUpdateTime = currentTime
