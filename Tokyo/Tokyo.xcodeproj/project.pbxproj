@@ -7,26 +7,163 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */; };
+		3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1D52C529B41004FE488 /* GhostEntity.swift */; };
+		3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1D92C52A35B004FE488 /* GhostHealthy.swift */; };
+		3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1DD2C52A376004FE488 /* GhostDizzy.swift */; };
+		3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */; };
+		3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */; };
+		3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1E92C533C9E004FE488 /* DemiseComponent.swift */; };
+		3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EB2C534081004FE488 /* CherryEntity.swift */; };
+		3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */; };
+		3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B1F22C53E33F004FE488 /* Animation&Actions.swift */; };
+		3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B21D2C58A6E2004FE488 /* WanderComponent.swift */; };
+		3306B2232C592344004FE488 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2222C592344004FE488 /* GameOverScene.swift */; };
+		3306B2262C592936004FE488 /* RestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3306B2252C592936004FE488 /* RestartButton.swift */; };
+		334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */; };
+		334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */; };
+		334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */; };
+		334E85822C5BC16300E61EA7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85812C5BC16300E61EA7 /* Item.swift */; };
+		334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85832C5BD93700E61EA7 /* PointEntity.swift */; };
+		334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */; };
+		334E85D22C63A4C300E61EA7 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E85D12C63A4C300E61EA7 /* SpriteComponent.swift */; };
+		335410A42C6B8E8B002B2C1B /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335410A32C6B8E8B002B2C1B /* AudioManager.swift */; };
+		335410A62C6B9508002B2C1B /* song1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 335410A52C6B9508002B2C1B /* song1.mp3 */; };
+		335410A82C6B950F002B2C1B /* song2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 335410A72C6B950F002B2C1B /* song2.mp3 */; };
+		335410AA2C6B9830002B2C1B /* ActionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335410A92C6B9830002B2C1B /* ActionComponent.swift */; };
+		335410B02C6B9944002B2C1B /* EventTriggerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335410AF2C6B9944002B2C1B /* EventTriggerEntity.swift */; };
+		336A9F652C666AC000C1803B /* PlayerWallSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9F642C666AC000C1803B /* PlayerWallSlide.swift */; };
+		336A9F692C66766C00C1803B /* WallEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9F682C66766C00C1803B /* WallEntity.swift */; };
+		336A9F6C2C6676BE00C1803B /* SKSpriteNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9F6B2C6676BE00C1803B /* SKSpriteNode+Tools.swift */; };
+		336A9F6E2C66961100C1803B /* LevelDEBUG.sks in Resources */ = {isa = PBXBuildFile; fileRef = 336A9F6D2C66961100C1803B /* LevelDEBUG.sks */; };
+		336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE2182C65156F002D5ABC /* GhostDeath.swift */; };
+		336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE21A2C651CC3002D5ABC /* PlayerEating.swift */; };
+		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
+		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
+		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
+		33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB962C6E6391008D5B29 /* pixel.otf */; };
+		33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */; };
+		33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */; };
+		33E3ABA42C6F0708008D5B29 /* DeepEndEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */; };
+		33E3ABA82C762881008D5B29 /* SuccessScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA72C762881008D5B29 /* SuccessScene.swift */; };
+		33E3ABAA2C763407008D5B29 /* SuccessScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33E3ABA92C763407008D5B29 /* SuccessScene.sks */; };
+		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
+		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
+		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
+		33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5672C50807C00880E83 /* SKTexture+Array.swift */; };
+		33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5692C50885A00880E83 /* PlayerEntity.swift */; };
+		33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD56E2C5088C400880E83 /* PlayerRun.swift */; };
+		33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5702C5088D100880E83 /* PlayerIdle.swift */; };
+		BB2629632C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */; };
+		BB2629652C69BA2D0077DD35 /* TemporaryBlockEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */; };
+		BB2629672C6BE5AD0077DD35 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629662C6BE5AD0077DD35 /* StartScene.swift */; };
+		BB2629692C6C6E7A0077DD35 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629682C6C6E7A0077DD35 /* MenuScene.swift */; };
+		BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB26296A2C6CCFBA0077DD35 /* StartScene.sks */; };
+		BB26296D2C6CF6CB0077DD35 /* PausePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */; };
+		BB42994D2C6EC8F60095146C /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB42994C2C6EC8F60095146C /* Level02.sks */; };
+		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
+		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
+		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
 		CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198622C481745000B3C50 /* AppDelegate.swift */; };
 		CF4198652C481745000B3C50 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF4198642C481745000B3C50 /* GameScene.sks */; };
-		CF4198672C481745000B3C50 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF4198662C481745000B3C50 /* Actions.sks */; };
 		CF4198692C481745000B3C50 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4198682C481745000B3C50 /* GameScene.swift */; };
 		CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF41986A2C481745000B3C50 /* GameViewController.swift */; };
 		CF41986E2C481745000B3C50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF41986C2C481745000B3C50 /* Main.storyboard */; };
 		CF4198702C481746000B3C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF41986F2C481746000B3C50 /* Assets.xcassets */; };
 		CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF4198712C481746000B3C50 /* LaunchScreen.storyboard */; };
+		CF84E8262C63ACD20035CD09 /* BossEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8212C63ACD20035CD09 /* BossEntity.swift */; };
+		CF84E8272C63ACD20035CD09 /* BossDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8222C63ACD20035CD09 /* BossDash.swift */; };
+		CF84E8282C63ACD20035CD09 /* BossMovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8232C63ACD20035CD09 /* BossMovementComponent.swift */; };
+		CF84E8292C63ACD20035CD09 /* BossIdle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8242C63ACD20035CD09 /* BossIdle.swift */; };
+		CF84E82A2C63ACD20035CD09 /* BossPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF84E8252C63ACD20035CD09 /* BossPause.swift */; };
+		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
+		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
+		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
+		CFE9E8A82C6DBECE00CF5EC2 /* SpikesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */; };
+		CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */; };
+		CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */; };
+		CFE9E8B62C6E3A0000CF5EC2 /* ScenarioTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
+		3306B1D52C529B41004FE488 /* GhostEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostEntity.swift; sourceTree = "<group>"; };
+		3306B1D92C52A35B004FE488 /* GhostHealthy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostHealthy.swift; sourceTree = "<group>"; };
+		3306B1DD2C52A376004FE488 /* GhostDizzy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostDizzy.swift; sourceTree = "<group>"; };
+		3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameScene+ContactDelegate.swift"; sourceTree = "<group>"; };
+		3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhysicsMask.swift; sourceTree = "<group>"; };
+		3306B1E92C533C9E004FE488 /* DemiseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemiseComponent.swift; sourceTree = "<group>"; };
+		3306B1EB2C534081004FE488 /* CherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CherryEntity.swift; sourceTree = "<group>"; };
+		3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
+		3306B1F22C53E33F004FE488 /* Animation&Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation&Actions.swift"; sourceTree = "<group>"; };
+		3306B21D2C58A6E2004FE488 /* WanderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderComponent.swift; sourceTree = "<group>"; };
+		3306B2222C592344004FE488 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		3306B2252C592936004FE488 /* RestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartButton.swift; sourceTree = "<group>"; };
+		334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierComponent.swift; sourceTree = "<group>"; };
+		334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
+		334E85812C5BC16300E61EA7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		334E85832C5BD93700E61EA7 /* PointEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEntity.swift; sourceTree = "<group>"; };
+		334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeath.swift; sourceTree = "<group>"; };
+		334E85D12C63A4C300E61EA7 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		335410A32C6B8E8B002B2C1B /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		335410A52C6B9508002B2C1B /* song1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song1.mp3; sourceTree = "<group>"; };
+		335410A72C6B950F002B2C1B /* song2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song2.mp3; sourceTree = "<group>"; };
+		335410A92C6B9830002B2C1B /* ActionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionComponent.swift; sourceTree = "<group>"; };
+		335410AF2C6B9944002B2C1B /* EventTriggerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTriggerEntity.swift; sourceTree = "<group>"; };
+		336A9F642C666AC000C1803B /* PlayerWallSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerWallSlide.swift; sourceTree = "<group>"; };
+		336A9F682C66766C00C1803B /* WallEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallEntity.swift; sourceTree = "<group>"; };
+		336A9F6B2C6676BE00C1803B /* SKSpriteNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Tools.swift"; sourceTree = "<group>"; };
+		336A9F6D2C66961100C1803B /* LevelDEBUG.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelDEBUG.sks; sourceTree = "<group>"; };
+		336CE2182C65156F002D5ABC /* GhostDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostDeath.swift; sourceTree = "<group>"; };
+		336CE21A2C651CC3002D5ABC /* PlayerEating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEating.swift; sourceTree = "<group>"; };
+		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
+		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
+		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
+		33E3AB962C6E6391008D5B29 /* pixel.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixel.otf; sourceTree = "<group>"; };
+		33E3AB972C6E63C8008D5B29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignEntity.swift; sourceTree = "<group>"; };
+		33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "the-first-palm-pda-font.ttf"; sourceTree = "<group>"; };
+		33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepEndEntity.swift; sourceTree = "<group>"; };
+		33E3ABA72C762881008D5B29 /* SuccessScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScene.swift; sourceTree = "<group>"; };
+		33E3ABA92C763407008D5B29 /* SuccessScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuccessScene.sks; sourceTree = "<group>"; };
+		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
+		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
+		33EDD5672C50807C00880E83 /* SKTexture+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTexture+Array.swift"; sourceTree = "<group>"; };
+		33EDD5692C50885A00880E83 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
+		33EDD56E2C5088C400880E83 /* PlayerRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRun.swift; sourceTree = "<group>"; };
+		33EDD5702C5088D100880E83 /* PlayerIdle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerIdle.swift; sourceTree = "<group>"; };
+		BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryLifeTimeComponent.swift; sourceTree = "<group>"; };
+		BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryBlockEntity.swift; sourceTree = "<group>"; };
+		BB2629662C6BE5AD0077DD35 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		BB2629682C6C6E7A0077DD35 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		BB26296A2C6CCFBA0077DD35 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
+		BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePopUp.swift; sourceTree = "<group>"; };
+		BB42994C2C6EC8F60095146C /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
+		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
+		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
+		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
 		CF41985F2C481745000B3C50 /* Tokyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tokyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4198622C481745000B3C50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF4198642C481745000B3C50 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		CF4198662C481745000B3C50 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		CF4198682C481745000B3C50 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CF41986A2C481745000B3C50 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CF41986D2C481745000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF41986F2C481746000B3C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF4198722C481746000B3C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF84E8212C63ACD20035CD09 /* BossEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossEntity.swift; path = Tokyo/Boss/BossEntity.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8222C63ACD20035CD09 /* BossDash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossDash.swift; path = Tokyo/Boss/BossDash.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8232C63ACD20035CD09 /* BossMovementComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossMovementComponent.swift; path = Tokyo/Boss/BossMovementComponent.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8242C63ACD20035CD09 /* BossIdle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossIdle.swift; path = Tokyo/Boss/BossIdle.swift; sourceTree = SOURCE_ROOT; };
+		CF84E8252C63ACD20035CD09 /* BossPause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossPause.swift; path = Tokyo/Boss/BossPause.swift; sourceTree = SOURCE_ROOT; };
+		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
+		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
+		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
+		CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikesEntity.swift; sourceTree = "<group>"; };
+		CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1. A World of Ghosts.mp3"; sourceTree = "<group>"; };
+		CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2. A World of Ghosts.mp3"; sourceTree = "<group>"; };
+		CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioTiles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +177,156 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3306B1F12C53E326004FE488 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3306B1F22C53E33F004FE488 /* Animation&Actions.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		3306B2212C592329004FE488 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3306B2222C592344004FE488 /* GameOverScene.swift */,
+				BB2629662C6BE5AD0077DD35 /* StartScene.swift */,
+				BB2629682C6C6E7A0077DD35 /* MenuScene.swift */,
+				33E3ABA72C762881008D5B29 /* SuccessScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3306B2242C592920004FE488 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3306B2252C592936004FE488 /* RestartButton.swift */,
+				BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		334E85802C5BC15600E61EA7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				334E85812C5BC16300E61EA7 /* Item.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		3354109C2C6B8E48002B2C1B /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				3354109D2C6B8E50002B2C1B /* Audio Files */,
+				335410A32C6B8E8B002B2C1B /* AudioManager.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		3354109D2C6B8E50002B2C1B /* Audio Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Audio Files";
+			sourceTree = "<group>";
+		};
+		338EE0AA2C6CE17C00A26A9D /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		33E3AB952C6E6377008D5B29 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */,
+				33E3AB962C6E6391008D5B29 /* pixel.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		33EDD55C2C4FF7CC00880E83 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */,
+				BB2629642C69BA2D0077DD35 /* TemporaryBlockEntity.swift */,
+				33EDD5692C50885A00880E83 /* PlayerEntity.swift */,
+				3306B1D52C529B41004FE488 /* GhostEntity.swift */,
+				3306B1EB2C534081004FE488 /* CherryEntity.swift */,
+				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
+				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
+				336A9F682C66766C00C1803B /* WallEntity.swift */,
+				334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */,
+				334E85832C5BD93700E61EA7 /* PointEntity.swift */,
+				335410AF2C6B9944002B2C1B /* EventTriggerEntity.swift */,
+				338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */,
+				33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */,
+				CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */,
+				CFE9E8B52C6E3A0000CF5EC2 /* ScenarioTiles.swift */,
+				33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		33EDD5612C50801900880E83 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				33EDD5622C50803200880E83 /* AnimationComponent.swift */,
+				33EDD5642C50804600880E83 /* MovementComponent.swift */,
+				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
+				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
+				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
+				3306B21D2C58A6E2004FE488 /* WanderComponent.swift */,
+				BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */,
+				BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */,
+				334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */,
+				334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */,
+				334E85D12C63A4C300E61EA7 /* SpriteComponent.swift */,
+				335410A92C6B9830002B2C1B /* ActionComponent.swift */,
+				338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		33EDD5662C50806C00880E83 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				33EDD5672C50807C00880E83 /* SKTexture+Array.swift */,
+				3306B1E12C53200C004FE488 /* SKPhysicsMask.swift */,
+				CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */,
+				336A9F6B2C6676BE00C1803B /* SKSpriteNode+Tools.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		33EDD56B2C50888F00880E83 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				33EDD56E2C5088C400880E83 /* PlayerRun.swift */,
+				33EDD5702C5088D100880E83 /* PlayerIdle.swift */,
+				3306B1D92C52A35B004FE488 /* GhostHealthy.swift */,
+				3306B1DD2C52A376004FE488 /* GhostDizzy.swift */,
+				BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */,
+				334E85CF2C610D5600E61EA7 /* PlayerDeath.swift */,
+				336CE2182C65156F002D5ABC /* GhostDeath.swift */,
+				336CE21A2C651CC3002D5ABC /* PlayerEating.swift */,
+				336A9F642C666AC000C1803B /* PlayerWallSlide.swift */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
+		CF17CFBF2C52A56900898033 /* Stage02 */ = {
+			isa = PBXGroup;
+			children = (
+				BB42994C2C6EC8F60095146C /* Level02.sks */,
+				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
+				336A9F6D2C66961100C1803B /* LevelDEBUG.sks */,
+				33E3ABA92C763407008D5B29 /* SuccessScene.sks */,
+			);
+			path = Stage02;
+			sourceTree = "<group>";
+		};
 		CF4198562C481745000B3C50 = {
 			isa = PBXGroup;
 			children = (
@@ -59,16 +346,47 @@
 		CF4198612C481745000B3C50 /* Tokyo */ = {
 			isa = PBXGroup;
 			children = (
+				33E3AB972C6E63C8008D5B29 /* Info.plist */,
+				33E3AB952C6E6377008D5B29 /* Fonts */,
+				338EE0AA2C6CE17C00A26A9D /* Nodes */,
+				3354109C2C6B8E48002B2C1B /* Audio */,
+				CF84E8202C63ACB50035CD09 /* GhostingBoss */,
+				334E85802C5BC15600E61EA7 /* Class */,
+				3306B1F12C53E326004FE488 /* Animation */,
+				CF17CFBF2C52A56900898033 /* Stage02 */,
+				3306B2242C592920004FE488 /* Buttons */,
+				3306B2212C592329004FE488 /* Scenes */,
+				33EDD56B2C50888F00880E83 /* States */,
+				33EDD5662C50806C00880E83 /* Tools */,
+				33EDD5612C50801900880E83 /* Components */,
+				33EDD55C2C4FF7CC00880E83 /* Entity */,
 				CF4198622C481745000B3C50 /* AppDelegate.swift */,
 				CF4198642C481745000B3C50 /* GameScene.sks */,
-				CF4198662C481745000B3C50 /* Actions.sks */,
+				BB26296A2C6CCFBA0077DD35 /* StartScene.sks */,
 				CF4198682C481745000B3C50 /* GameScene.swift */,
+				3306B1DF2C531EC2004FE488 /* GameScene+ContactDelegate.swift */,
 				CF41986A2C481745000B3C50 /* GameViewController.swift */,
 				CF41986C2C481745000B3C50 /* Main.storyboard */,
 				CF41986F2C481746000B3C50 /* Assets.xcassets */,
 				CF4198712C481746000B3C50 /* LaunchScreen.storyboard */,
+				CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */,
+				CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */,
+				335410A52C6B9508002B2C1B /* song1.mp3 */,
+				335410A72C6B950F002B2C1B /* song2.mp3 */,
 			);
 			path = Tokyo;
+			sourceTree = "<group>";
+		};
+		CF84E8202C63ACB50035CD09 /* GhostingBoss */ = {
+			isa = PBXGroup;
+			children = (
+				CF84E8222C63ACD20035CD09 /* BossDash.swift */,
+				CF84E8212C63ACD20035CD09 /* BossEntity.swift */,
+				CF84E8242C63ACD20035CD09 /* BossIdle.swift */,
+				CF84E8232C63ACD20035CD09 /* BossMovementComponent.swift */,
+				CF84E8252C63ACD20035CD09 /* BossPause.swift */,
+			);
+			path = GhostingBoss;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,11 +447,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				335410A82C6B950F002B2C1B /* song2.mp3 in Resources */,
+				BB42994D2C6EC8F60095146C /* Level02.sks in Resources */,
+				CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */,
+				BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
+				33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */,
+				33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
+				CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */,
+				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
 				CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */,
-				CF4198672C481745000B3C50 /* Actions.sks in Resources */,
+				336A9F6E2C66961100C1803B /* LevelDEBUG.sks in Resources */,
+				33E3ABAA2C763407008D5B29 /* SuccessScene.sks in Resources */,
+				335410A62C6B9508002B2C1B /* song1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,8 +472,66 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E3ABA42C6F0708008D5B29 /* DeepEndEntity.swift in Sources */,
+				33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */,
+				336A9F6C2C6676BE00C1803B /* SKSpriteNode+Tools.swift in Sources */,
+				334E85842C5BD93700E61EA7 /* PointEntity.swift in Sources */,
+				CF84E8262C63ACD20035CD09 /* BossEntity.swift in Sources */,
+				3306B1F32C53E33F004FE488 /* Animation&Actions.swift in Sources */,
+				CFE9E8A82C6DBECE00CF5EC2 /* SpikesEntity.swift in Sources */,
+				336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */,
+				33EDD5682C50807C00880E83 /* SKTexture+Array.swift in Sources */,
+				3306B1D62C529B41004FE488 /* GhostEntity.swift in Sources */,
+				BB2629652C69BA2D0077DD35 /* TemporaryBlockEntity.swift in Sources */,
+				335410B02C6B9944002B2C1B /* EventTriggerEntity.swift in Sources */,
+				3306B1DA2C52A35B004FE488 /* GhostHealthy.swift in Sources */,
+				338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */,
+				3306B21E2C58A6E2004FE488 /* WanderComponent.swift in Sources */,
+				3306B1EA2C533C9E004FE488 /* DemiseComponent.swift in Sources */,
+				BB2629672C6BE5AD0077DD35 /* StartScene.swift in Sources */,
+				3306B1DE2C52A376004FE488 /* GhostDizzy.swift in Sources */,
+				CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */,
+				33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */,
+				338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */,
+				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
+				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
+				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
+				BB2629632C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift in Sources */,
+				335410AA2C6B9830002B2C1B /* ActionComponent.swift in Sources */,
+				CF84E82A2C63ACD20035CD09 /* BossPause.swift in Sources */,
+				CFE9E8B62C6E3A0000CF5EC2 /* ScenarioTiles.swift in Sources */,
+				3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
+				CF84E8272C63ACD20035CD09 /* BossDash.swift in Sources */,
+				336A9F692C66766C00C1803B /* WallEntity.swift in Sources */,
+				BB26296D2C6CF6CB0077DD35 /* PausePopUp.swift in Sources */,
+				3306B2262C592936004FE488 /* RestartButton.swift in Sources */,
+				BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */,
+				335410A42C6B8E8B002B2C1B /* AudioManager.swift in Sources */,
+				CF84E8292C63ACD20035CD09 /* BossIdle.swift in Sources */,
+				33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */,
 				CF4198692C481745000B3C50 /* GameScene.swift in Sources */,
 				CF41986B2C481745000B3C50 /* GameViewController.swift in Sources */,
+				CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */,
+				3306B1CC2C513C0A004FE488 /* PhysicsComponent.swift in Sources */,
+				334E857E2C5BC13B00E61EA7 /* InventoryComponent.swift in Sources */,
+				3306B1F02C53D486004FE488 /* StateMachineComponent.swift in Sources */,
+				BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */,
+				CF84E8282C63ACD20035CD09 /* BossMovementComponent.swift in Sources */,
+				33EDD56A2C50885A00880E83 /* PlayerEntity.swift in Sources */,
+				336A9F652C666AC000C1803B /* PlayerWallSlide.swift in Sources */,
+				3306B1E22C53200C004FE488 /* SKPhysicsMask.swift in Sources */,
+				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
+				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
+				334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */,
+				33E3ABA82C762881008D5B29 /* SuccessScene.swift in Sources */,
+				334E85822C5BC16300E61EA7 /* Item.swift in Sources */,
+				338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */,
+				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
+				334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */,
+				336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */,
+				33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */,
+				BB2629692C6C6E7A0077DD35 /* MenuScene.swift in Sources */,
+				334E85D22C63A4C300E61EA7 /* SpriteComponent.swift in Sources */,
 				CF4198632C481745000B3C50 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -281,7 +667,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -296,16 +682,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K4H4UFJU24;
+				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tokyo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,9 +703,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mooncat.Tokyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -324,16 +718,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K4H4UFJU24;
+				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tokyo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,9 +739,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mooncat.Tokyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
