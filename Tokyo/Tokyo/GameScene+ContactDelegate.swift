@@ -377,11 +377,14 @@ extension GameScene: SKPhysicsContactDelegate {
     private func isContactWithTemporaryBlock(entityA: GKEntity, entityB: GKEntity) {
       
         if entityA is PlayerEntity && entityB is TemporaryBlockEntity {
+            
             let waitAction = SKAction.wait(forDuration: 0.6)
         
             let block = entityB as! TemporaryBlockEntity
             
             let action = block.platformActions(.breakable)
+            
+            guard let position = block.component(ofType: GKSKNodeComponent.self)?.node.position else {return}
             
             let breakAction = SKAction.run {
                 block.animationComponent?.play(action: action)
@@ -391,7 +394,16 @@ extension GameScene: SKPhysicsContactDelegate {
                 block.demiseComponent?.die()
             }
             
-            self.run(SKAction.sequence([breakAction, waitAction, blockDeath]))
+            let waitActionRevive = SKAction.wait(forDuration: 5
+            
+            )
+            
+            let blockBirth = SKAction.run {
+                let newBlock = TemporaryBlockEntity(position: position, entityManager: self.entityManager!)
+                self.entityManager?.add(entity: newBlock)
+            }
+            
+            self.run(SKAction.sequence([breakAction, waitAction, blockDeath, waitActionRevive, blockBirth]))
         
         }
     }

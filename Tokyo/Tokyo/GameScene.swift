@@ -15,7 +15,7 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     weak var playerEntity: PlayerEntity?
     var temporaryBlock: TemporaryBlockEntity?
-        
+    var levels : [Int] = []
     var rightButtonPressed = false
     var leftButtonPressed = false
     var songOneIsPlaying = true
@@ -248,8 +248,9 @@ class GameScene: SKScene {
                     playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                     playerEntity?.moveComponent?.change(direction: .right)
                 }
-                else if !leftButtonPressed{
-                    playerEntity?.moveComponent?.change(direction: .none)
+                else {
+                    if !leftButtonPressed{
+                        playerEntity?.moveComponent?.change(direction: .none)}
                 }
             }
             
@@ -259,8 +260,9 @@ class GameScene: SKScene {
                     playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
                     playerEntity?.moveComponent?.change(direction: .left)
                 }
-                else if !rightButtonPressed{
-                    playerEntity?.moveComponent?.change(direction: .none)
+               else {
+                   if !rightButtonPressed{
+                       playerEntity?.moveComponent?.change(direction: .none)}
                 }
             }
             
@@ -390,15 +392,22 @@ class GameScene: SKScene {
         let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
             
             if boss.count < 1 {
-                let bossGhost = BossEntity(entityManager: entityManager!)
-                boss.append(bossGhost)
-                entityManager?.add(entity: bossGhost)
+//                let bossGhost = BossEntity(entityManager: entityManager!)
+//                boss.append(bossGhost)
+//                entityManager?.add(entity: bossGhost)
                 
                 let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
                 entityManager?.add(entity: ghostCherry)
+                
                 audioPlayerOne.stopLevelOneSong()
                 audioPlayerTwo.playLevelTwoSong()
                 songOneIsPlaying = true
+                
+                let addGhostBoss = SKAction.run {
+                    let bossGhost = BossEntity(entityManager: self.entityManager!)
+                    self.boss.append(bossGhost)
+                    self.entityManager?.add(entity: bossGhost)
+                }
                 
                 
                 let messageOne = SKAction.sequence([
@@ -411,12 +420,14 @@ class GameScene: SKScene {
                         self.textBox.isHidden = false
                     },
                     
-                    SKAction.wait(forDuration: 1.5),
+                    SKAction.wait(forDuration: 4),
                     
                     SKAction.run {
                         self.textBox.isHidden = true
                     }
                 ])
+                
+                let waitAction = SKAction.wait(forDuration: 4)
                 
                 let messageTwo = SKAction.sequence([
                     
@@ -435,7 +446,7 @@ class GameScene: SKScene {
                     }
                 ])
                 
-                let sequence =  SKAction.sequence([messageOne, messageTwo])
+                let sequence =  SKAction.sequence([messageOne, waitAction, addGhostBoss, messageTwo])
                 
                 self.run(sequence)
                 
@@ -444,6 +455,14 @@ class GameScene: SKScene {
             
         }, entityManager: entityManager!)
         entityManager?.add(entity: eventTriggerOne)
+        
+        
+        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
+            
+            print("something")
+        }, entityManager: entityManager!)
+        
+        entityManager?.add(entity: eventTriggerTwo)
     }
     
     
@@ -530,17 +549,5 @@ class GameScene: SKScene {
         
         let cherryItem7 = CherryEntity(position: CGPoint(x: -820, y: -970), entityManager: entityManager!)
         entityManager?.add(entity: cherryItem7)
-    }
-    
-    public func printSystemFonts() {
-        // Use this identifier to filter out the system fonts in the logs.
-        let identifier: String = "[SYSTEM FONTS]"
-        // Here's the functionality that prints all the system fonts.
-        for family in UIFont.familyNames as [String] {
-            debugPrint("\(identifier) FONT FAMILY :  \(family)")
-            for name in UIFont.fontNames(forFamilyName: family) {
-                debugPrint("\(identifier) FONT NAME :  \(name)")
-            }
-        }
     }
 }

@@ -45,6 +45,8 @@
 		33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */; };
 		33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */; };
 		33E3ABA42C6F0708008D5B29 /* DeepEndEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */; };
+		33E3ABA82C762881008D5B29 /* SuccessScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA72C762881008D5B29 /* SuccessScene.swift */; };
+		33E3ABAA2C763407008D5B29 /* SuccessScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33E3ABA92C763407008D5B29 /* SuccessScene.sks */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
 		33EDD5652C50804600880E83 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5642C50804600880E83 /* MovementComponent.swift */; };
@@ -123,6 +125,8 @@
 		33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignEntity.swift; sourceTree = "<group>"; };
 		33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "the-first-palm-pda-font.ttf"; sourceTree = "<group>"; };
 		33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepEndEntity.swift; sourceTree = "<group>"; };
+		33E3ABA72C762881008D5B29 /* SuccessScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScene.swift; sourceTree = "<group>"; };
+		33E3ABA92C763407008D5B29 /* SuccessScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuccessScene.sks; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		33EDD5642C50804600880E83 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 				3306B2222C592344004FE488 /* GameOverScene.swift */,
 				BB2629662C6BE5AD0077DD35 /* StartScene.swift */,
 				BB2629682C6C6E7A0077DD35 /* MenuScene.swift */,
+				33E3ABA72C762881008D5B29 /* SuccessScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				BB42994C2C6EC8F60095146C /* Level02.sks */,
 				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
 				336A9F6D2C66961100C1803B /* LevelDEBUG.sks */,
+				33E3ABA92C763407008D5B29 /* SuccessScene.sks */,
 			);
 			path = Stage02;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
 				CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */,
 				336A9F6E2C66961100C1803B /* LevelDEBUG.sks in Resources */,
+				33E3ABAA2C763407008D5B29 /* SuccessScene.sks in Resources */,
 				335410A62C6B9508002B2C1B /* song1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +523,7 @@
 				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
 				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
 				334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */,
+				33E3ABA82C762881008D5B29 /* SuccessScene.swift in Sources */,
 				334E85822C5BC16300E61EA7 /* Item.swift in Sources */,
 				338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
@@ -674,12 +682,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tokyo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -693,9 +703,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mooncat.Tokyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -704,12 +718,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 527MA6AD9C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tokyo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -723,9 +739,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = mooncat.Tokyo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

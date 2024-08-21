@@ -65,6 +65,10 @@ public class TemporaryBlockEntity: GKEntity{
         fatalError("init(coder:) has not been implemented")
     }
     
+    func returnPosition() -> CGPoint{
+        return self.component(ofType: GKSKNodeComponent.self)?.node.position ?? CGPoint(x: 0, y: 0)
+    }
+    
     func platformActions(_ animation: PlatformAnimation) -> SKAction{
         switch animation {
         case .breakable:
