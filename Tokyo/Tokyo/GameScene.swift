@@ -132,7 +132,9 @@ class GameScene: SKScene {
         pauseButton.position = CGPoint(x: cameraFrame.maxX + 195, y: cameraFrame.maxY + 100)
         pauseButton.zPosition = 10
         pauseButton.setScale(2)
+        pauseButton.isHidden = false
         self.camera?.addChild(pauseButton)
+        
     }
     
     
@@ -185,15 +187,30 @@ class GameScene: SKScene {
         if let touch = touches.first {
             let location = touch.location(in: camera!)
             
+            if isPaused {
+                if let pausePopUp = self.pausePopUp {
+                    if let playButton = pausePopUp.playButton, playButton.contains(location) {
+                        isPaused.toggle()
+                        pausePopUp.hide()
+                        pauseButton.isHidden = false
+                        return
+                    } else if let startButton = pausePopUp.startButton, startButton.contains(location){
+                        
+                    }
+                }
+            }
+            
             if pauseButton.contains(location) {
                 isPaused.toggle()
                 
-//                if (isPaused) {
-//                    self.pausePopUp?.show(in: self)
-//                } else {
-//                    self.pausePopUp?.hide()
-//                }
-                
+                if isPaused {
+                    self.pausePopUp?.show(in: self)
+                    pauseButton.isHidden = true
+                    
+                } else {
+                    self.pausePopUp?.hide()
+                }
+//
             }
         }
         
