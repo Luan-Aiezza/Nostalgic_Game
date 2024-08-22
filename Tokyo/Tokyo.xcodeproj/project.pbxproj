@@ -60,7 +60,6 @@
 		BB2629692C6C6E7A0077DD35 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629682C6C6E7A0077DD35 /* MenuScene.swift */; };
 		BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB26296A2C6CCFBA0077DD35 /* StartScene.sks */; };
 		BB26296D2C6CF6CB0077DD35 /* PausePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */; };
-		BB42994D2C6EC8F60095146C /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB42994C2C6EC8F60095146C /* Level02.sks */; };
 		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
 		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
 		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
@@ -79,6 +78,7 @@
 		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
 		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
 		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
+		CFE468122C776AA100F6E784 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = CFE468112C776AA100F6E784 /* Level02.sks */; };
 		CFE9E8A82C6DBECE00CF5EC2 /* SpikesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */; };
 		CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */; };
 		CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */; };
@@ -140,7 +140,6 @@
 		BB2629682C6C6E7A0077DD35 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		BB26296A2C6CCFBA0077DD35 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePopUp.swift; sourceTree = "<group>"; };
-		BB42994C2C6EC8F60095146C /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Level02.sks; path = ../../../../../Downloads/Level02.sks; sourceTree = "<group>"; };
 		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
 		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
 		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
 		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
+		CFE468112C776AA100F6E784 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level02.sks; sourceTree = "<group>"; };
 		CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikesEntity.swift; sourceTree = "<group>"; };
 		CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1. A World of Ghosts.mp3"; sourceTree = "<group>"; };
 		CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2. A World of Ghosts.mp3"; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 		CF17CFBF2C52A56900898033 /* Stage02 */ = {
 			isa = PBXGroup;
 			children = (
-				BB42994C2C6EC8F60095146C /* Level02.sks */,
+				CFE468112C776AA100F6E784 /* Level02.sks */,
 				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
 				336A9F6D2C66961100C1803B /* LevelDEBUG.sks */,
 				33E3ABA92C763407008D5B29 /* SuccessScene.sks */,
@@ -448,12 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				335410A82C6B950F002B2C1B /* song2.mp3 in Resources */,
-				BB42994D2C6EC8F60095146C /* Level02.sks in Resources */,
 				CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */,
 				BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */,
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
 				33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */,
+				CFE468122C776AA100F6E784 /* Level02.sks in Resources */,
 				33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
 				CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */,
@@ -685,7 +685,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 527MA6AD9C;
+				DEVELOPMENT_TEAM = K4H4UFJU24;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tokyo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
@@ -721,7 +721,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 527MA6AD9C;
+				DEVELOPMENT_TEAM = K4H4UFJU24;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Tokyo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Old Time's Sake";
