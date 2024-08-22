@@ -16,7 +16,6 @@ class AudioManager {
     
     func playLevelOneSong() {
         if let url = Bundle.main.url(forResource: "1. A World of Ghosts", withExtension: "mp3") {
-            print("Playing song1.mp3")
             do {
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)
                 backgroundMusicPlayer?.numberOfLoops = -1
@@ -42,7 +41,6 @@ class AudioManager {
     
     func playLevelTwoSong() {
         if let url = Bundle.main.url(forResource: "2. A World of Ghosts", withExtension: "mp3") {
-            print("Playing song2.mp3")
             do {
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)
                 backgroundMusicPlayer?.numberOfLoops = -1

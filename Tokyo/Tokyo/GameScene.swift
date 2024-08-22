@@ -45,8 +45,6 @@ class GameScene: SKScene {
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
         
-        print(left_button.position)
-        
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
@@ -242,33 +240,40 @@ class GameScene: SKScene {
     public func captureInput(touches: Set<UITouch>, isTouching: Bool) {
         guard let camera else { return }
         if let location = touches.first?.location(in: camera){
-            if right_button.contains(location) {
-                rightButtonPressed = isTouching
-                if isTouching {
-                    playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
-                    playerEntity?.moveComponent?.change(direction: .right)
+            
+            if isTouching{
+                if right_button.contains(location) {
+                    rightButtonPressed = isTouching
+                    if isTouching {
+                        playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
+                        playerEntity?.moveComponent?.change(direction: .right)
+                    }
+                    else {
+                        if !leftButtonPressed{
+                            playerEntity?.moveComponent?.change(direction: .none)}
+                    }
                 }
-                else {
-                    if !leftButtonPressed{
-                        playerEntity?.moveComponent?.change(direction: .none)}
+                
+                if left_button.contains(location) {
+                    leftButtonPressed = isTouching
+                    if isTouching {
+                        playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
+                        playerEntity?.moveComponent?.change(direction: .left)
+                    }
+                    else {
+                        if !rightButtonPressed{
+                            playerEntity?.moveComponent?.change(direction: .none)}
+                    }
+                }
+                
+                if jump_button.contains(location) && isTouching {
+                    let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
+                    playerEntity?.jump(horizontalDirection: horizontalDirection)
                 }
             }
-            
-            if left_button.contains(location) {
-                leftButtonPressed = isTouching
-                if isTouching {
-                    playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
-                    playerEntity?.moveComponent?.change(direction: .left)
-                }
-               else {
-                   if !rightButtonPressed{
-                       playerEntity?.moveComponent?.change(direction: .none)}
-                }
-            }
-            
-            if jump_button.contains(location) && isTouching {
-                let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
-                playerEntity?.jump(horizontalDirection: horizontalDirection)
+            else {
+                rightButtonPressed = false
+                leftButtonPressed = false
             }
         }
     }
@@ -457,14 +462,14 @@ class GameScene: SKScene {
         entityManager?.add(entity: eventTriggerOne)
         
         
-        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
+        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x:1100, y: -1240), size: CGSize(width: 150, height: 150), action: SKAction.run {
             
-            print("something")
+            print("chegou")
+            
         }, entityManager: entityManager!)
         
         entityManager?.add(entity: eventTriggerTwo)
     }
-    
     
     
     func addCheckpoints(){

@@ -135,8 +135,6 @@ extension GameScene: SKPhysicsContactDelegate {
                 }
                 
                 self.run(SKAction.sequence([pauseGhost, playerAction, gameOverScene]))
-                
-                print("something")
             }
             
             else {
@@ -349,9 +347,6 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if player?.physicsComponent?.body.velocity.dy != 0 {
                 player?.stateComponent?.stateMachine.enter(PlayerWallSlide.self)
-            }
-            else {
-                print("não deu para entrar em WallSlide pois a velocidade angular atual é de \(String(describing: player?.physicsComponent?.body.velocity.dy))")
             }
         }
     }
