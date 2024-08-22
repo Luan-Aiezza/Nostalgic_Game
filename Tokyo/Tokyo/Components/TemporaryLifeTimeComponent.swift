@@ -9,10 +9,6 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
-import Foundation
-import GameplayKit
-import SpriteKit
-
 public class LifetimeComponent: GKComponent {
     
     private var remainingLifetime: TimeInterval
@@ -43,15 +39,15 @@ public class LifetimeComponent: GKComponent {
         if itShouldFall {
             remainingLifetime -= seconds
             if remainingLifetime <= 0 {
-                //let the block fall after the time ends
                 if let physicsComponent = physicsComponent {
                     physicsComponent.body.isDynamic = true
                     physicsComponent.body.affectedByGravity = true
                     physicsComponent.body.collisionBitMask = .contactWithAllCategories()
                 }
-                // Reset itShouldFall to false after the block falls
+             
                 itShouldFall = false
             }
         }
     }
+    
 }

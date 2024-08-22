@@ -59,8 +59,9 @@ class PausePopUp: SKNode {
         
         
     }
+    
+    
     func show(in scene: SKScene){
-//        position = CGPoint(x: 0, y: -150)
         scene.camera?.addChild(self)
     }
     func hide(){

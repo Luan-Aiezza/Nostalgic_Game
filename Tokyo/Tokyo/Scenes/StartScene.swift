@@ -13,7 +13,7 @@ class StartScene: SKScene {
     var backgroud: SKSpriteNode?
     
     override func didMove(to view: SKView) {
-        backgroud = SKSpriteNode(imageNamed: "inicio")
+        backgroud = SKSpriteNode(imageNamed: "backgroundStartScene")
         backgroud?.zPosition = -2
         backgroud?.position = CGPoint(x: 0, y: 0)
         backgroud?.setScale(1)
