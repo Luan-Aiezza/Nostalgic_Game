@@ -30,7 +30,7 @@ class GameScene: SKScene {
     
     
     override func sceneDidLoad() {
-        audioPlayerOne.playLevelOneSong()
+        audioPlayerOne.playLevelTwoSong()
         self.physicsWorld.contactDelegate = self
         
         entityManager = SKEntityManager(scene: self)
@@ -399,8 +399,8 @@ class GameScene: SKScene {
                 let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
                 entityManager?.add(entity: ghostCherry)
                 
-                audioPlayerOne.stopLevelOneSong()
-                audioPlayerTwo.playLevelTwoSong()
+                audioPlayerOne.stopLevelTwoSong()
+                audioPlayerTwo.playLevelOneSong()
                 songOneIsPlaying = true
                 
                 let addGhostBoss = SKAction.run {

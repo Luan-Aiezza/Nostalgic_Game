@@ -10,6 +10,7 @@ class SpikesEntity: GKEntity {
         
         let node = SKSpriteNode(color: .clear, size: size)
         node.position = position
+        node.texture!.filteringMode = .nearest
         self.addComponent(GKSKNodeComponent(node: node))
         
         let body = SKPhysicsBody(rectangleOf: size)
