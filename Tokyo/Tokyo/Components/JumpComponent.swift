@@ -24,7 +24,8 @@ class JumpComponent: GKComponent {
             // Pulo duplo
             isJumping = true
             doubleJumpAvailable = false
-            physicsBody.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: jumpImpulse))
+            physicsBody.velocity.dy = 0
+            physicsBody.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: (jumpImpulse + 200)))
 
         }
     }

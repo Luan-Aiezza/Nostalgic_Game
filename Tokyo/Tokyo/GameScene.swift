@@ -21,7 +21,7 @@ class GameScene: SKScene {
     var songOneIsPlaying = true
     var audioPlayerOne = AudioManager.shared
     var audioPlayerTwo = AudioManager.shared
-   /* private let playerLight = SKLightNode() */ // Light node to follow the player
+    /* private let playerLight = SKLightNode() */ // Light node to follow the player
     var textBox = TextDialogue(sprite: SKSpriteNode(imageNamed: "textBox1"), label: SKLabelNode(text: ""))
     var isTextBoxHidden = true
     var pauseButton = SKSpriteNode(imageNamed: "pause")
@@ -103,7 +103,7 @@ class GameScene: SKScene {
         adjustButtonLayout()
         ghostAdd()
         addCheckpoints()
-//        setupPlayerLight()  // Set up the light node
+        //        setupPlayerLight()  // Set up the light node
         setupPauseButton()
         
         let pausePopUp = PausePopUp()
@@ -111,17 +111,17 @@ class GameScene: SKScene {
     }
     
     // Function to set up the light node
-//    private func setupPlayerLight() {
-//        playerLight.categoryBitMask = 1  // Define a categoria da luz
-//        playerLight.lightColor = .white  // Cor da luz
-//        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
-//        playerLight.falloff = 1  // Quão rápido a luz escurece
-//        playerLight.isEnabled = true
-//        
-//        self.addChild(playerLight)  // Adiciona a luz à cena
-//        
-//        
-//    }
+    //    private func setupPlayerLight() {
+    //        playerLight.categoryBitMask = 1  // Define a categoria da luz
+    //        playerLight.lightColor = .white  // Cor da luz
+    //        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
+    //        playerLight.falloff = 1  // Quão rápido a luz escurece
+    //        playerLight.isEnabled = true
+    //
+    //        self.addChild(playerLight)  // Adiciona a luz à cena
+    //
+    //
+    //    }
     func setupPauseButton(){
         guard let camera = self.camera else { return }
         let cameraFrame = camera.calculateAccumulatedFrame()
@@ -172,13 +172,13 @@ class GameScene: SKScene {
         
         jump_button.position = CGPoint(x: cameraFrame.maxX+220, y:left_button.position.y)
         
-//        textBox.sprite.size = CGSize(width: 500, height: 500)
+        //        textBox.sprite.size = CGSize(width: 500, height: 500)
         textBox.position = CGPoint(x: 0, y: 60)
     }
     
     override func didChangeSize(_ oldSize: CGSize) {
         super.didChangeSize(oldSize)
-//        adjustButtonLayout()
+        //        adjustButtonLayout()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -189,14 +189,21 @@ class GameScene: SKScene {
             
             if isPaused {
                 if let pausePopUp = self.pausePopUp {
-                    if let playButton = pausePopUp.playButton, playButton.contains(location) {
+                    if let startButton = pausePopUp.startButton, startButton.contains(location){
+                        let transition = SKTransition.crossFade(withDuration: 0.5)
+                        let startScene = SKScene(fileNamed: "StartScene")!
+                        self.view?.presentScene(startScene, transition: transition)
+                        
+                        
+                    } else if let playButton = pausePopUp.playButton, playButton.contains(location) {
                         isPaused.toggle()
                         pausePopUp.hide()
                         pauseButton.isHidden = false
                         return
-                    } else if let startButton = pausePopUp.startButton, startButton.contains(location){
-                        
+                    } else if let restartButton = pausePopUp.restartButton, restartButton.contains(location){
+                        gameOver()
                     }
+                    
                 }
             }
             
@@ -210,7 +217,7 @@ class GameScene: SKScene {
                 } else {
                     self.pausePopUp?.hide()
                 }
-//
+                //
             }
         }
         
@@ -219,17 +226,30 @@ class GameScene: SKScene {
     
     
     
- 
+    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches, isTouching: false)
         
-        if !rightButtonPressed && !leftButtonPressed{
-            playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
-            playerEntity?.moveComponent?.direction = .none
+        if let touch = touches.first {
+            let location = touch.location(in: camera!)
+            
+            if right_button.contains(location) {
+                rightButtonPressed = false
+            }
+            
+            if left_button.contains(location) {
+                leftButtonPressed = false
+            }
+            
+            if !rightButtonPressed && !leftButtonPressed {
+                playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
+                playerEntity?.moveComponent?.direction = .none
+            }
         }
-        
     }
+    
+    
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -250,43 +270,45 @@ class GameScene: SKScene {
         
         if let playerNode = playerEntity?.spriteNode {
             self.camera?.position = CGPoint(x: playerNode.position.x, y: playerNode.position.y + 35)
-//            playerLight.position = playerNode.position  // Make the light follow the player
+            //            playerLight.position = playerNode.position  // Make the light follow the player
         }
         
         self.lastUpdateTime = currentTime
     }
-    
     public func captureInput(touches: Set<UITouch>, isTouching: Bool) {
-        guard let camera else { return }
-        if let location = touches.first?.location(in: camera){
-            if right_button.contains(location) {
-                rightButtonPressed = isTouching
-                if isTouching {
-                    playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
-                    playerEntity?.moveComponent?.change(direction: .right)
+        if !isPaused {
+            guard let camera else { return }
+            if let location = touches.first?.location(in: camera){
+                if right_button.contains(location) {
+                    rightButtonPressed = isTouching
+                    if isTouching {
+                        playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
+                        playerEntity?.moveComponent?.change(direction: .right)
+                    }
+                    else {
+                        if !leftButtonPressed{
+                            playerEntity?.moveComponent?.change(direction: .none)}
+                    }
                 }
-                else {
-                    if !leftButtonPressed{
-                        playerEntity?.moveComponent?.change(direction: .none)}
+                
+                if left_button.contains(location) {
+                    leftButtonPressed = isTouching
+                    if isTouching {
+                        playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
+                        playerEntity?.moveComponent?.change(direction: .left)
+                    }
+                    else {
+                        if !rightButtonPressed{
+                            playerEntity?.moveComponent?.change(direction: .none)}
+                    }
+                }
+                
+                if jump_button.contains(location) && isTouching {
+                    let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
+                    playerEntity?.jump(horizontalDirection: horizontalDirection)
                 }
             }
             
-            if left_button.contains(location) {
-                leftButtonPressed = isTouching
-                if isTouching {
-                    playerEntity?.stateComponent?.stateMachine.enter(PlayerRun.self)
-                    playerEntity?.moveComponent?.change(direction: .left)
-                }
-               else {
-                   if !rightButtonPressed{
-                       playerEntity?.moveComponent?.change(direction: .none)}
-                }
-            }
-            
-            if jump_button.contains(location) && isTouching {
-                let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
-                playerEntity?.jump(horizontalDirection: horizontalDirection)
-            }
         }
     }
     
@@ -330,7 +352,6 @@ class GameScene: SKScene {
         
         return sparkleEmitter
     }
-    
     
     func initializeBackground() {
         //background adicionado à cena
@@ -404,14 +425,13 @@ class GameScene: SKScene {
         
     }
     
-    
     func addEventTriggers(){
         let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
             
             if boss.count < 1 {
-//                let bossGhost = BossEntity(entityManager: entityManager!)
-//                boss.append(bossGhost)
-//                entityManager?.add(entity: bossGhost)
+                //                let bossGhost = BossEntity(entityManager: entityManager!)
+                //                boss.append(bossGhost)
+                //                entityManager?.add(entity: bossGhost)
                 
                 let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
                 entityManager?.add(entity: ghostCherry)
@@ -481,8 +501,6 @@ class GameScene: SKScene {
         
         entityManager?.add(entity: eventTriggerTwo)
     }
-    
-    
     
     func addCheckpoints(){
         let chestPoint = PointEntity(position: CGPoint(x: 240, y: 344), size: CGSize(width: 32, height: 48), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"))
