@@ -103,25 +103,12 @@ class GameScene: SKScene {
         adjustButtonLayout()
         ghostAdd()
         addCheckpoints()
-//        setupPlayerLight()  // Set up the light node
         setupPauseButton()
         
         let pausePopUp = PausePopUp()
         self.pausePopUp = pausePopUp
     }
-    
-    // Function to set up the light node
-//    private func setupPlayerLight() {
-//        playerLight.categoryBitMask = 1  // Define a categoria da luz
-//        playerLight.lightColor = .white  // Cor da luz
-//        playerLight.ambientColor = .black // Cor do ambiente ao redor (escurecer)
-//        playerLight.falloff = 1  // Quão rápido a luz escurece
-//        playerLight.isEnabled = true
-//        
-//        self.addChild(playerLight)  // Adiciona a luz à cena
-//        
-//        
-//    }
+
     func setupPauseButton(){
         guard let camera = self.camera else { return }
         let cameraFrame = camera.calculateAccumulatedFrame()
