@@ -23,6 +23,8 @@ class PausePopUp: SKNode {
     }
     
     private func setupPopUp() {
+        
+        
         backgroud = SKSpriteNode(imageNamed: "backgroundPaused")
         backgroud?.zPosition = 5
         backgroud?.position = CGPoint(x: 0, y: 0)
@@ -31,6 +33,15 @@ class PausePopUp: SKNode {
         addChild(backgroud)
         
         let backgrounWidth = backgroud.size.width
+        let backgroundHeight = backgroud.size.height
+        
+        
+        let label = SKLabelNode(text: "PAUSED")
+        label.fontName = "AvenirNext-Bold"
+        label.fontSize = 40
+        label.fontColor = .white
+        label.position = CGPoint(x: 0, y: backgroundHeight - 10)
+        addChild(label)
         
         startButton = SKSpriteNode(imageNamed: "inicio")
         startButton?.zPosition = 6

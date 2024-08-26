@@ -9,10 +9,6 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-import Foundation
-import SpriteKit
-import GameplayKit
-
 public class TemporaryBlockEntity: GKEntity{
     
     public var temporaryBlockComponent: LifetimeComponent? {

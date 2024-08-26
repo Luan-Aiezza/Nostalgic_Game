@@ -47,11 +47,10 @@ class StartScene: SKScene {
             let node = self.atPoint(location)
             
             if node.name == "startButton" {
-                print("Botão foi clicado!")
                 let transition = SKTransition.flipHorizontal(withDuration: 0.5)
                 let gameScene = SKScene(fileNamed: "GameScene")!
                 self.view?.presentScene(gameScene, transition: transition)
-                print("Transição completa")
+
             }
         }
     }
