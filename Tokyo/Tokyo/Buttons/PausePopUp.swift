@@ -40,12 +40,13 @@ class PausePopUp: SKNode {
         label.fontName = "AvenirNext-Bold"
         label.fontSize = 40
         label.fontColor = .white
-        label.position = CGPoint(x: 0, y: backgroundHeight - 10)
+        label.zPosition = 6
+        label.position = CGPoint(x: 0, y: backgroundHeight/4)
         addChild(label)
         
         startButton = SKSpriteNode(imageNamed: "inicio")
         startButton?.zPosition = 6
-        startButton?.position = CGPoint(x:  -(backgrounWidth/3) , y: 0)
+        startButton?.position = CGPoint(x:  -(backgrounWidth/3) , y: -10)
         startButton?.setScale(1.5)
         startButton?.name = "startButton"
         guard let startButton = startButton else {return}
@@ -53,7 +54,7 @@ class PausePopUp: SKNode {
         
         playButton = SKSpriteNode(imageNamed: "play")
         playButton?.zPosition = 6
-        playButton?.position = CGPoint(x: 0, y: 0)
+        playButton?.position = CGPoint(x: 0, y: -10)
         playButton?.setScale(1.5)
         playButton?.name = "playButton"
         guard let playButton = playButton else {return}
@@ -61,7 +62,7 @@ class PausePopUp: SKNode {
         
         restartButton = SKSpriteNode(imageNamed: "reiniciar")
         restartButton?.zPosition = 6
-        restartButton?.position = CGPoint(x: backgrounWidth/3, y:0)
+        restartButton?.position = CGPoint(x: backgrounWidth/3, y:-10)
         restartButton?.setScale(1.5)
         restartButton?.name = "restartButton"
         guard let restartButton = restartButton else {return}
