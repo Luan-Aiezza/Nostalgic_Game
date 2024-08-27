@@ -460,7 +460,7 @@ class GameScene: SKScene {
         entityManager?.add(entity: eventTriggerOne)
         
         
-        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x:100, y: -190), size: CGSize(width: 100, height: 100), action: SKAction.run {
+        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x:1100, y: -1240), size: CGSize(width: 100, height: 100), action: SKAction.run {
             
             
             let activate = SKAction.run {
@@ -478,7 +478,6 @@ class GameScene: SKScene {
                 
                 for i in self.enemies {
                     i.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true
-                    i.moveComponent?.change(direction: .none)
                 }
                 for i in self.boss {
                     i.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true

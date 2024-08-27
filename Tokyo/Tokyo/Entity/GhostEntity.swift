@@ -52,7 +52,7 @@ class GhostEntity: GKEntity {
         
         let node = spriteComp.returnSprite()
         node.position = position
-        node.size = CGSize(width: 75, height: 75)
+        node.size = CGSize(width: 60, height: 60)
         node.setScale(0.5)
         self.addComponent(GKSKNodeComponent(node: node))
         
