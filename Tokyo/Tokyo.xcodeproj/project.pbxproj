@@ -61,6 +61,7 @@
 		BB2629692C6C6E7A0077DD35 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2629682C6C6E7A0077DD35 /* MenuScene.swift */; };
 		BB26296B2C6CCFBA0077DD35 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BB26296A2C6CCFBA0077DD35 /* StartScene.sks */; };
 		BB26296D2C6CF6CB0077DD35 /* PausePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */; };
+		BB957A952C7E0540003A2346 /* TutorialEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB957A942C7E0540003A2346 /* TutorialEntity.swift */; };
 		BBE83C202C58F5350021FDF2 /* PlayerJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */; };
 		BBE83C222C58F5C00021FDF2 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */; };
 		CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */; };
@@ -142,6 +143,7 @@
 		BB2629682C6C6E7A0077DD35 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		BB26296A2C6CCFBA0077DD35 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		BB26296C2C6CF6CB0077DD35 /* PausePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePopUp.swift; sourceTree = "<group>"; };
+		BB957A942C7E0540003A2346 /* TutorialEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialEntity.swift; sourceTree = "<group>"; };
 		BBE83C1F2C58F5350021FDF2 /* PlayerJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJump.swift; sourceTree = "<group>"; };
 		BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Stage02_Tiles.sks; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */,
 				CFDBAF642C53F5A500176E7C /* GroundEntity.swift */,
 				336A9F682C66766C00C1803B /* WallEntity.swift */,
+				BB957A942C7E0540003A2346 /* TutorialEntity.swift */,
 				334E85792C5BC0BA00E61EA7 /* ItemEntity.swift */,
 				334E85832C5BD93700E61EA7 /* PointEntity.swift */,
 				335410AF2C6B9944002B2C1B /* EventTriggerEntity.swift */,
@@ -504,6 +507,7 @@
 				335410AA2C6B9830002B2C1B /* ActionComponent.swift in Sources */,
 				CF84E82A2C63ACD20035CD09 /* BossPause.swift in Sources */,
 				CFE9E8B62C6E3A0000CF5EC2 /* ScenarioTiles.swift in Sources */,
+				BB957A952C7E0540003A2346 /* TutorialEntity.swift in Sources */,
 				3306B2232C592344004FE488 /* GameOverScene.swift in Sources */,
 				CF84E8272C63ACD20035CD09 /* BossDash.swift in Sources */,
 				336A9F692C66766C00C1803B /* WallEntity.swift in Sources */,

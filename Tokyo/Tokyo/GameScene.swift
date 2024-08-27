@@ -310,7 +310,7 @@ class GameScene: SKScene {
                     playerEntity?.jump(horizontalDirection: horizontalDirection)
                 }
             }
-            
+        
         }
     }
     

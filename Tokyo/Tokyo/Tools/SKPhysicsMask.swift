@@ -16,7 +16,6 @@ public extension UInt32 {
     static let player = UInt32.base << 0
     static let ghost : UInt32 = 0x1 << 1
     static let tempMask = UInt32.base << 10
-    
     static let items = UInt32.base << 3
     static let points = UInt32.base << 3
     static let tile = UInt32.base << 4
