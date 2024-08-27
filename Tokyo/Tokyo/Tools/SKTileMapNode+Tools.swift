@@ -19,8 +19,6 @@ extension SKTileMapNode {
                 if let tileDefinition = tileMap.tileDefinition(atColumn: col, row: row) {
                     
                     tileDefinition.textures[0].filteringMode = .nearest
-                    
-                    if(tileDefinition.userData?["noPhysics"] != nil) { continue }
                 
                     let tilePosition = self.centerOfTile(atColumn: col, row: row)
                     
@@ -28,6 +26,7 @@ extension SKTileMapNode {
                     
                     let groundEntity = SpikesEntity(size: tileSize, position: tilePosition)
                     entityManager.add(entity: groundEntity)
+                    
                 }
             }
         }

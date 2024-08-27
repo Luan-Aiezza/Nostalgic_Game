@@ -174,10 +174,37 @@ extension GameScene: SKPhysicsContactDelegate {
             
             let group = SKAction.group([eatCherry, waitActionCherry])
             
-            self.run(SKAction.sequence([group,eatenCherry]))
+            self.run(SKAction.sequence([group, eatenCherry]))
             
-            for ghost in enemies{
+            // Adicionando efeito de partículas ao player
+            if let playerNode = player.component(ofType: GKSKNodeComponent.self)?.node {
+                // Configurando o emissor de partículas
+                let particleEmitter = SKEmitterNode()
+                particleEmitter.particleTexture = SKTexture(imageNamed: "Firefly")
+                particleEmitter.particleColor = .yellow
+                particleEmitter.particleColorBlendFactor = 1.0
+                particleEmitter.particleBirthRate = 250
+                particleEmitter.particleLifetime = 0.2
+                particleEmitter.particleSpeed = 100
+                particleEmitter.particleSpeedRange = 50
+                particleEmitter.particleAlpha = 0.8
+                particleEmitter.particleAlphaRange = 0.2
+                particleEmitter.particleScale = 0.2
+                particleEmitter.particleScaleRange = 0.1
+                particleEmitter.emissionAngleRange = 360.0
+                particleEmitter.zPosition = playerNode.zPosition - 1
                 
+                // Adicionando o emissor de partículas ao jogador
+                playerNode.addChild(particleEmitter)
+                
+                // Remover o efeito de partículas após o tempo do poder
+                let removeParticles = SKAction.run {
+                    particleEmitter.removeFromParent()
+                }
+                playerNode.run(SKAction.sequence([waitAction, removeParticles]))
+            }
+            
+            for ghost in enemies {
                 let dizzyGhost = SKAction.run {
                     ghost.stateComponent?.stateMachine.enter(GhostDizzy.self)
                 }

@@ -139,6 +139,7 @@ class PlayerEntity: GKEntity {
             
         case .eat:
             let action: SKAction = .animate(with: .init(withFormat: "andyEatingCherry%@", range: 1...4), timePerFrame: 0.15)
+            
             return action
             
         case .wallSlide:

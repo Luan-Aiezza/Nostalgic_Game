@@ -5,6 +5,7 @@ import SpriteKit
 class BossDash: GKState {
     unowned let bossEntity: BossEntity
     var dashCompleted = false
+    let dashSpeed: CGFloat = 300.0 // Velocidade fixa do dash
 
     init(bossEntity: BossEntity) {
         self.bossEntity = bossEntity
@@ -16,12 +17,14 @@ class BossDash: GKState {
 
     override func didEnter(from previousState: GKState?) {
         bossEntity.spriteNode?.run(bossEntity.bossActions(.dash))
-        // Logica de dass
+        
         if let playerNode = bossEntity.entityManager.playerEntity?.spriteNode {
-            let duration = 1.0
+            let distance = hypot(playerNode.position.x - bossEntity.spriteNode!.position.x,
+                                 playerNode.position.y - bossEntity.spriteNode!.position.y)
+            let duration = TimeInterval(distance / dashSpeed)
+            
             bossEntity.dash(to: playerNode.position, duration: duration)
             
-            // Dash completado
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                 self.dashCompleted = true
             }

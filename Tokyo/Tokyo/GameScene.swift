@@ -31,7 +31,7 @@ class GameScene: SKScene {
     
     
     override func sceneDidLoad() {
-        audioPlayerOne.playLevelOneSong()
+        audioPlayerOne.playLevelTwoSong()
         self.physicsWorld.contactDelegate = self
         
         entityManager = SKEntityManager(scene: self)
@@ -120,6 +120,7 @@ class GameScene: SKScene {
     //
     //
     //    }
+
     func setupPauseButton(){
         guard let camera = self.camera else { return }
         let cameraFrame = camera.calculateAccumulatedFrame()
@@ -429,66 +430,17 @@ class GameScene: SKScene {
         func addEventTriggers(){
             let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
                 
-                if boss.count < 1 {
-                    //                let bossGhost = BossEntity(entityManager: entityManager!)
-                    //                boss.append(bossGhost)
-                    //                entityManager?.add(entity: bossGhost)
-                    
-                    let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
-                    entityManager?.add(entity: ghostCherry)
-                    
-                    audioPlayerOne.stopLevelOneSong()
-                    audioPlayerTwo.playLevelTwoSong()
-                    songOneIsPlaying = true
-                    
-                    guard let frame = self.camera?.calculateAccumulatedFrame() else {return}
-                    
-                    let addGhostBoss = SKAction.run {
-                        let bossGhost = BossEntity(entityManager: self.entityManager!)
-                        self.boss.append(bossGhost)
-                        self.entityManager?.add(entity: bossGhost)
-                    }
-                    
-                    
-                    let messageOne = SKAction.sequence([
-                        
-                        SKAction.run {
-                            let bossMessage = SKSpriteNode(imageNamed: "bossMessage")
-                            bossMessage.texture?.filteringMode = .nearest
-                            bossMessage.position = CGPoint(x: 0, y: 0)
-                            bossMessage.zPosition = 15
-                            bossMessage.name  = "messageBoss"
-                            self.camera?.addChild(bossMessage)
-                        },
-                        
-                        SKAction.wait(forDuration: 3),
-                        
-                        SKAction.run {
-                            if let child = self.camera?.childNode(withName: "messageBoss") as? SKSpriteNode {
-                                child.removeFromParent()
-                            }
-                        }
-                    ])
-                    
-                    let waitAction = SKAction.wait(forDuration: 3.5)
-                    
-                    let messageTwo = SKAction.sequence([
-                        
-                        SKAction.run {
-                            let cherryMessage = SKSpriteNode(imageNamed: "cherryMessage")
-                            cherryMessage.texture?.filteringMode = .nearest
-                            cherryMessage.position = CGPoint(x: 0, y: 70)
-                            cherryMessage.zPosition = 15
-                            cherryMessage.scale(to: CGSize(width: 334.6, height: 80.5 ))
-                            cherryMessage.name  = "cherryMessage"
-                            self.camera?.addChild(cherryMessage)
-                        }
-                    ])
-                    
-                    let sequence = SKAction.sequence([messageOne, waitAction, messageTwo, addGhostBoss])
-                    self.run(sequence)
-                    
-                    
+                let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
+                entityManager?.add(entity: ghostCherry)
+                
+                audioPlayerOne.stopLevelTwoSong()
+                audioPlayerTwo.playLevelOneSong()
+                songOneIsPlaying = true
+                
+                let addGhostBoss = SKAction.run {
+                    let bossGhost = BossEntity(entityManager: self.entityManager!)
+                    self.boss.append(bossGhost)
+                    self.entityManager?.add(entity: bossGhost)
                 }
                 
                 
