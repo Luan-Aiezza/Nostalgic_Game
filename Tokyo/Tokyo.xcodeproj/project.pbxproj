@@ -38,6 +38,7 @@
 		336A9F6E2C66961100C1803B /* LevelDEBUG.sks in Resources */ = {isa = PBXBuildFile; fileRef = 336A9F6D2C66961100C1803B /* LevelDEBUG.sks */; };
 		336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE2182C65156F002D5ABC /* GhostDeath.swift */; };
 		336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE21A2C651CC3002D5ABC /* PlayerEating.swift */; };
+		338685092C777616004F1F3C /* SuccessScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338685082C777616004F1F3C /* SuccessScene.swift */; };
 		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
 		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
 		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
@@ -45,7 +46,6 @@
 		33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */; };
 		33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */; };
 		33E3ABA42C6F0708008D5B29 /* DeepEndEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */; };
-		33E3ABA82C762881008D5B29 /* SuccessScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3ABA72C762881008D5B29 /* SuccessScene.swift */; };
 		33E3ABAA2C763407008D5B29 /* SuccessScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33E3ABA92C763407008D5B29 /* SuccessScene.sks */; };
 		33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */; };
 		33EDD5632C50803200880E83 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EDD5622C50803200880E83 /* AnimationComponent.swift */; };
@@ -118,6 +118,7 @@
 		336A9F6D2C66961100C1803B /* LevelDEBUG.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelDEBUG.sks; sourceTree = "<group>"; };
 		336CE2182C65156F002D5ABC /* GhostDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostDeath.swift; sourceTree = "<group>"; };
 		336CE21A2C651CC3002D5ABC /* PlayerEating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEating.swift; sourceTree = "<group>"; };
+		338685082C777616004F1F3C /* SuccessScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScene.swift; sourceTree = "<group>"; };
 		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
 		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
 		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignEntity.swift; sourceTree = "<group>"; };
 		33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "the-first-palm-pda-font.ttf"; sourceTree = "<group>"; };
 		33E3ABA32C6F0708008D5B29 /* DeepEndEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepEndEntity.swift; sourceTree = "<group>"; };
-		33E3ABA72C762881008D5B29 /* SuccessScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScene.swift; sourceTree = "<group>"; };
 		33E3ABA92C763407008D5B29 /* SuccessScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SuccessScene.sks; sourceTree = "<group>"; };
 		33EDD55F2C4FFE7100880E83 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
 		33EDD5622C50803200880E83 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
@@ -193,7 +193,6 @@
 				3306B2222C592344004FE488 /* GameOverScene.swift */,
 				BB2629662C6BE5AD0077DD35 /* StartScene.swift */,
 				BB2629682C6C6E7A0077DD35 /* MenuScene.swift */,
-				33E3ABA72C762881008D5B29 /* SuccessScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -235,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */,
+				338685082C777616004F1F3C /* SuccessScene.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -277,11 +277,11 @@
 			children = (
 				33EDD5622C50803200880E83 /* AnimationComponent.swift */,
 				33EDD5642C50804600880E83 /* MovementComponent.swift */,
+				BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */,
 				3306B1CB2C513C0A004FE488 /* PhysicsComponent.swift */,
 				3306B1E92C533C9E004FE488 /* DemiseComponent.swift */,
 				3306B1EF2C53D486004FE488 /* StateMachineComponent.swift */,
 				3306B21D2C58A6E2004FE488 /* WanderComponent.swift */,
-				BBE83C212C58F5C00021FDF2 /* JumpComponent.swift */,
 				BB2629622C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift */,
 				334E857B2C5BC0EB00E61EA7 /* IdentifierComponent.swift */,
 				334E857D2C5BC13B00E61EA7 /* InventoryComponent.swift */,
@@ -527,11 +527,11 @@
 				3306B1EC2C534081004FE488 /* CherryEntity.swift in Sources */,
 				3306B1E02C531EC2004FE488 /* GameScene+ContactDelegate.swift in Sources */,
 				334E857C2C5BC0EB00E61EA7 /* IdentifierComponent.swift in Sources */,
-				33E3ABA82C762881008D5B29 /* SuccessScene.swift in Sources */,
 				334E85822C5BC16300E61EA7 /* Item.swift in Sources */,
 				338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */,
 				33EDD5602C4FFE7100880E83 /* SKEntityManager.swift in Sources */,
 				334E857A2C5BC0BA00E61EA7 /* ItemEntity.swift in Sources */,
+				338685092C777616004F1F3C /* SuccessScene.swift in Sources */,
 				336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */,
 				33EDD56F2C5088C400880E83 /* PlayerRun.swift in Sources */,
 				BB2629692C6C6E7A0077DD35 /* MenuScene.swift in Sources */,

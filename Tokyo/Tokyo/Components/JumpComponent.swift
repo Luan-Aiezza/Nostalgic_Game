@@ -48,8 +48,8 @@ class JumpComponent: GKComponent {
         else if physicsBody.linearDamping == 25{
             onGround = true
             isJumping = false
-            jumpImpulse = 480
-            horizontalImpulse = 0.2
+            jumpImpulse = 400
+            horizontalImpulse = 120
         }
     }
 }

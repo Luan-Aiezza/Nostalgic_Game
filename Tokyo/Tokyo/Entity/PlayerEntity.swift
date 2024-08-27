@@ -49,10 +49,11 @@ class PlayerEntity: GKEntity {
         let moveComp = MovementComponent(speed: 3.5)
         self.addComponent(moveComp)
     
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: node.size.width - 10 , height: node.size.height-3.5))
         body.isDynamic = true
         body.mass = 1
         body.friction = 1
+        body.linearDamping = 10
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false

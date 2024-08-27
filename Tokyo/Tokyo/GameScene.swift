@@ -16,6 +16,7 @@ class GameScene: SKScene {
     weak var playerEntity: PlayerEntity?
     var temporaryBlock: TemporaryBlockEntity?
     var levels : [Int] = []
+    var removeNode : [SKNode] = []
     var rightButtonPressed = false
     var leftButtonPressed = false
     var songOneIsPlaying = true
@@ -40,17 +41,14 @@ class GameScene: SKScene {
         //        AudioManager.shared.playLevelOneSong()
         
         textBox.isHidden = true
-        self.camera?.setScale(0.50)
+        textBox.zPosition = 30
         
         let scenarioEntity = TilesEntity(named: "Level02.sks", entityManager: entityManager!)
         entityManager?.add(entity: scenarioEntity)
         
-        print(left_button.position)
-        
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
-        
         self.camera?.setScale(0.50)
         //FIM DO CODIGO
         
@@ -128,8 +126,8 @@ class GameScene: SKScene {
         
         pauseButton.name = "pauseButton"
         pauseButton.size = CGSize(width: 32, height: 32)
+        pauseButton.position = CGPoint(x: cameraFrame.maxX + 165, y: cameraFrame.maxY + 90)
         pauseButton.texture?.filteringMode = .nearest
-        pauseButton.position = CGPoint(x: cameraFrame.maxX + 195, y: cameraFrame.maxY + 100)
         pauseButton.zPosition = 10
         pauseButton.setScale(2)
         pauseButton.isHidden = false
@@ -167,10 +165,10 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX-230, y: cameraFrame.minY - 100 )
+        left_button.position = CGPoint(x: cameraFrame.minX-200, y: cameraFrame.minY - 100 )
         right_button.position = CGPoint(x: left_button.position.x + buttonSize.width+30, y: left_button.position.y)
         
-        jump_button.position = CGPoint(x: cameraFrame.maxX+220, y:left_button.position.y)
+        jump_button.position = CGPoint(x: cameraFrame.maxX+190, y:left_button.position.y)
         
         //        textBox.sprite.size = CGSize(width: 500, height: 500)
         textBox.position = CGPoint(x: 0, y: 60)
@@ -288,6 +286,8 @@ class GameScene: SKScene {
                     else {
                         if !leftButtonPressed{
                             playerEntity?.moveComponent?.change(direction: .none)}
+                            rightButtonPressed = false
+                            leftButtonPressed = false
                     }
                 }
                 
@@ -300,15 +300,16 @@ class GameScene: SKScene {
                     else {
                         if !rightButtonPressed{
                             playerEntity?.moveComponent?.change(direction: .none)}
+                            rightButtonPressed = false
+                            leftButtonPressed = false
                     }
                 }
                 
                 if jump_button.contains(location) && isTouching {
-                    let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
-                    playerEntity?.jump(horizontalDirection: horizontalDirection)
+                        let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
+                        playerEntity?.jump(horizontalDirection: horizontalDirection)
+  
                 }
-            }
-        
         }
     }
     
@@ -440,6 +441,8 @@ class GameScene: SKScene {
                 audioPlayerTwo.playLevelTwoSong()
                 songOneIsPlaying = true
                 
+                guard let frame = self.camera?.calculateAccumulatedFrame() else {return}
+                
                 let addGhostBoss = SKAction.run {
                     let bossGhost = BossEntity(entityManager: self.entityManager!)
                     self.boss.append(bossGhost)
@@ -450,42 +453,43 @@ class GameScene: SKScene {
                 let messageOne = SKAction.sequence([
                     
                     SKAction.run {
-                        self.textBox.textUpdate(text: "beware the Boss.")
+                        let bossMessage = SKSpriteNode(imageNamed: "bossMessage")
+                        bossMessage.texture?.filteringMode = .nearest
+                        bossMessage.position = CGPoint(x: 0, y: 0)
+                        bossMessage.zPosition = 15
+                        bossMessage.name  = "messageBoss"
+                        self.camera?.addChild(bossMessage)
+                        print("mensagem")
                     },
                     
-                    SKAction.run {
-                        self.textBox.isHidden = false
-                    },
-                    
-                    SKAction.wait(forDuration: 4),
+                    SKAction.wait(forDuration: 3),
                     
                     SKAction.run {
-                        self.textBox.isHidden = true
+                        if let child = self.camera?.childNode(withName: "messageBoss") as? SKSpriteNode {
+                            child.removeFromParent()
+                        }
                     }
                 ])
                 
-                let waitAction = SKAction.wait(forDuration: 4)
+                let waitAction = SKAction.wait(forDuration: 3.5)
                 
                 let messageTwo = SKAction.sequence([
                     
                     SKAction.run {
-                        self.textBox.textUpdate(text: "hint: there is a cherry somewhere that can help.")
-                    },
-                    
-                    SKAction.run {
-                        self.textBox.isHidden = false
-                    },
-                    
-                    SKAction.wait(forDuration: 1.5),
-                    
-                    SKAction.run {
-                        self.textBox.isHidden = true
+                        let cherryMessage = SKSpriteNode(imageNamed: "cherryMessage")
+                        cherryMessage.texture?.filteringMode = .nearest
+                        cherryMessage.position = CGPoint(x: 0, y: 70)
+                        cherryMessage.zPosition = 15
+                        cherryMessage.scale(to: CGSize(width: 334.6, height: 80.5 ))
+                        cherryMessage.name  = "cherryMessage"
+                        self.camera?.addChild(cherryMessage)
+                        print("mensagem")
                     }
                 ])
                 
-                let sequence =  SKAction.sequence([messageOne, waitAction, addGhostBoss, messageTwo])
-                
+                let sequence = SKAction.sequence([messageOne, waitAction, messageTwo, addGhostBoss])
                 self.run(sequence)
+                
                 
             }
             
@@ -494,13 +498,63 @@ class GameScene: SKScene {
         entityManager?.add(entity: eventTriggerOne)
         
         
-        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
+        let eventTriggerTwo = EventTriggerEntity(position: CGPoint(x:1100, y: -1240), size: CGSize(width: 100, height: 100), action: SKAction.run {
             
-            print("something")
+            
+            let activate = SKAction.run {
+                let action = SKAction.fadeIn(withDuration: 0.5)
+                
+                let scene = SuccessScene(size: CGSize(width: self.size.width+50, height: self.size.height+50))
+                scene.alpha = 0
+                
+                self.camera?.addChild(scene)
+                self.removeNode.append(scene)
+                scene.run(action)
+                self.playerEntity?.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true
+                self.playerEntity?.moveComponent?.direction = .none
+                self.playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
+                
+                for i in self.enemies {
+                    i.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true
+                }
+                for i in self.boss {
+                    i.component(ofType: GKSKNodeComponent.self)?.node.isPaused = true
+                }
+                
+                self.isUserInteractionEnabled = false
+            }
+            
+            let deactivate = SKAction.run {
+                
+                self.removeChildren(in: self.removeNode)
+                
+                self.camera?.removeChildren(in: self.removeNode)
+                
+                self.isUserInteractionEnabled = true
+                
+                self.removeNode.removeAll()
+                
+                self.playerEntity?.component(ofType: GKSKNodeComponent.self)?.node.isPaused = false
+                
+                for i in self.enemies {
+                    i.component(ofType: GKSKNodeComponent.self)?.node.isPaused = false
+                }
+                for i in self.boss {
+                    i.component(ofType: GKSKNodeComponent.self)?.node.isPaused = false
+                }
+            }
+            
+            let waitAction = SKAction.wait(forDuration: 3.5)
+            
+            let sequence = SKAction.sequence([activate, waitAction, deactivate])
+            
+            self.run(sequence)
+            
         }, entityManager: entityManager!)
         
         entityManager?.add(entity: eventTriggerTwo)
     }
+    
     
     func addCheckpoints(){
         let chestPoint = PointEntity(position: CGPoint(x: 240, y: 344), size: CGSize(width: 32, height: 48), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"))

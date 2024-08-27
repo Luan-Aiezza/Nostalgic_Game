@@ -29,7 +29,7 @@ class GhostCherryEntity : GKEntity {
     init(position : CGPoint, entityManager: SKEntityManager) {
         super.init()
         
-        let node = SKSpriteNode(imageNamed: "cherry")
+        let node = SKSpriteNode(imageNamed: "ghostCherry")
         node.texture?.filteringMode = .nearest
         node.position = position
         node.size = CGSize(width: 50, height: 50)

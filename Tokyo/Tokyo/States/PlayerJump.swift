@@ -17,14 +17,14 @@ class PlayerJump: GKState {
     override func didEnter(from previousState: GKState?) {
         // Iniciar animação de pulo
 //        playerEntity.animationComponent?.playJumpAnimation()
-        playerEntity.jumpComponent?.jump(horizontalDirection: 0)
+        playerEntity.moveComponent?.jump(horizontalDirection: 0)
         
         print("entrou em pulo")
     }
 
     override func update(deltaTime seconds: TimeInterval) {
         // Checar se o pulo terminou
-        if playerEntity.jumpComponent?.isJumping == false && playerEntity.physicsComponent?.body.velocity.dy == 0 {
+        if playerEntity.moveComponent?.isJumping == false && playerEntity.physicsComponent?.body.velocity.dy == 0 {
             stateMachine?.enter(PlayerIdle.self)
         }
     }

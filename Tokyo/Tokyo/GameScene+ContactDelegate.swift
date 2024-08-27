@@ -135,13 +135,9 @@ extension GameScene: SKPhysicsContactDelegate {
                 }
                 
                 self.run(SKAction.sequence([pauseGhost, playerAction, gameOverScene]))
-                
-                print("something")
             }
             
             else {
-                
-                
                 let action = ghost.bossActions(BossAnimation.death)
                 ghost.animationComponent?.play(action: action)
                 ghost.component(ofType: GKSKNodeComponent.self)?.node.removeAction(forKey: "moving")
@@ -214,7 +210,13 @@ extension GameScene: SKPhysicsContactDelegate {
             
             let group = SKAction.group([eatCherry, waitActionCherry])
             
-            self.run(SKAction.sequence([group,eatenCherry]))
+            let cherryMessage = SKAction.run {
+                if let child = self.camera?.childNode(withName: "cherryMessage") as? SKSpriteNode {
+                    child.removeFromParent()
+                }
+            }
+            
+            self.run(SKAction.sequence([group,eatenCherry, cherryMessage]))
             
             for bossGhost in boss {
                 bossGhost.killableComponent?.isCurretlyKillable()
@@ -336,9 +338,7 @@ extension GameScene: SKPhysicsContactDelegate {
             let sequence = SKAction.sequence([action, dieAction])
             
             run(sequence)
-            
-            
-            
+
         }
     }
     
@@ -349,9 +349,6 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if player?.physicsComponent?.body.velocity.dy != 0 {
                 player?.stateComponent?.stateMachine.enter(PlayerWallSlide.self)
-            }
-            else {
-                print("não deu para entrar em WallSlide pois a velocidade angular atual é de \(String(describing: player?.physicsComponent?.body.velocity.dy))")
             }
         }
     }
@@ -368,8 +365,8 @@ extension GameScene: SKPhysicsContactDelegate {
                 player?.stateComponent?.stateMachine.enter(PlayerRun.self)
             }
             
-            player?.jumpComponent?.jumpImpulse = 500
-            player?.jumpComponent?.jumpImpulse = 100
+            player?.moveComponent?.jumpImpulse = 400
+            player?.moveComponent?.horizontalImpulse =  0.2
             
         }
     }
