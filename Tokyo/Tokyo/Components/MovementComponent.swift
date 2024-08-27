@@ -21,6 +21,13 @@ class MovementComponent: GKComponent {
     var speed: CGFloat
     var direction: Direction = .none
     var animationComp: AnimationComponent?
+    var doubleJumpAvailable = true
+    var isJumping = false
+    var jumpImpulse: CGFloat = 400.0
+    var horizontalImpulse: CGFloat = 0.2
+    var onGround = false
+    var rightButtonPressed = false
+    var leftButtonPressed = false
     
     init(speed: CGFloat) {
         self.speed = speed
@@ -38,6 +45,22 @@ class MovementComponent: GKComponent {
     
     override func update(deltaTime seconds: TimeInterval) {
         node?.position.x += direction.rawValue * speed
+        
+        if node?.entity?.component(ofType: PhysicsComponent.self)?.body.velocity.dy == 0 {
+            isJumping = false
+            onGround = true
+            doubleJumpAvailable = true
+            jumpImpulse = 400
+            horizontalImpulse = 0.2
+        }
+        else if node?.entity?.component(ofType: PhysicsComponent.self)?.body.velocity.dy == 25 {
+            onGround = true
+            isJumping = false
+            jumpImpulse = 1000
+            horizontalImpulse = 0.2
+            
+        }
+
     }
     
     public func change(direction: Direction) {
@@ -164,5 +187,33 @@ class MovementComponent: GKComponent {
     
     public func stop() {
         self.change(direction: .none)
+    }
+    
+    public func jump(horizontalDirection : CGFloat){
+        if onGround {
+            isJumping = true
+            onGround = false
+            doubleJumpAvailable = true
+            node?.entity?.component(ofType: PhysicsComponent.self)?.body.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: jumpImpulse))
+        } else if doubleJumpAvailable {
+            isJumping = true
+            doubleJumpAvailable = false
+            node?.entity?.component(ofType: PhysicsComponent.self)?.body.applyImpulse(CGVector(dx: horizontalImpulse * horizontalDirection, dy: jumpImpulse))
+
+        }
+    }
+    
+    public func jumpWallSlide(horizontalDirection : CGFloat){
+        if onGround {
+            isJumping = true
+            onGround = false
+            doubleJumpAvailable = true
+            node?.entity?.component(ofType: PhysicsComponent.self)?.body.applyImpulse(CGVector(dx: horizontalImpulse * (horizontalDirection * -1), dy: jumpImpulse))
+            
+        } else if doubleJumpAvailable {
+            isJumping = true
+            doubleJumpAvailable = false
+            node?.entity?.component(ofType: PhysicsComponent.self)?.body.applyImpulse(CGVector(dx: horizontalImpulse * (horizontalDirection * -1), dy: jumpImpulse))
+        }
     }
 }

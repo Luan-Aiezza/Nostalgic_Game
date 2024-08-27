@@ -63,4 +63,10 @@ class SKEntityManager {
         return boss
     }
     
+    func returnGhosts() -> [GhostEntity?] {
+        let ghosts = getEntities(ofType: GhostEntity.self)
+        
+        return ghosts
+    }
+    
 }

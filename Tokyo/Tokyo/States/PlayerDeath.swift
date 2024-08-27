@@ -22,7 +22,7 @@ class PlayerDeath: GKState {
         playerEntity?.physicsComponent?.body.linearDamping = 0
         playerEntity?.animationComponent?.play(action: action)
         playerEntity?.moveComponent?.change(direction: .none)
-        playerEntity?.jumpComponent?.jumpImpulse = 0
+        playerEntity?.moveComponent?.jumpImpulse = 0
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {

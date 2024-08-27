@@ -53,6 +53,7 @@ class PlayerEntity: GKEntity {
         body.isDynamic = true
         body.mass = 1
         body.friction = 1
+        body.linearDamping = 10
         body.restitution = 0
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
