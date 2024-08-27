@@ -459,7 +459,6 @@ class GameScene: SKScene {
                         bossMessage.zPosition = 15
                         bossMessage.name  = "messageBoss"
                         self.camera?.addChild(bossMessage)
-                        print("mensagem")
                     },
                     
                     SKAction.wait(forDuration: 3),
@@ -483,7 +482,6 @@ class GameScene: SKScene {
                         cherryMessage.scale(to: CGSize(width: 334.6, height: 80.5 ))
                         cherryMessage.name  = "cherryMessage"
                         self.camera?.addChild(cherryMessage)
-                        print("mensagem")
                     }
                 ])
                 
@@ -557,7 +555,7 @@ class GameScene: SKScene {
     
     
     func addCheckpoints(){
-        let chestPoint = PointEntity(position: CGPoint(x: 240, y: 344), size: CGSize(width: 32, height: 48), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"))
+        let chestPoint = PointEntity(position: CGPoint(x: 240, y: 344), size: CGSize(width: 32, height: 48), entityManager: entityManager!, texture: SKTexture(imageNamed: "bau1"), message: "you can't open it")
         chestPoint.identityComponent?.name(name: "key")
         chestPoint.actionComponent?.addAction(action: SKAction.run {
             let action: SKAction = chestPoint.pointActions(.chest)
@@ -592,7 +590,7 @@ class GameScene: SKScene {
         })
         entityManager?.add(entity: chestPoint)
         
-        let stonePoint = PointEntity(position: CGPoint(x: 980, y: -1223), size: CGSize(width: 120, height: 85), entityManager: entityManager!, texture: SKTexture(imageNamed: "pedraDesmoronando1"))
+        let stonePoint = PointEntity(position: CGPoint(x: 980, y: -1223), size: CGSize(width: 120, height: 85), entityManager: entityManager!, texture: SKTexture(imageNamed: "pedraDesmoronando1"), message: "you can't pass through.")
         stonePoint.identityComponent?.name(name: "pickaxe")
         stonePoint.actionComponent?.addAction(action: SKAction.run {
             let action: SKAction = stonePoint.pointActions(.stone)

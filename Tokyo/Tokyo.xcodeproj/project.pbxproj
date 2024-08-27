@@ -39,6 +39,7 @@
 		336CE2192C65156F002D5ABC /* GhostDeath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE2182C65156F002D5ABC /* GhostDeath.swift */; };
 		336CE21B2C651CC3002D5ABC /* PlayerEating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CE21A2C651CC3002D5ABC /* PlayerEating.swift */; };
 		338685092C777616004F1F3C /* SuccessScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338685082C777616004F1F3C /* SuccessScene.swift */; };
+		3386850C2C7E0E29004F1F3C /* MessageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386850B2C7E0E29004F1F3C /* MessageComponent.swift */; };
 		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
 		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
 		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
@@ -119,6 +120,7 @@
 		336CE2182C65156F002D5ABC /* GhostDeath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostDeath.swift; sourceTree = "<group>"; };
 		336CE21A2C651CC3002D5ABC /* PlayerEating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEating.swift; sourceTree = "<group>"; };
 		338685082C777616004F1F3C /* SuccessScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessScene.swift; sourceTree = "<group>"; };
+		3386850B2C7E0E29004F1F3C /* MessageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComponent.swift; sourceTree = "<group>"; };
 		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
 		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
 		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				334E85D12C63A4C300E61EA7 /* SpriteComponent.swift */,
 				335410A92C6B9830002B2C1B /* ActionComponent.swift */,
 				338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */,
+				3386850B2C7E0E29004F1F3C /* MessageComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */,
 				CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */,
 				334E85D02C610D5600E61EA7 /* PlayerDeath.swift in Sources */,
+				3386850C2C7E0E29004F1F3C /* MessageComponent.swift in Sources */,
 				33EDD5712C5088D100880E83 /* PlayerIdle.swift in Sources */,
 				BB2629632C69B9F90077DD35 /* TemporaryLifeTimeComponent.swift in Sources */,
 				335410AA2C6B9830002B2C1B /* ActionComponent.swift in Sources */,
