@@ -32,7 +32,11 @@ class PointEntity : GKEntity {
         return component(ofType: AnimationComponent.self)
     }
     
-    init(position : CGPoint, size : CGSize, entityManager: SKEntityManager, texture: SKTexture) {
+    var messageComponent: MessageComponent? {
+        return component(ofType: MessageComponent.self)
+    }
+    
+    init(position : CGPoint, size : CGSize, entityManager: SKEntityManager, texture: SKTexture, message : String) {
         super.init()
         
         let node = SKSpriteNode(texture: texture)
@@ -72,6 +76,9 @@ class PointEntity : GKEntity {
         
         let animationComp = AnimationComponent()
         self.addComponent(animationComp)
+        
+        let messageComp = MessageComponent(message: message)
+        self.addComponent(messageComp)
         
         let actionComp = ActionComponent()
         self.addComponent(actionComp)

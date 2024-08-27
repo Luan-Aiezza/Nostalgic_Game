@@ -163,7 +163,9 @@ extension GameScene: SKPhysicsContactDelegate {
             cherry.component(ofType: GKSKNodeComponent.self)?.node.alpha = 0
             
             let eatCherry = SKAction.run {
-                player.animationComponent?.play(action: player.playerActions(.eat))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    player.animationComponent?.play(action: player.playerActions(.eat))
+                }
             }
             
             let eatenCherry = SKAction.run {
@@ -286,7 +288,8 @@ extension GameScene: SKPhysicsContactDelegate {
             }else {
                 let message = SKAction.sequence([
                     SKAction.run {
-                        self.textBox.textUpdate(text: "you can't open it.")
+                        guard let text = point.messageComponent?.message else {return}
+                        self.textBox.textUpdate(text: text)
                     },
                     
                     SKAction.run {
@@ -306,7 +309,8 @@ extension GameScene: SKPhysicsContactDelegate {
                 let message = SKAction.sequence([
                     
                     SKAction.run {
-                        self.textBox.textUpdate(text: "you can't open it.")
+                        guard let text = point.messageComponent?.message else {return}
+                        self.textBox.textUpdate(text: text)
                     },
                     
                     SKAction.run {
@@ -430,6 +434,7 @@ extension GameScene: SKPhysicsContactDelegate {
             
         }
     }
+               
     
     private func isContactWithDeepEnd(entityA: GKEntity, entityB: GKEntity) {
         

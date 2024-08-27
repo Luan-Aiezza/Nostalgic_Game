@@ -45,7 +45,7 @@ class CherryEntity : GKEntity {
         body.usesPreciseCollisionDetection = true
         body.allowsRotation = false
         body.affectedByGravity = false
-        body.categoryBitMask = .ghost
+        body.categoryBitMask = .boss
         body.contactTestBitMask = .player
         body.collisionBitMask = .none
         let physicsComp = PhysicsComponent(body: body)
