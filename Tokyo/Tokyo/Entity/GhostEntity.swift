@@ -62,8 +62,9 @@ class GhostEntity: GKEntity {
         let body = SKPhysicsBody(texture: SKTexture(imageNamed: "blueGhost1"), size: node.size)
         body.isDynamic = false
         body.usesPreciseCollisionDetection = false
-        body.categoryBitMask = .ghost
+        body.categoryBitMask = .boss
         body.contactTestBitMask = .player
+        body.collisionBitMask = .none
         let physicsComp = PhysicsComponent(body: body)
         self.addComponent(physicsComp)
         
