@@ -94,6 +94,8 @@ class GameScene: SKScene {
         entityManager?.add(entity: temporaryBlock2)
         let temporaryBlock3 = TemporaryBlockEntity(position: CGPoint(x: 80, y: -640), entityManager: entityManager!)
         entityManager?.add(entity: temporaryBlock3)
+        let temporaryBlock4 = TemporaryBlockEntity(position: CGPoint(x: 770, y: -1280), entityManager: entityManager!)
+        entityManager?.add(entity: temporaryBlock4)
         
         setupButtons()
         addCherries()
@@ -180,7 +182,7 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX-200, y: cameraFrame.minY - 100 )
+        left_button.position = CGPoint(x: cameraFrame.minX-230, y: cameraFrame.minY - 100 )
         right_button.position = CGPoint(x: left_button.position.x + buttonSize.width+30, y: left_button.position.y)
         
         jump_button.position = CGPoint(x: cameraFrame.maxX+190, y:left_button.position.y)
@@ -192,11 +194,6 @@ class GameScene: SKScene {
     override func didChangeSize(_ oldSize: CGSize) {
         super.didChangeSize(oldSize)
         //        adjustButtonLayout()
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        captureInput(touches: touches, isTouching: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -448,17 +445,66 @@ class GameScene: SKScene {
     func addEventTriggers(){
         let eventTriggerOne = EventTriggerEntity(position: CGPoint(x: 0, y: -870), size: CGSize(width: 150, height: 1), action: SKAction.run { [self] in
             
-            let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
-            entityManager?.add(entity: ghostCherry)
-            
-            audioPlayerOne.stopLevelTwoSong()
-            audioPlayerTwo.playLevelOneSong()
-            songOneIsPlaying = true
-            
-            let addGhostBoss = SKAction.run {
-                let bossGhost = BossEntity(entityManager: self.entityManager!)
-                self.boss.append(bossGhost)
-                self.entityManager?.add(entity: bossGhost)
+            if boss.count < 1 {
+                //                let bossGhost = BossEntity(entityManager: entityManager!)
+                //                boss.append(bossGhost)
+                //                entityManager?.add(entity: bossGhost)
+                
+                let ghostCherry = GhostCherryEntity(position:  CGPoint(x: -880, y: -80), entityManager: entityManager!)
+                entityManager?.add(entity: ghostCherry)
+                
+                audioPlayerOne.stopLevelOneSong()
+                audioPlayerTwo.playLevelTwoSong()
+                songOneIsPlaying = true
+                
+//                guard let frame = self.camera?.calculateAccumulatedFrame() else {return}
+                
+                let addGhostBoss = SKAction.run {
+                    let bossGhost = BossEntity(entityManager: self.entityManager!)
+                    self.boss.append(bossGhost)
+                    self.entityManager?.add(entity: bossGhost)
+                }
+                
+                
+                let messageOne = SKAction.sequence([
+                    
+                    SKAction.run {
+                        let bossMessage = SKSpriteNode(imageNamed: "bossMessage")
+                        bossMessage.texture?.filteringMode = .nearest
+                        bossMessage.position = CGPoint(x: 0, y: 0)
+                        bossMessage.zPosition = 15
+                        bossMessage.name  = "messageBoss"
+                        self.camera?.addChild(bossMessage)
+                    },
+                    
+                    SKAction.wait(forDuration: 3),
+                    
+                    SKAction.run {
+                        if let child = self.camera?.childNode(withName: "messageBoss") as? SKSpriteNode {
+                            child.removeFromParent()
+                        }
+                    }
+                ])
+                
+                let waitAction = SKAction.wait(forDuration: 3.5)
+                
+                let messageTwo = SKAction.sequence([
+                    
+                    SKAction.run {
+                        let cherryMessage = SKSpriteNode(imageNamed: "cherryMessage")
+                        cherryMessage.texture?.filteringMode = .nearest
+                        cherryMessage.position = CGPoint(x: 0, y: 70)
+                        cherryMessage.zPosition = 15
+                        cherryMessage.scale(to: CGSize(width: 334.6, height: 80.5 ))
+                        cherryMessage.name  = "cherryMessage"
+                        self.camera?.addChild(cherryMessage)
+                    }
+                ])
+                
+                let sequence = SKAction.sequence([messageOne, waitAction, messageTwo, addGhostBoss])
+                self.run(sequence)
+                
+                
             }
             
             

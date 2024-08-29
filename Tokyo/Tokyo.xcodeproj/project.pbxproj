@@ -43,6 +43,7 @@
 		338EE0A92C6C01AD00A26A9D /* GhostCherryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */; };
 		338EE0AC2C6CE19000A26A9D /* TextDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */; };
 		338EE0AE2C6CF8B100A26A9D /* KillableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */; };
+		33CC5E8B2C7E2D3B006EE100 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = 33CC5E8A2C7E2D3B006EE100 /* Level02.sks */; };
 		33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB962C6E6391008D5B29 /* pixel.otf */; };
 		33E3AB9C2C6E7CD4008D5B29 /* SignEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */; };
 		33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33E3AB9D2C6E8367008D5B29 /* the-first-palm-pda-font.ttf */; };
@@ -80,7 +81,6 @@
 		CFDBAF632C53DE4C00176E7C /* TilesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */; };
 		CFDBAF652C53F5A500176E7C /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF642C53F5A500176E7C /* GroundEntity.swift */; };
 		CFDBAF672C53FA8700176E7C /* SKTileMapNode+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */; };
-		CFE468122C776AA100F6E784 /* Level02.sks in Resources */ = {isa = PBXBuildFile; fileRef = CFE468112C776AA100F6E784 /* Level02.sks */; };
 		CFE9E8A82C6DBECE00CF5EC2 /* SpikesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */; };
 		CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */; };
 		CFE9E8B22C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */; };
@@ -124,6 +124,7 @@
 		338EE0A82C6C01AD00A26A9D /* GhostCherryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GhostCherryEntity.swift; sourceTree = "<group>"; };
 		338EE0AB2C6CE19000A26A9D /* TextDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDialogue.swift; sourceTree = "<group>"; };
 		338EE0AD2C6CF8B100A26A9D /* KillableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillableComponent.swift; sourceTree = "<group>"; };
+		33CC5E8A2C7E2D3B006EE100 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level02.sks; sourceTree = "<group>"; };
 		33E3AB962C6E6391008D5B29 /* pixel.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixel.otf; sourceTree = "<group>"; };
 		33E3AB972C6E63C8008D5B29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		33E3AB9B2C6E7CD4008D5B29 /* SignEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignEntity.swift; sourceTree = "<group>"; };
@@ -163,7 +164,6 @@
 		CFDBAF622C53DE4C00176E7C /* TilesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesEntity.swift; sourceTree = "<group>"; };
 		CFDBAF642C53F5A500176E7C /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
 		CFDBAF662C53FA8700176E7C /* SKTileMapNode+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTileMapNode+Tools.swift"; sourceTree = "<group>"; };
-		CFE468112C776AA100F6E784 /* Level02.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level02.sks; sourceTree = "<group>"; };
 		CFE9E8A72C6DBECE00CF5EC2 /* SpikesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikesEntity.swift; sourceTree = "<group>"; };
 		CFE9E8AF2C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "1. A World of Ghosts.mp3"; sourceTree = "<group>"; };
 		CFE9E8B12C6DF07500CF5EC2 /* 2. A World of Ghosts.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "2. A World of Ghosts.mp3"; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 		CF17CFBF2C52A56900898033 /* Stage02 */ = {
 			isa = PBXGroup;
 			children = (
-				CFE468112C776AA100F6E784 /* Level02.sks */,
+				33CC5E8A2C7E2D3B006EE100 /* Level02.sks */,
 				CF17CFC02C52A5D500898033 /* Stage02_Tiles.sks */,
 				336A9F6D2C66961100C1803B /* LevelDEBUG.sks */,
 				33E3ABA92C763407008D5B29 /* SuccessScene.sks */,
@@ -459,10 +459,10 @@
 				CF41986E2C481745000B3C50 /* Main.storyboard in Resources */,
 				CF4198652C481745000B3C50 /* GameScene.sks in Resources */,
 				33E3AB9A2C6E6C50008D5B29 /* pixel.otf in Resources */,
-				CFE468122C776AA100F6E784 /* Level02.sks in Resources */,
 				33E3ABA02C6E83EC008D5B29 /* the-first-palm-pda-font.ttf in Resources */,
 				CF4198702C481746000B3C50 /* Assets.xcassets in Resources */,
 				CFE9E8B02C6DF00900CF5EC2 /* 1. A World of Ghosts.mp3 in Resources */,
+				33CC5E8B2C7E2D3B006EE100 /* Level02.sks in Resources */,
 				CF17CFC12C52A5D500898033 /* Stage02_Tiles.sks in Resources */,
 				CF4198732C481746000B3C50 /* LaunchScreen.storyboard in Resources */,
 				336A9F6E2C66961100C1803B /* LevelDEBUG.sks in Resources */,
