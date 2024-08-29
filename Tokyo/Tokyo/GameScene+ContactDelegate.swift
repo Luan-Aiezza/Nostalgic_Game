@@ -37,6 +37,9 @@ extension GameScene: SKPhysicsContactDelegate {
         isContactWithSign(entityA: entityB, entityB: entityA)
         isContactWithDeepEnd(entityA: entityA, entityB: entityB)
         isContactWithDeepEnd(entityA: entityB, entityB: entityA)
+        isContactWithTutorial(entityA: entityA, entityB: entityB, show: true)
+        isContactWithTutorial(entityA: entityB, entityB: entityA, show: true)
+        
         
     }
     
@@ -47,10 +50,19 @@ extension GameScene: SKPhysicsContactDelegate {
         isNotInContactWithWall(entityA: entityB, entityB: entityA)
         isContactWithEventTrigger(entityA: entityA, entityB: entityB)
         isContactWithEventTrigger(entityA: entityB, entityB: entityA)
+        isContactWithTutorial(entityA: entityA, entityB: entityB, show: false)
+        isContactWithTutorial(entityA: entityB, entityB: entityA, show: false)
         
     }
     
-    
+    private func isContactWithTutorial(entityA: GKEntity, entityB: GKEntity, show: Bool){
+        if let player = entityA as? PlayerEntity, let tutorial = entityB as? TutorialEntity {
+            tutorial.component(ofType: GKSKNodeComponent.self)?.node.isHidden = !show
+        } else if let player = entityB as? PlayerEntity, let tutorial = entityA as? TutorialEntity {
+            tutorial.component(ofType: GKSKNodeComponent.self)?.node.isHidden = !show
+        }
+        
+    }
     private func isContactWithEnemy(entityA: GKEntity, entityB: GKEntity) {
         
         if entityA is PlayerEntity && entityB is GhostEntity {
@@ -149,7 +161,6 @@ extension GameScene: SKPhysicsContactDelegate {
             }
         }
     }
-    
     
     private func isContactWithCherry(entityA: GKEntity, entityB: GKEntity) {
         

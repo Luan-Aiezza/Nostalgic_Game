@@ -20,6 +20,7 @@ public extension UInt32 {
     static let points = UInt32.base << 3
     static let tile = UInt32.base << 4
     static let trigger = UInt32.base << 5
+    static let tutorial = UInt32.base << 6
     
     static var allMasks: [UInt32] = [
         .player,
@@ -28,7 +29,8 @@ public extension UInt32 {
         .items,
         .points,
         .tile,
-        .trigger
+        .trigger,
+        .tutorial
     ]
     
     static func contactWithAllCategories(less: [UInt32] = []) -> UInt32 {
