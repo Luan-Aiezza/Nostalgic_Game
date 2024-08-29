@@ -16,6 +16,11 @@ class TilesEntity: GKEntity {
         if let scenarioNode = SKReferenceNode(fileNamed: named){
             self.addComponent(GKSKNodeComponent(node: scenarioNode))
             
+            
+            if let tileMapNode = scenarioNode.childNode(withName: "*/ground") as? SKTileMapNode{
+                tileMapNode.addFilteringMode()
+            }
+            
             let children = scenarioNode.children[0].children
             
             for child in children {

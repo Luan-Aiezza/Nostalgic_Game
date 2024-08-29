@@ -94,6 +94,8 @@ class GameScene: SKScene {
         entityManager?.add(entity: temporaryBlock2)
         let temporaryBlock3 = TemporaryBlockEntity(position: CGPoint(x: 80, y: -640), entityManager: entityManager!)
         entityManager?.add(entity: temporaryBlock3)
+        let temporaryBlock4 = TemporaryBlockEntity(position: CGPoint(x: 770, y: -1280), entityManager: entityManager!)
+        entityManager?.add(entity: temporaryBlock4)
         
         setupButtons()
         addCherries()
@@ -165,7 +167,7 @@ class GameScene: SKScene {
         
         let cameraFrame = camera.calculateAccumulatedFrame()
         
-        left_button.position = CGPoint(x: cameraFrame.minX-200, y: cameraFrame.minY - 100 )
+        left_button.position = CGPoint(x: cameraFrame.minX-230, y: cameraFrame.minY - 100 )
         right_button.position = CGPoint(x: left_button.position.x + buttonSize.width+30, y: left_button.position.y)
         
         jump_button.position = CGPoint(x: cameraFrame.maxX+190, y:left_button.position.y)
@@ -240,7 +242,7 @@ class GameScene: SKScene {
                 leftButtonPressed = false
             }
             
-            if !rightButtonPressed && !leftButtonPressed {
+            if !rightButtonPressed && !leftButtonPressed{
                 playerEntity?.stateComponent?.stateMachine.enter(PlayerIdle.self)
                 playerEntity?.moveComponent?.direction = .none
             }
@@ -273,6 +275,7 @@ class GameScene: SKScene {
         
         self.lastUpdateTime = currentTime
     }
+    
     public func captureInput(touches: Set<UITouch>, isTouching: Bool) {
         if !isPaused {
             guard let camera else { return }
@@ -286,8 +289,8 @@ class GameScene: SKScene {
                     else {
                         if !leftButtonPressed{
                             playerEntity?.moveComponent?.change(direction: .none)}
-                            rightButtonPressed = false
-                            leftButtonPressed = false
+                        rightButtonPressed = false
+                        leftButtonPressed = false
                     }
                 }
                 
@@ -300,17 +303,17 @@ class GameScene: SKScene {
                     else {
                         if !rightButtonPressed{
                             playerEntity?.moveComponent?.change(direction: .none)}
-                            rightButtonPressed = false
-                            leftButtonPressed = false
+                        rightButtonPressed = false
+                        leftButtonPressed = false
                     }
                 }
                 
                 if jump_button.contains(location) && isTouching {
                     let horizontalDirection: CGFloat = rightButtonPressed ? 1 : (leftButtonPressed ? -1 : 0)
                     playerEntity?.jump(horizontalDirection: horizontalDirection)
+                    
                 }
             }
-        
         }
     }
     
@@ -442,7 +445,7 @@ class GameScene: SKScene {
                 audioPlayerTwo.playLevelTwoSong()
                 songOneIsPlaying = true
                 
-                guard let frame = self.camera?.calculateAccumulatedFrame() else {return}
+//                guard let frame = self.camera?.calculateAccumulatedFrame() else {return}
                 
                 let addGhostBoss = SKAction.run {
                     let bossGhost = BossEntity(entityManager: self.entityManager!)
